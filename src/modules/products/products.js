@@ -28,7 +28,7 @@ module.exports = {
 
       let imagesArr = [];
       const file = req.file;
-      const imgUrl = `${SERVERLINK}${file.originalname}`;
+      const imgUrl = `${SERVERLINK}public/uploads/${file.originalname}`;
       imagesArr.push(imgUrl);
       const [poster] = imagesArr;
       console.log(file);
