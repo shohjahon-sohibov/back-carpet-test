@@ -1,4 +1,5 @@
 const { aboutHolding } = require("../../model/model");
+const { SERVERLINK } = require('../../config')
 const fs = require("fs");
 const path = require("path");
 
@@ -16,7 +17,7 @@ module.exports = {
 
       let imagesArr = [];
       const file = req.file;
-      const imgUrl = `https://radiant-inlet-46994.herokuapp.com/public/uploads/${file.originalname}`;
+      const imgUrl = `${SERVERLINK}public/uploads/${file.originalname}`;
       imagesArr.push(imgUrl);
       const [poster] = imagesArr;
 
