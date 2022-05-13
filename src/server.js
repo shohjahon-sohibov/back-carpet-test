@@ -6,7 +6,7 @@ const { sequelize } = require("./lib/sequelize");
 const cors = require('cors')
 
 app.use(cors())
-app.use(express.json({limit:'20mb'}));
+app.use(express.json({limit:'50mb'}));
 // app.use(express.urlencoded({extended:true}));
 app.use('/public', express.static('public'))
 
