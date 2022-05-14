@@ -1,5 +1,5 @@
 const { orders } = require("../../model/model");
-const { SERVERLINK } = require('../../config')
+const { SERVERLINK } = require("../../config");
 const fs = require("fs");
 const path = require("path");
 
@@ -19,7 +19,7 @@ module.exports = {
 
       let imagesArr = [];
       const file = req.file;
-      const imgUrl = `${SERVERLINK}public/uploads/${file.originalname}`;
+      const imgUrl = `${SERVERLINK}public/uploads/orders/${file.originalname}`;
       imagesArr.push(imgUrl);
       const [poster] = imagesArr;
 
@@ -48,19 +48,18 @@ module.exports = {
           id,
         },
       });
+      if (findOrderId) {
+        if (findOrderId.imageName != req.file.originalname) {
+          let imagesArr = [];
+          const file = req.file;
+          const imgUrl = `${SERVERLINK}public/uploads/orders/${file.originalname}`;
+          imagesArr.push(imgUrl);
+          const [poster] = imagesArr;
 
-      if (findOrderId.imageName != req.file.originalname) {
-        let imagesArr = [];
-        const file = req.file;
-        const imgUrl = `https://radiant-inlet-46994.herokuapp.com/public/uploads/${file.originalname}`;
-        imagesArr.push(imgUrl);
-        const [poster] = imagesArr;
-
-        if (findOrderId) {
           fs.unlinkSync(
             path.resolve(
               __dirname,
-              `../../../public/uploads/${findOrderId.imageName}`
+              `../../../public/uploads/orders/${findOrderId.imageName}`
             ),
             (error) => {
               res.status(500).json({ error: error?.message });
@@ -87,10 +86,10 @@ module.exports = {
 
           res.status(200).json("resource updated successfuly");
         } else {
-          res.status(404).json("Not found");
+          res.status(500).json("select a new image ");
         }
       } else {
-        res.status(500).json("select a new image ");
+        res.status(404).json("Not found");
       }
     } catch (error) {
       res.status(500).json({ error: error.message });
@@ -110,7 +109,7 @@ module.exports = {
         fs.unlinkSync(
           path.resolve(
             __dirname,
-            `../../../public/uploads/${findOrderId.imageName}`
+            `../../../public/uploads/orders/${findOrderId.imageName}`
           ),
           (error) => {
             res.status(500).json({ error: error?.message });

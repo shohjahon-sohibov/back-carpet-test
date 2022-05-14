@@ -1,5 +1,5 @@
 const { aboutHolding } = require("../../model/model");
-const { SERVERLINK } = require('../../config')
+const { SERVERLINK } = require("../../config");
 const fs = require("fs");
 const path = require("path");
 
@@ -17,7 +17,7 @@ module.exports = {
 
       let imagesArr = [];
       const file = req.file;
-      const imgUrl = `${SERVERLINK}public/uploads/${file.originalname}`;
+      const imgUrl = `${SERVERLINK}public/uploads/about_holdings/${file.originalname}`;
       imagesArr.push(imgUrl);
       const [poster] = imagesArr;
 
@@ -46,7 +46,7 @@ module.exports = {
       if (findAboutHoldingId.imageName != req.file.originalname) {
         let imagesArr = [];
         const file = req.file;
-        const imgUrl = `https://radiant-inlet-46994.herokuapp.com/public/uploads/${file.originalname}`;
+        const imgUrl = `${SERVERLINK}public/uploads/about_holdings/${file.originalname}`;
         imagesArr.push(imgUrl);
         const [poster] = imagesArr;
 
@@ -54,7 +54,7 @@ module.exports = {
           fs.unlinkSync(
             path.resolve(
               __dirname,
-              `../../../public/uploads/${findAboutHoldingId.imageName}`
+              `../../../public/uploads/about_holdings/${findAboutHoldingId.imageName}`
             ),
             (error) => {
               res.json({ error: error?.message });
@@ -100,7 +100,7 @@ module.exports = {
         fs.unlinkSync(
           path.resolve(
             __dirname,
-            `../../../public/uploads/${findAboutHoldingId.imageName}`
+            `../../../public/uploads/about_holdings/${findAboutHoldingId.imageName}`
           ),
           (error) => {
             res.status(500).json({ error: error?.message });

@@ -18,7 +18,7 @@ module.exports = {
     try {
       let imagesArr = [];
       const file = req.file;
-      const imgUrl = `${SERVERLINK}public/uploads/${file.originalname}`;
+      const imgUrl = `${SERVERLINK}public/uploads/brands/${file.originalname}`;
       imagesArr.push(imgUrl);
       const [poster] = imagesArr;
       await brands.create({
@@ -45,7 +45,7 @@ module.exports = {
         fs.unlinkSync(
           path.resolve(
             __dirname,
-            `../../../public/uploads/${findBrandId.imageName}`
+            `../../../public/uploads/brands/${findBrandId.imageName}`
           ),
           (error) => {
             res.status(500).json({ error: error?.message });

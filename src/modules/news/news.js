@@ -16,7 +16,7 @@ module.exports = {
       const { title, description } = req.body;
       let imagesArr = [];
       const file = req.file;
-      const imgUrl = `${SERVERLINK}public/uploads/${file.originalname}`;
+      const imgUrl = `${SERVERLINK}public/uploads/news/${file.originalname}`;
       imagesArr.push(imgUrl);
       const [poster] = imagesArr;
 
@@ -41,19 +41,19 @@ module.exports = {
           id,
         },
       });
+      if (findNewsId) {
 
       if (findNewsId.imageName != req.file.originalname) {
         let imagesArr = [];
         const file = req.file;
-        const imgUrl = `https://radiant-inlet-46994.herokuapp.com/public/uploads/${file.originalname}`;
+      const imgUrl = `${SERVERLINK}public/uploads/news/${file.originalname}`;
         imagesArr.push(imgUrl);
         const [poster] = imagesArr;
 
-        if (findNewsId) {
           fs.unlinkSync(
             path.resolve(
               __dirname,
-              `../../../public/uploads/${findNewsId.imageName}`
+              `../../../public/uploads/news/${findNewsId.imageName}`
             ),
             (error) => {
               res.status(500).json({ error: error?.message });
@@ -76,10 +76,10 @@ module.exports = {
 
           res.status(200).json("resource updated successfuly");
         } else {
-          res.status(404).json("Not found");
+          res.status(500).json("select a new image ");
         }
       } else {
-        res.status(500).json("select a new image ");
+        res.status(404).json("Not found");
       }
     } catch (error) {
       res.status(500).json({ error: error.message });
@@ -98,21 +98,23 @@ module.exports = {
         fs.unlinkSync(
           path.resolve(
             __dirname,
-            `../../../public/uploads/${findNewsId.imageName}`
+            `../../../public/uploads/news/${findNewsId.imageName}`
           ),
           (error) => {
             res.status(500).json({ error: error?.message });
           }
         );
+        await news.destroy({
+          where: {
+            id,
+          },
+        });
+  
+        res.status(200).json("deleted news successfully");
+      } else {
+        res.status(404).json("Not found")
       }
 
-      await news.destroy({
-        where: {
-          id,
-        },
-      });
-
-      res.status(200).json("deleted news successfully");
     } catch (error) {
       res.status(500).json({ error: error.message });
     }

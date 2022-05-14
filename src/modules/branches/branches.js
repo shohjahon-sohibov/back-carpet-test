@@ -1,5 +1,5 @@
 const { branch } = require("../../model/model");
-const { SERVERLINK } = require('../../config')
+const { SERVERLINK } = require("../../config");
 const fs = require("fs");
 const path = require("path");
 
@@ -17,7 +17,7 @@ module.exports = {
       const { name, address, phone, gmail, region } = req.body;
       let imagesArr = [];
       const file = req.file;
-      const imgUrl = `${SERVERLINK}public/uploads/${file.originalname}`;
+      const imgUrl = `${SERVERLINK}public/uploads/branches/${file.originalname}`;
       imagesArr.push(imgUrl);
       const [poster] = imagesArr;
       await branch.create({
@@ -45,43 +45,47 @@ module.exports = {
         },
       });
 
-      if (findBranchId.imageName != req.file.originalname) {
-        let imagesArr = [];
-        const file = req.file;
-        const imgUrl = `https://radiant-inlet-46994.herokuapp.com/public/uploads/${file.originalname}`;
-        imagesArr.push(imgUrl);
-        const [poster] = imagesArr;
+      if (findBranchId) {
+        if (findBranchId.imageName != req.file.originalname) {
+          let imagesArr = [];
+          const file = req.file;
+          const imgUrl = `${SERVERLINK}public/uploads/branches/${file.originalname}`;
+          imagesArr.push(imgUrl);
+          const [poster] = imagesArr;
 
-        fs.unlinkSync(
-          path.resolve(
-            __dirname,
-            `../../../public/uploads/${findBranchId.imageName}`
-          ),
-          (error) => {
-            res.status(500).json({ error: error?.message });
-          }
-        );
+          fs.unlinkSync(
+            path.resolve(
+              __dirname,
+              `../../../public/uploads/branches/${findBranchId.imageName}`
+            ),
+            (error) => {
+              res.status(500).json({ error: error?.message });
+            }
+          );
 
-        await branch.update(
-          {
-            name,
-            address,
-            phone,
-            gmail,
-            region,
-            imgUrl: poster,
-            imageName: file.originalname,
-          },
-          {
-            where: {
-              id,
+          await branch.update(
+            {
+              name,
+              address,
+              phone,
+              gmail,
+              region,
+              imgUrl: poster,
+              imageName: file.originalname,
             },
-          }
-        );
+            {
+              where: {
+                id,
+              },
+            }
+          );
 
-        res.status(201).json("deleted old image updated data of branch");
+          res.status(201).json("deleted old image updated data of branch");
+        } else {
+          res.status(500).json({ error: error.message });
+        }
       } else {
-        res.status(500).json({ error: error.message });
+        res.status(404).json("Not found");
       }
     } catch (error) {
       res.status(500).json({ error: error.message });
@@ -101,20 +105,21 @@ module.exports = {
         fs.unlinkSync(
           path.resolve(
             __dirname,
-            `../../../public/uploads/${findBranchId.imageName}`
+            `../../../public/uploads/branches/${findBranchId.imageName}`
           ),
           (error) => {
             res.status(500).json({ error: error?.message });
           }
         );
+        await branch.destroy({
+          where: {
+            id,
+          },
+        });
+        res.status(200).json("deleted branch successfully");
+      } else {
+        res.status(404).json("Not found");
       }
-
-      await branch.destroy({
-        where: {
-          id,
-        },
-      });
-      res.status(200).json("deleted branch successfully");
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
