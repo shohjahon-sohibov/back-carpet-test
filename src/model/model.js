@@ -1,3 +1,4 @@
+const { type } = require("express/lib/response");
 const { sequelize, DataTypes } = require("../lib/sequelize");
 
 const users = sequelize.define("user", {
@@ -51,7 +52,7 @@ const users = sequelize.define("user", {
   }
 });
 
-const products = sequelize.define("products", {
+const products = sequelize.define("product", {
   title: {
     type: DataTypes.TEXT,
     allowNull: false,
@@ -69,7 +70,7 @@ const products = sequelize.define("products", {
   },
   price: {
     type: DataTypes.TEXT,
-    allowNull: false,
+    allowNull: false
   },
   color: {
     type: DataTypes.TEXT,
@@ -96,6 +97,16 @@ const products = sequelize.define("products", {
       min: 0,
       max: 64,
     },
+  },
+  isNew: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false
+  },
+  isTop: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false
   },
   like: {
     type: DataTypes.INTEGER,

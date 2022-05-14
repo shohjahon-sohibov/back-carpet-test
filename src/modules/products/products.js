@@ -1,12 +1,12 @@
 const { products } = require("../../model/model");
-const { SERVERLINK } = require("../../config");
+const { SERVERLINK } = require('../../config')
 const fs = require("fs");
 const path = require("path");
 
 module.exports = {
   GET_PRODUCTS: async (_, res) => {
     try {
-      const Products = await products.findAll();
+      const Products = await products.findAll()
       res.status(200).json(Products);
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -25,14 +25,15 @@ module.exports = {
         dislike,
         rating,
         sell,
+        isNew,
+        isTop
       } = req.body;
 
       let imagesArr = [];
       const file = req.file;
-      const imgUrl = `${SERVERLINK}public/uploads/${file.originalname}`;
+      const imgUrl = `${SERVERLINK}public/uploads/products/${file.originalname}`;
       imagesArr.push(imgUrl);
-      const [poster] = imagesArr;
-      console.log(file);
+      const [poster] = imagesArr
       await products.create({
         title,
         description,
@@ -44,11 +45,13 @@ module.exports = {
         dislike,
         rating,
         sell,
+        isNew,
+        isTop,
         imageUrl: poster,
         imageName: file.originalname,
         imageType: file.mimetype,
       });
-      res.status(201).json("new product created succsessfully");
+      res.status(201).json("resource created succsessfully");
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
@@ -67,6 +70,8 @@ module.exports = {
         dislike,
         rating,
         sell,
+        isNew,
+        isTop
       } = req.body;
 
       const findProductId = await products.findOne({
@@ -75,18 +80,19 @@ module.exports = {
         },
       });
 
-      if (findProductId.imageName != req.file.originalname) {
+      // if (findProductId.imageName != req.file.originalname) {
         let imagesArr = [];
         const file = req.file;
-        const imgUrl = `https://radiant-inlet-46994.herokuapp.com/public/uploads/${file.originalname}`;
+        console.log(req.file, " 1111111111111111111111111111111");
+        const imgUrl = `${SERVERLINK}public/uploads/products/${file.originalname}`;
         imagesArr.push(imgUrl);
-        const [poster] = imagesArr;
+        const [poster] = imagesArr
 
         if (findProductId) {
           fs.unlinkSync(
             path.resolve(
               __dirname,
-              `../../../public/uploads/${findProductId.imageName}`
+              `../../../public/uploads/products/${findProductId.imageName}`
             ),
             (error) => {
               res.status(500).json({ error: error?.message });
@@ -105,6 +111,8 @@ module.exports = {
               dislike,
               rating,
               sell,
+              isNew,
+              isTop,
               imageUrl: poster,
               imageName: file.originalname,
               imageType: file.mimetype,
@@ -120,9 +128,9 @@ module.exports = {
         } else {
           res.status(404).json("Not found");
         }
-      } else {
-        res.status(500).json("select a new image ");
-      }
+      // } else {
+      //   res.status(500).json("select a new image ");
+      // }
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
@@ -141,7 +149,7 @@ module.exports = {
         fs.unlinkSync(
           path.resolve(
             __dirname,
-            `../../../public/uploads/${findProductId.imageName}`
+            `../../../public/uploads/products/${findProductId.imageName}`
           ),
           (error) => {
             res.status(500).json({ error: error?.message });
