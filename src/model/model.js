@@ -89,6 +89,14 @@ const products = sequelize.define("products", {
       max: 64,
     },
   },
+  category: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+    validate: {
+      min: 0,
+      max: 64,
+    },
+  },
   like: {
     type: DataTypes.INTEGER,
     validate: {

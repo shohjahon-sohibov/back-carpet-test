@@ -1,12 +1,12 @@
 const { products } = require("../../model/model");
-const { SERVERLINK } = require('../../config')
+const { SERVERLINK } = require("../../config");
 const fs = require("fs");
 const path = require("path");
 
 module.exports = {
   GET_PRODUCTS: async (_, res) => {
     try {
-      const Products = await products.findAll()
+      const Products = await products.findAll();
       res.status(200).json(Products);
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -20,6 +20,7 @@ module.exports = {
         price,
         color,
         size,
+        category,
         like,
         dislike,
         rating,
@@ -38,6 +39,7 @@ module.exports = {
         price,
         color,
         size,
+        category,
         like,
         dislike,
         rating,
@@ -60,6 +62,7 @@ module.exports = {
         price,
         color,
         size,
+        category,
         like,
         dislike,
         rating,
@@ -77,7 +80,7 @@ module.exports = {
         const file = req.file;
         const imgUrl = `https://radiant-inlet-46994.herokuapp.com/public/uploads/${file.originalname}`;
         imagesArr.push(imgUrl);
-        const [poster] = imagesArr
+        const [poster] = imagesArr;
 
         if (findProductId) {
           fs.unlinkSync(
@@ -97,6 +100,7 @@ module.exports = {
               price,
               color,
               size,
+              category,
               like,
               dislike,
               rating,
