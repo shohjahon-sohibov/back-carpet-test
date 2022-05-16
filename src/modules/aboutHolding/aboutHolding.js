@@ -57,7 +57,7 @@ module.exports = {
               `../../../public/uploads/about_holdings/${findAboutHoldingId.imageName}`
             ),
             (error) => {
-              res.json({ error: error?.message });
+              res.json({ error: error.message });
             }
           );
 

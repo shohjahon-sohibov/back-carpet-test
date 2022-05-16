@@ -108,7 +108,7 @@ module.exports = {
             `../../../public/uploads/branches/${findBranchId.imageName}`
           ),
           (error) => {
-            res.status(500).json({ error: error?.message });
+            res.status(500).json({ error: error.message });
           }
         );
         await branch.destroy({
