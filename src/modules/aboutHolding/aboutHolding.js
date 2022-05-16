@@ -103,7 +103,7 @@ module.exports = {
             `../../../public/uploads/about_holdings/${findAboutHoldingId.imageName}`
           ),
           (error) => {
-            res.status(500).json({ error: error?.message });
+            res.status(500).json({ error: error.message });
           }
         );
 

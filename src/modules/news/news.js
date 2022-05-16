@@ -56,7 +56,7 @@ module.exports = {
               `../../../public/uploads/news/${findNewsId.imageName}`
             ),
             (error) => {
-              res.status(500).json({ error: error?.message });
+              res.status(500).json({ error: error.message });
             }
           );
 
@@ -101,7 +101,7 @@ module.exports = {
             `../../../public/uploads/news/${findNewsId.imageName}`
           ),
           (error) => {
-            res.status(500).json({ error: error?.message });
+            res.status(500).json({ error: error.message });
           }
         );
         await news.destroy({

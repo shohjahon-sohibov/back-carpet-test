@@ -48,7 +48,7 @@ module.exports = {
             `../../../public/uploads/brands/${findBrandId.imageName}`
           ),
           (error) => {
-            res.status(500).json({ error: error?.message });
+            res.status(500).json({ error: error.message });
           }
         );
         await brands.destroy({
@@ -62,7 +62,7 @@ module.exports = {
         res.status(404).json("Not found");
       }
     } catch (error) {
-      res.status(500).json({ error: error?.message });
+      res.status(500).json({ error: error.message });
     }
   },
 };
