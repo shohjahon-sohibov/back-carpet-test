@@ -95,7 +95,7 @@ module.exports = {
               `../../../public/uploads/products/${findProductId.imageName}`
             ),
             (error) => {
-              res.status(500).json({ error: error?.message });
+              res.status(500).json({ error: error });
             }
           );
 
