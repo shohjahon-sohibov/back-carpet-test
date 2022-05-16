@@ -289,6 +289,18 @@ const orders = sequelize.define("order", {
       max: 256,
     },
   },
+  size: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
+  color: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
+  address: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
   quantity: {
     type: DataTypes.INTEGER,
     allowNull: false,

@@ -14,8 +14,17 @@ module.exports = {
   },
   POST_ORDER: async (req, res) => {
     try {
-      const { customer, phone, product_name, quantity, price, callback } =
-        req.body;
+      const {
+        customer,
+        phone,
+        product_name,
+        size,
+        color,
+        address,
+        quantity,
+        price,
+        callback,
+      } = req.body;
 
       let imagesArr = [];
       const file = req.file;
@@ -27,6 +36,9 @@ module.exports = {
         customer,
         phone,
         product_name,
+        size,
+        color,
+        address,
         quantity,
         price,
         callback,
@@ -40,8 +52,18 @@ module.exports = {
   },
   UPDATE_ORDER: async (req, res) => {
     try {
-      const { id, customer, phone, product_name, quantity, price, callback } =
-        req.body;
+      const {
+        id,
+        customer,
+        phone,
+        product_name,
+        size,
+        color,
+        address,
+        quantity,
+        price,
+        callback,
+      } = req.body;
 
       const findOrderId = await orders.findOne({
         where: {
@@ -71,6 +93,9 @@ module.exports = {
               customer,
               phone,
               product_name,
+              size,
+              color,
+              address,
               quantity,
               price,
               callback,
