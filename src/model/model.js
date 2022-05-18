@@ -1,5 +1,4 @@
-const { type } = require("express/lib/response");
-const { sequelize, DataTypes } = require("../lib/sequelize");
+const { sequelize, DataTypes } = require("../lib/sequelize")
 
 const users = sequelize.define("user", {
   fullname: {
@@ -49,7 +48,8 @@ const users = sequelize.define("user", {
   isDelete: {
     type: DataTypes.BOOLEAN,
     defaultValue: false
-  }
+  },
+  account_money: DataTypes.INTEGER
 });
 
 const products = sequelize.define("product", {
@@ -347,6 +347,31 @@ const jobs = sequelize.define("job", {
   }
 });
 
+const transactions = sequelize.define("transaction", {
+  sender: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+    validate: {
+      min: 1
+    }
+  },
+  paid: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    defaultValue: 0,
+    validate: {
+      min: 0
+    }
+  },
+  receiver: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+    validate: {
+      min: 1
+    }
+  }
+});
+
 module.exports = {
   users,
   products,
@@ -355,5 +380,6 @@ module.exports = {
   aboutHolding,
   branch,
   orders,
-  jobs
+  jobs,
+  transactions
 };

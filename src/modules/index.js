@@ -9,6 +9,7 @@ const Branches = require("./branches/branches");
 const Orders = require("./orders/orders");
 const Brandes = require("./brand/brand");
 const Jobs = require("./job/job");
+const Transaction = require("./transaction/transaction");
 
 // middlewares
 const { AUTH_ROLE_MID, IS_VALID_TOKEN_MID } = require("../middlwares/jwt-helper");
@@ -53,5 +54,8 @@ router
   .post("/new-job", Jobs.POST_JOB)
   .put("/update-job", Jobs.UPDATE_JOB)
   .delete("/delete-job", Jobs.DELETE_JOB)
+
+  .post("/transaction", Transaction.TRANSACTION)
+
 
 module.exports = router;
