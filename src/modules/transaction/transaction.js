@@ -22,10 +22,10 @@ module.exports = {
       });
 
       if (!sender || !receiver) {
-        t.rollback("sender or receiver not found 1");
+        t.rollback();
         res.status(400).json("sender or receiver not found");
       } else if (sender.account_money < money) {
-        t.rollback("Money not enough 1");
+        t.rollback();
         res.json("Money not enough");
       } else {
         await sender.update(
