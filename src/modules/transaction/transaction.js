@@ -42,7 +42,7 @@ module.exports = {
           { transactions: t }
         );
         t.commit();
-        res.status(201).json("tranfered");
+        res.status(200).json("tranfered");
       }
     } catch (err) {
       console.log(err);
