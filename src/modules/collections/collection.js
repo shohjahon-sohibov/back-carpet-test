@@ -14,7 +14,7 @@ module.exports = {
   },
   POST_COLLECTION: async (req, res) => {
     try {
-      const { product_code } = req.body;
+      const { product_code, collection_name } = req.body;
 
       let imagesArr = [];
       const file = req.file;
@@ -24,6 +24,7 @@ module.exports = {
 
       await collections.create({
         product_code,
+        collection_name,
         imageUrl: poster,
         imageName: file.originalname,
         imageType: file.mimetype,
@@ -35,7 +36,7 @@ module.exports = {
   },
   UPDATE_COLLECTION: async (req, res) => {
     try {
-      const { id, product_code } = req.body;
+      const { id, product_code, collection_name } = req.body;
 
       if (id && product_code) {
         const findCollectionId = await collections.findOne({
@@ -64,6 +65,7 @@ module.exports = {
             await collections.update(
               {
                 product_code,
+                collection_name,
                 imageUrl: poster,
                 imageName: file.originalname,
                 imageType: file.mimetype,

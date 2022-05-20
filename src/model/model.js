@@ -157,6 +157,10 @@ const collections = sequelize.define("collection", {
     type: DataTypes.TEXT,
     allowNull: false,
   },
+  collection_name: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
   imageType: DataTypes.STRING,
   imageName: DataTypes.STRING,
   imageUrl: {
