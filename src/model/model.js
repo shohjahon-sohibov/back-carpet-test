@@ -1,4 +1,4 @@
-const { sequelize, DataTypes } = require("../lib/sequelize")
+const { sequelize, DataTypes } = require("../lib/sequelize");
 
 const users = sequelize.define("user", {
   fullname: {
@@ -38,7 +38,7 @@ const users = sequelize.define("user", {
   },
   role: {
     type: DataTypes.STRING(25),
-    allowNull: false
+    allowNull: false,
   },
   password: {
     type: DataTypes.STRING(64),
@@ -47,9 +47,9 @@ const users = sequelize.define("user", {
   avatar: DataTypes.STRING,
   isDelete: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false
+    defaultValue: false,
   },
-  account_money: DataTypes.INTEGER
+  account_money: DataTypes.INTEGER,
 });
 
 const products = sequelize.define("product", {
@@ -68,9 +68,13 @@ const products = sequelize.define("product", {
       min: 1,
     },
   },
+  product_code: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
   price: {
     type: DataTypes.TEXT,
-    allowNull: false
+    allowNull: false,
   },
   color: {
     type: DataTypes.TEXT,
@@ -101,12 +105,12 @@ const products = sequelize.define("product", {
   isNew: {
     type: DataTypes.BOOLEAN,
     allowNull: false,
-    defaultValue: false
+    defaultValue: false,
   },
   isTop: {
     type: DataTypes.BOOLEAN,
     allowNull: false,
-    defaultValue: false
+    defaultValue: false,
   },
   like: {
     type: DataTypes.INTEGER,
@@ -146,6 +150,22 @@ const products = sequelize.define("product", {
   },
   imageName: DataTypes.STRING,
   imageType: DataTypes.STRING,
+});
+
+const collections = sequelize.define("collection", {
+  product_code: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
+  imageType: DataTypes.STRING,
+  imageName: DataTypes.STRING,
+  imageUrl: {
+    type: DataTypes.STRING,
+    unique: {
+      args: true,
+      msg: "this name of image already in use!",
+    },
+  },
 });
 
 const brands = sequelize.define("brand", {
@@ -210,10 +230,10 @@ const aboutHolding = sequelize.define("about_holding", {
     allowNull: false,
     unique: {
       args: true,
-      msg: "this name of image already in use!"
-    }
+      msg: "this name of image already in use!",
+    },
   },
-  imageName: DataTypes.STRING
+  imageName: DataTypes.STRING,
 });
 
 const branch = sequelize.define("branch", {
@@ -289,6 +309,10 @@ const orders = sequelize.define("order", {
       max: 256,
     },
   },
+  product_code: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
   size: {
     type: DataTypes.TEXT,
     allowNull: false,
@@ -319,15 +343,6 @@ const orders = sequelize.define("order", {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
   },
-  imgUrl: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: {
-      args: true,
-      msg: "This name of image already exist"
-    }
-  },
-  imageName: DataTypes.STRING
 });
 
 const jobs = sequelize.define("job", {
@@ -335,16 +350,16 @@ const jobs = sequelize.define("job", {
     type: DataTypes.TEXT,
     allowNull: false,
     validate: {
-      min: 1
-    }
+      min: 1,
+    },
   },
   description: {
     type: DataTypes.TEXT,
     allowNull: false,
     validate: {
-      min: 3
-    }
-  }
+      min: 3,
+    },
+  },
 });
 
 const transactions = sequelize.define("transaction", {
@@ -352,34 +367,35 @@ const transactions = sequelize.define("transaction", {
     type: DataTypes.TEXT,
     allowNull: false,
     validate: {
-      min: 1
-    }
+      min: 1,
+    },
   },
   paid: {
     type: DataTypes.INTEGER,
     allowNull: false,
     defaultValue: 0,
     validate: {
-      min: 0
-    }
+      min: 0,
+    },
   },
   receiver: {
     type: DataTypes.TEXT,
     allowNull: false,
     validate: {
-      min: 1
-    }
-  }
+      min: 1,
+    },
+  },
 });
 
 module.exports = {
   users,
   products,
+  collections,
   brands,
   news,
   aboutHolding,
   branch,
   orders,
   jobs,
-  transactions
+  transactions,
 };

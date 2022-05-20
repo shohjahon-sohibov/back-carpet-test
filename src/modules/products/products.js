@@ -1,4 +1,4 @@
-const { products } = require("../../model/model");
+const { products, collections } = require("../../model/model");
 const { SERVERLINK } = require("../../config");
 const fs = require("fs");
 const path = require("path");
@@ -17,6 +17,7 @@ module.exports = {
       const {
         title,
         description,
+        product_code,
         price,
         color,
         size,
@@ -37,6 +38,7 @@ module.exports = {
       await products.create({
         title,
         description,
+        product_code,
         price,
         color,
         size,
@@ -51,6 +53,30 @@ module.exports = {
         imageName: file.originalname,
         imageType: file.mimetype,
       });
+
+      // const isCollectionFound = await collections.findOne({
+      //   where: {
+      //     product_code,
+      //   },
+      // });
+      // if (!isCollectionFound) {
+
+      //   let imagesArrCollections = [];
+      //   const fileCollection = req.file;
+      //   const imgUrlCollections = `${SERVERLINK}public/uploads/collections/${fileCollection.originalname}`;
+      //   imagesArrCollections.push(imgUrlCollections);
+      //   const [poster] = imagesArrCollections;
+
+      //   const createdCollection = await collections.create({
+      //     product_code,
+      //     imageUrl: poster,
+      //     imageName: fileCollection.originalname,
+      //     imageType: fileCollection.mimetype,
+      //   });
+
+      //   console.log(createdCollection);
+      // }
+
       res.status(201).json("resource created succsessfully");
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -62,6 +88,7 @@ module.exports = {
         id,
         title,
         description,
+        product_code,
         price,
         color,
         size,
@@ -79,10 +106,8 @@ module.exports = {
           id,
         },
       });
-      // if (findProductId.imageName != req.file.originalname) {
       let imagesArr = [];
       const file = req.file;
-      console.log(req.file, " 1111111111111111111111111111111");
       const imgUrl = `${SERVERLINK}public/uploads/products/${file.originalname}`;
       imagesArr.push(imgUrl);
       const [poster] = imagesArr;
@@ -102,6 +127,7 @@ module.exports = {
           {
             title,
             description,
+            product_code,
             price,
             color,
             size,
@@ -127,9 +153,6 @@ module.exports = {
       } else {
         res.status(404).json("Not found");
       }
-      // } else {
-      //   res.status(500).json("select a new image ");
-      // }
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }

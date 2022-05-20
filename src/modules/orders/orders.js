@@ -1,7 +1,4 @@
-const { orders, users } = require("../../model/model");
-const { SERVERLINK } = require("../../config");
-const fs = require("fs");
-const path = require("path");
+const { orders } = require("../../model/model");
 
 module.exports = {
   GET_ORDERS: async (_, res) => {
@@ -18,6 +15,7 @@ module.exports = {
         customer,
         phone,
         product_name,
+        product_code,
         size,
         color,
         address,
@@ -26,24 +24,17 @@ module.exports = {
         callback,
       } = req.body;
 
-      let imagesArr = [];
-      const file = req.file;
-      const imgUrl = `${SERVERLINK}public/uploads/orders/${file.originalname}`;
-      imagesArr.push(imgUrl);
-      const [poster] = imagesArr;
-
       await orders.create({
         customer,
         phone,
         product_name,
+        product_code,
         size,
         color,
         address,
         quantity,
         price,
         callback,
-        imgUrl: poster,
-        imageName: file.originalname,
       });
       res.status(201).json("resource create successfully");
     } catch (error) {
@@ -57,6 +48,7 @@ module.exports = {
         customer,
         phone,
         product_name,
+        product_code,
         size,
         color,
         address,
@@ -65,57 +57,27 @@ module.exports = {
         callback,
       } = req.body;
 
-      const findOrderId = await orders.findOne({
-        where: {
-          id,
+      await orders.update(
+        {
+          customer,
+          phone,
+          product_name,
+          product_code,
+          size,
+          color,
+          address,
+          quantity,
+          price,
+          callback,
         },
-      });
-      if (findOrderId) {
-        if (findOrderId.imageName != req.file.originalname) {
-          let imagesArr = [];
-          const file = req.file;
-          const imgUrl = `${SERVERLINK}public/uploads/orders/${file.originalname}`;
-          imagesArr.push(imgUrl);
-          const [poster] = imagesArr;
-
-          fs.unlinkSync(
-            path.resolve(
-              __dirname,
-              `../../../public/uploads/orders/${findOrderId.imageName}`
-            ),
-            (error) => {
-              res.status(500).json({ error: error.message });
-            }
-          );
-
-          await orders.update(
-            {
-              customer,
-              phone,
-              product_name,
-              size,
-              color,
-              address,
-              quantity,
-              price,
-              callback,
-              imgUrl: poster,
-              imageName: file.originalname,
-            },
-            {
-              where: {
-                id,
-              },
-            }
-          );
-
-          res.status(200).json("resource updated successfuly");
-        } else {
-          res.status(500).json("select a new image ");
+        {
+          where: {
+            id,
+          },
         }
-      } else {
-        res.status(404).json("Not found");
-      }
+      );
+
+      res.status(200).json("resource updated successfuly");
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
@@ -124,33 +86,13 @@ module.exports = {
     try {
       const { id } = req.body;
 
-      const findOrderId = await orders.findOne({
+      await orders.destroy({
         where: {
           id,
         },
       });
 
-      if (findOrderId) {
-        fs.unlinkSync(
-          path.resolve(
-            __dirname,
-            `../../../public/uploads/orders/${findOrderId.imageName}`
-          ),
-          (error) => {
-            res.status(500).json({ error: error.message });
-          }
-        );
-
-        await orders.destroy({
-          where: {
-            id,
-          },
-        });
-
-        res.status(200).json("resource deleted successfuly");
-      } else {
-        res.status(404).json("Not found");
-      }
+      res.status(200).json("resource deleted successfuly");
     } catch (error) {
       res.status(500).json({ error: error.message });
     }

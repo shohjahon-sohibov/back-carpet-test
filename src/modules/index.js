@@ -3,6 +3,7 @@ const router = express.Router();
 
 const Users = require("./users/users");
 const Products = require("./products/products");
+const Collection = require("./collections/collection");
 const News = require("./news/news");
 const AboutHolding = require("./aboutHolding/aboutHolding");
 const Branches = require("./branches/branches");
@@ -13,7 +14,7 @@ const Transaction = require("./transaction/transaction");
 
 // middlewares
 const { AUTH_ROLE_MID, IS_VALID_TOKEN_MID } = require("../middlwares/jwt-helper");
-const { 	uploadAboutHoldings, uploadBranches, uploadBrands, uploadNews, uploadOrders, uploadProducts } = require("../middlwares/multer");
+const { 	uploadAboutHoldings, uploadBranches, uploadBrands, uploadNews, uploadProducts, uploadCollections } = require("../middlwares/multer");
 
 router
   .get("/users", Users.GET_USERS)
@@ -25,6 +26,11 @@ router
   .post("/newProduct", uploadProducts.single("poster"), Products.POST_PRODUCTS)
   .put("/updateProduct", uploadProducts.single("poster"), Products.UPDATE_PRODUCT)
   .delete("/deleteProduct", Products.DELETE_PRODUCT)
+
+  .get("/collections", Collection.GET_COLLECTIONS)
+  .post("/new-collection", uploadCollections.single("poster"), Collection.POST_COLLECTION)
+  .put("/update-collection", uploadCollections.single("poster"), Collection.UPDATE_COLLECTION)
+  .delete("/delete-collection", Collection.DELETE_COLLECTION)
 
   .get("/news", News.GET_NEWS)
   .post("/newNews", uploadNews.single("poster"), News.POST_NEWS)
@@ -42,8 +48,8 @@ router
   .delete("/deleteBranch", Branches.DELETE_BRANCHES)
 
   .get("/orders", Orders.GET_ORDERS)
-  .post("/postOrder", uploadOrders.single("poster"), Orders.POST_ORDER)
-  .put("/updateOrder", uploadOrders.single("poster"), Orders.UPDATE_ORDER)
+  .post("/postOrder", Orders.POST_ORDER)
+  .put("/updateOrder", Orders.UPDATE_ORDER)
   .delete("/deleteOrder", Orders.DELETE_ORDER)
 
   .get("/brands", Brandes.GET_BRANDS)
