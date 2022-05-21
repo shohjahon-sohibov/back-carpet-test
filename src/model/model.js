@@ -191,6 +191,9 @@ const carpetCollections = sequelize.define("carpet_collection", {
     type: DataTypes.TEXT,
     allowNull: false,
   },
+  category: {
+    type: DataTypes.TEXT
+  },
   collection_name: {
     type: DataTypes.TEXT,
     allowNull: false,
@@ -211,6 +214,9 @@ const tuftingCollections = sequelize.define("tufting_collection", {
     type: DataTypes.TEXT,
     allowNull: false,
   },
+  category: {
+    type: DataTypes.TEXT
+  },
   collection_name: {
     type: DataTypes.TEXT,
     allowNull: false,
@@ -230,6 +236,9 @@ const grassCollections = sequelize.define("grass_collection", {
   product_code: {
     type: DataTypes.TEXT,
     allowNull: false,
+  },
+  category: {
+    type: DataTypes.TEXT
   },
   collection_name: {
     type: DataTypes.TEXT,

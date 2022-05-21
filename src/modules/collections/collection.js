@@ -218,7 +218,9 @@ module.exports = {
           },
         });
 
-        if (findCollectionId.category == "carpet") {
+        console.log(findGrassCollectionId);
+
+        if (findCarpetCollectionId.category == category) {
           fs.unlinkSync(
             path.resolve(
               __dirname,
@@ -234,7 +236,7 @@ module.exports = {
               id,
             },
           });
-        } else if (findCollectionId.category == "tufting") {
+        } else if (findTuftingCollectionId.category == category) {
           fs.unlinkSync(
             path.resolve(
               __dirname,
@@ -250,7 +252,7 @@ module.exports = {
               id,
             },
           });
-        } else if (findCollectionId.category == "grass") {
+        } else if (findGrassCollectionId.category == category) {
           fs.unlinkSync(
             path.resolve(
               __dirname,
