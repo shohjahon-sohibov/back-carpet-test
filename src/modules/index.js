@@ -3,6 +3,7 @@ const router = express.Router();
 
 const Users = require("./users/users");
 const Products = require("./products/products");
+const Comments = require("./comment/comment");
 const Collection = require("./collections/collection");
 const News = require("./news/news");
 const AboutHolding = require("./aboutHolding/aboutHolding");
@@ -26,8 +27,15 @@ router
   .post("/newProduct", uploadProducts.single("poster"), Products.POST_PRODUCTS)
   .put("/updateProduct", uploadProducts.single("poster"), Products.UPDATE_PRODUCT)
   .delete("/deleteProduct", Products.DELETE_PRODUCT)
+  
+  .get("/comments", Comments.GET_COMMENTS)
+  .post("/new-comment", Comments.POST_COMMENT)
+  .put("/update-comment", Comments.UPDATE_COMMENT)
+  .delete("/delete-comment", Comments.DELETE_COMMENT)
 
-  .get("/collections", Collection.GET_COLLECTIONS)
+  .get("/carpet-collections", Collection.GET_CARPET_COLLECTIONS)
+  .get("/tufting-collections", Collection.GET_TUFTING_COLLECTIONS)
+  .get("/grass-collections", Collection.GET_GRASS_COLLECTIONS)
   .post("/new-collection", uploadCollections.single("poster"), Collection.POST_COLLECTION)
   .put("/update-collection", uploadCollections.single("poster"), Collection.UPDATE_COLLECTION)
   .delete("/delete-collection", Collection.DELETE_COLLECTION)

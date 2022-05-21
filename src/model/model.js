@@ -72,28 +72,6 @@ const products = sequelize.define("product", {
     type: DataTypes.TEXT,
     allowNull: false,
   },
-  price: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  },
-  color: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-    defaultValue: 0,
-    validate: {
-      min: 0,
-      max: 64,
-    },
-  },
-  size: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-    defaultValue: 0,
-    validate: {
-      min: 0,
-      max: 64,
-    },
-  },
   category: {
     type: DataTypes.TEXT,
     allowNull: false,
@@ -152,7 +130,103 @@ const products = sequelize.define("product", {
   imageType: DataTypes.STRING,
 });
 
+const Product_info = sequelize.define("product_info", {
+  size: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+    defaultValue: 0,
+    validate: {
+      min: 0,
+      max: 64,
+    },
+  },
+  quality: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  price: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
+  in_market: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+    allowNull: false,
+  }
+})
+
+const comments = sequelize.define("comment", {
+  body: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  }
+});
+
+
 const collections = sequelize.define("collection", {
+  product_code: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
+  category: {
+    type: DataTypes.TEXT
+  },
+  collection_name: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
+  imageType: DataTypes.STRING,
+  imageName: DataTypes.STRING,
+  imageUrl: {
+    type: DataTypes.STRING,
+    unique: {
+      args: true,
+      msg: "this name of image already in use!",
+    },
+  },
+});
+
+const carpetCollections = sequelize.define("carpet_collection", {
+  product_code: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
+  collection_name: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
+  imageType: DataTypes.STRING,
+  imageName: DataTypes.STRING,
+  imageUrl: {
+    type: DataTypes.STRING,
+    unique: {
+      args: true,
+      msg: "this name of image already in use!",
+    },
+  },
+});
+
+const tuftingCollections = sequelize.define("tufting_collection", {
+  product_code: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
+  collection_name: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
+  imageType: DataTypes.STRING,
+  imageName: DataTypes.STRING,
+  imageUrl: {
+    type: DataTypes.STRING,
+    unique: {
+      args: true,
+      msg: "this name of image already in use!",
+    },
+  },
+});
+
+const grassCollections = sequelize.define("grass_collection", {
   product_code: {
     type: DataTypes.TEXT,
     allowNull: false,
@@ -391,10 +465,23 @@ const transactions = sequelize.define("transaction", {
   },
 });
 
+
+products.hasMany(comments)
+comments.belongsTo(products)
+
+products.hasMany(Product_info)
+Product_info.belongsTo(products)
+
+
 module.exports = {
   users,
   products,
+  Product_info,
+  comments,
   collections,
+  carpetCollections,
+  tuftingCollections,
+  grassCollections,
   brands,
   news,
   aboutHolding,

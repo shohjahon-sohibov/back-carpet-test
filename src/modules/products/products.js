@@ -1,4 +1,4 @@
-const { products, collections } = require("../../model/model");
+const { products, comments, Product_info } = require("../../model/model");
 const { SERVERLINK } = require("../../config");
 const fs = require("fs");
 const path = require("path");
@@ -6,7 +6,14 @@ const path = require("path");
 module.exports = {
   GET_PRODUCTS: async (_, res) => {
     try {
-      const Products = await products.findAll();
+      const Products = await products.findAll({
+        include: [
+          {
+            comments,
+            Product_info,
+          },
+        ],
+      });
       res.status(200).json(Products);
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -18,9 +25,7 @@ module.exports = {
         title,
         description,
         product_code,
-        price,
-        color,
-        size,
+        quality,
         category,
         like,
         dislike,
