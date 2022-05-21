@@ -72,6 +72,10 @@ const products = sequelize.define("product", {
     type: DataTypes.TEXT,
     allowNull: false,
   },
+  quality: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
   category: {
     type: DataTypes.TEXT,
     allowNull: false,
@@ -138,11 +142,7 @@ const Product_info = sequelize.define("product_info", {
     validate: {
       min: 0,
       max: 64,
-    },
-  },
-  quality: {
-    type: DataTypes.TEXT,
-    allowNull: false
+    }
   },
   price: {
     type: DataTypes.TEXT,

@@ -7,12 +7,9 @@ module.exports = {
   GET_PRODUCTS: async (_, res) => {
     try {
       const Products = await products.findAll({
-        include: [
-          {
-            comments,
-            Product_info,
-          },
-        ],
+            include: {
+              model: Product_info
+            }            
       });
       res.status(200).json(Products);
     } catch (error) {
@@ -27,15 +24,15 @@ module.exports = {
         product_code,
         quality,
         price,
-        color,
         size,
+        in_market,
         category,
         like,
         dislike,
         rating,
         sell,
         isNew,
-        isTop,
+        isTop
       } = req.body;
 
       let imagesArr = [];
@@ -58,6 +55,19 @@ module.exports = {
         imageUrl: poster,
         imageName: file.originalname,
         imageType: file.mimetype,
+      });
+
+      const foundProduct = await products.findOne({
+        where: {
+          product_code
+        }
+      })
+
+       await Product_info.create({
+        price,
+        size,
+        in_market,
+        productId: foundProduct.id
       });
 
       // const isCollectionFound = await collections.findOne({
@@ -97,7 +107,6 @@ module.exports = {
         product_code,
         quality,
         price,
-        color,
         size,
         category,
         like,
@@ -153,6 +162,15 @@ module.exports = {
             },
           }
         );
+         await Product_info.update({
+          price,
+          size,
+          in_market,
+        }, {
+          where: {
+            id
+          }
+        });
 
         res.status(200).json("resource updated successfuly");
       } else {
@@ -164,11 +182,11 @@ module.exports = {
   },
   DELETE_PRODUCT: async (req, res) => {
     try {
-      const { id } = req.body;
+      const { productId, product_infosId } = req.body;
 
       const findProductId = await products.findOne({
         where: {
-          id,
+          id: productId,
         },
       });
 
@@ -192,6 +210,15 @@ module.exports = {
       } else {
         res.status(404).json("Not found");
       }
+
+      if(product_infosId) {
+        await Product_info.destroy({
+          where: {
+            id: product_infosId
+          },
+        });
+      }
+
     } catch (error) {
       res.status(500).json({ error: error.message });
     }

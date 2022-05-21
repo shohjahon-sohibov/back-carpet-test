@@ -3,8 +3,12 @@ const { comments, products } = require("../../model/model");
 module.exports = {
   GET_COMMENTS: async (_, res) => {
     try {
-      res.send(await comments.findAll({
-          include: products
+      res.json(await comments.findAll({
+          include: [
+            {
+              model: products
+            },
+          ]
       }));
     } catch (error) {
       res.status(500).json({ error: error.message });
