@@ -45,9 +45,9 @@ const storageNews = multer.diskStorage({
   },
 });
 
-const storageProducts = multer.diskStorage({
+const storageCarpetCol = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, "../../public/uploads/products"));
+    cb(null, path.join(__dirname, "../../public/uploads/carpet_collections"));
   },
 
   filename: function (req, file, cb) {
@@ -56,9 +56,20 @@ const storageProducts = multer.diskStorage({
   },
 });
 
-const storageCollections = multer.diskStorage({
+const storageTuftingCol = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, "../../public/uploads/collections"));
+    cb(null, path.join(__dirname, "../../public/uploads/tufting_collections"));
+  },
+
+  filename: function (req, file, cb) {
+    const name = file.originalname.split(" ").join("");
+    cb(null, name);
+  },
+});
+
+const storageGrassCol = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, "../../public/uploads/grass_collections"));
   },
 
   filename: function (req, file, cb) {
@@ -71,14 +82,16 @@ const uploadAboutHoldings = multer({ storage: storageAboutHoldings });
 const uploadBranches = multer({ storage: storageBranches });
 const uploadBrands = multer({ storage: storageBrands });
 const uploadNews = multer({ storage: storageNews });
-const uploadProducts = multer({ storage: storageProducts });
-const uploadCollections = multer({ storage: storageCollections });
+const uploadCarpetCol = multer({ storage: storageCarpetCol });
+const uploadTuftingCol = multer({ storage: storageTuftingCol });
+const uploadGrassCol = multer({ storage: storageGrassCol });
 
 module.exports = {
   uploadAboutHoldings,
   uploadBranches,
   uploadBrands,
   uploadNews,
-  uploadProducts,
-  uploadCollections,
+  uploadCarpetCol,
+  uploadTuftingCol,
+  uploadGrassCol
 };

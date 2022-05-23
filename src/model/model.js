@@ -52,15 +52,36 @@ const users = sequelize.define("user", {
   account_money: DataTypes.INTEGER,
 });
 
-const products = sequelize.define("product", {
-  title: {
+const Collections_info = sequelize.define("collection_info", {
+  size: {
     type: DataTypes.TEXT,
     allowNull: false,
+    defaultValue: 0,
     validate: {
-      min: 1,
-      max: 25,
-    },
+      min: 0,
+      max: 64,
+    }
   },
+  price: {
+    type: DataTypes.TEXT,
+    defaultValue: 0,
+    allowNull: false,
+  },
+  in_market: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+    allowNull: false,
+  }
+})
+
+const comments = sequelize.define("comment", {
+  body: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  }
+});
+
+const carpetCollections = sequelize.define("carpet_collection", {
   description: {
     type: DataTypes.TEXT,
     allowNull: false,
@@ -68,20 +89,112 @@ const products = sequelize.define("product", {
       min: 1,
     },
   },
+  isNew: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
+  },
+  isTop: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
+  },
+  like: {
+    type: DataTypes.INTEGER,
+  },
+  dislike: {
+    type: DataTypes.INTEGER,
+  },
+  rating: {
+    type: DataTypes.INTEGER,
+  },
+  sell: {
+    type: DataTypes.INTEGER,
+    validate: {
+      min: 0,
+      max: 100,
+    },
+  },
+  imageUrl: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: {
+      args: true,
+      msg: "this name of image already in use!",
+    },
+  },
+  imageName: DataTypes.STRING,
+  imageType: DataTypes.STRING,
   product_code: {
     type: DataTypes.TEXT,
     allowNull: false,
   },
-  quality: {
+  collection_name: {
     type: DataTypes.TEXT,
-    allowNull: false
-  },
-  category: {
+    allowNull: false,
+  }
+});
+
+const tuftingCollections = sequelize.define("tufting_collection", {
+  description: {
     type: DataTypes.TEXT,
     allowNull: false,
     validate: {
+      min: 1,
+    },
+  },
+  isNew: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
+  },
+  isTop: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
+  },
+  like: {
+    type: DataTypes.INTEGER
+  },
+  dislike: {
+    type: DataTypes.INTEGER
+  },
+  rating: {
+    type: DataTypes.INTEGER
+  },
+  sell: {
+    type: DataTypes.INTEGER,
+    validate: {
       min: 0,
-      max: 64,
+      max: 100,
+    },
+  },
+  imageUrl: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: {
+      args: true,
+      msg: "this name of image already in use!",
+    },
+  },
+  imageName: DataTypes.STRING,
+  imageType: DataTypes.STRING,
+  product_code: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
+  collection_name: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  }
+});
+
+const grassCollections = sequelize.define("grass_collection", {
+  description: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+    validate: {
+      min: 1,
     },
   },
   isNew: {
@@ -132,127 +245,14 @@ const products = sequelize.define("product", {
   },
   imageName: DataTypes.STRING,
   imageType: DataTypes.STRING,
-});
-
-const Product_info = sequelize.define("product_info", {
-  size: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-    defaultValue: 0,
-    validate: {
-      min: 0,
-      max: 64,
-    }
-  },
-  price: {
+  product_code: {
     type: DataTypes.TEXT,
     allowNull: false,
   },
-  in_market: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
-    allowNull: false,
-  }
-})
-
-const comments = sequelize.define("comment", {
-  body: {
+  collection_name: {
     type: DataTypes.TEXT,
     allowNull: false,
   }
-});
-
-
-const collections = sequelize.define("collection", {
-  product_code: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  },
-  category: {
-    type: DataTypes.TEXT
-  },
-  collection_name: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  },
-  imageType: DataTypes.STRING,
-  imageName: DataTypes.STRING,
-  imageUrl: {
-    type: DataTypes.STRING,
-    unique: {
-      args: true,
-      msg: "this name of image already in use!",
-    },
-  },
-});
-
-const carpetCollections = sequelize.define("carpet_collection", {
-  product_code: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  },
-  category: {
-    type: DataTypes.TEXT
-  },
-  collection_name: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  },
-  imageType: DataTypes.STRING,
-  imageName: DataTypes.STRING,
-  imageUrl: {
-    type: DataTypes.STRING,
-    unique: {
-      args: true,
-      msg: "this name of image already in use!",
-    },
-  },
-});
-
-const tuftingCollections = sequelize.define("tufting_collection", {
-  product_code: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  },
-  category: {
-    type: DataTypes.TEXT
-  },
-  collection_name: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  },
-  imageType: DataTypes.STRING,
-  imageName: DataTypes.STRING,
-  imageUrl: {
-    type: DataTypes.STRING,
-    unique: {
-      args: true,
-      msg: "this name of image already in use!",
-    },
-  },
-});
-
-const grassCollections = sequelize.define("grass_collection", {
-  product_code: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  },
-  category: {
-    type: DataTypes.TEXT
-  },
-  collection_name: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  },
-  imageType: DataTypes.STRING,
-  imageName: DataTypes.STRING,
-  imageUrl: {
-    type: DataTypes.STRING,
-    unique: {
-      args: true,
-      msg: "this name of image already in use!",
-    },
-  },
 });
 
 const brands = sequelize.define("brand", {
@@ -474,20 +474,21 @@ const transactions = sequelize.define("transaction", {
   },
 });
 
+grassCollections.hasMany(Collections_info)
+Collections_info.belongsTo(grassCollections)
 
-products.hasMany(comments)
-comments.belongsTo(products)
 
-products.hasMany(Product_info)
-Product_info.belongsTo(products)
+// products.hasMany(comments)
+// comments.belongsTo(products)
+
+// products.hasMany(Product_info)
+// Product_info.belongsTo(products)
 
 
 module.exports = {
   users,
-  products,
-  Product_info,
+  Collections_info,
   comments,
-  collections,
   carpetCollections,
   tuftingCollections,
   grassCollections,

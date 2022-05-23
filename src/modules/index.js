@@ -4,7 +4,9 @@ const router = express.Router();
 const Users = require("./users/users");
 const Products = require("./products/products");
 const Comments = require("./comment/comment");
-const Collection = require("./collections/collection");
+const Carpet_colections = require("./carpet_collections/carpet_colections");
+const Tufting_collections = require("./tufting_collections/tufting_collections");
+const Grass_collections = require("./grass_collections/grass_collections");
 const News = require("./news/news");
 const AboutHolding = require("./aboutHolding/aboutHolding");
 const Branches = require("./branches/branches");
@@ -15,7 +17,7 @@ const Transaction = require("./transaction/transaction");
 
 // middlewares
 const { AUTH_ROLE_MID, IS_VALID_TOKEN_MID } = require("../middlwares/jwt-helper");
-const { 	uploadAboutHoldings, uploadBranches, uploadBrands, uploadNews, uploadProducts, uploadCollections } = require("../middlwares/multer");
+const { 	uploadAboutHoldings, uploadBranches, uploadBrands, uploadNews, uploadCarpetCol, uploadTuftingCol, uploadGrassCol } = require("../middlwares/multer");
 
 router
   .get("/users", Users.GET_USERS)
@@ -23,22 +25,30 @@ router
   .post("/login", IS_VALID_TOKEN_MID, Users.LOGIN)
   .delete("/deleteUser", Users.DELETE_ACCOUNT)
 
-  .get("/products", Products.GET_PRODUCTS)
-  .post("/newProduct", uploadProducts.single("poster"), Products.POST_PRODUCTS)
-  .put("/updateProduct", uploadProducts.single("poster"), Products.UPDATE_PRODUCT)
-  .delete("/deleteProduct", Products.DELETE_PRODUCT)
+  // .get("/products", Products.GET_PRODUCTS)
+  // .post("/newProduct", uploadProducts.single("poster"), Products.POST_PRODUCTS)
+  // .put("/updateProduct", uploadProducts.single("poster"), Products.UPDATE_PRODUCT)
+  // .delete("/deleteProduct", Products.DELETE_PRODUCT)
   
   .get("/comments", Comments.GET_COMMENTS)
   .post("/new-comment", Comments.POST_COMMENT)
   .put("/update-comment", Comments.UPDATE_COMMENT)
   .delete("/delete-comment", Comments.DELETE_COMMENT)
 
-  .get("/carpet-collections", Collection.GET_CARPET_COLLECTIONS)
-  .get("/tufting-collections", Collection.GET_TUFTING_COLLECTIONS)
-  .get("/grass-collections", Collection.GET_GRASS_COLLECTIONS)
-  .post("/new-collection", uploadCollections.single("poster"), Collection.POST_COLLECTION)
-  .put("/update-collection", uploadCollections.single("poster"), Collection.UPDATE_COLLECTION)
-  .delete("/delete-collection", Collection.DELETE_COLLECTION)
+  .get("/api/carpet-collections", Carpet_colections.GET_CARPETS)
+  .post("/api/new-carpet-collection", uploadCarpetCol.single("poster"), Carpet_colections.POST_COLLECTION)
+  .put("/api/update-carpet-collection", uploadCarpetCol.single("poster"), Carpet_colections.UPDATE_COLLECTION)
+  .delete("/api/delete-carpet-collection", Carpet_colections.DELETE_COLLECTION)
+
+  .get("/api/tufting-collections", Tufting_collections.GET_COLLECTIONS)
+  .post("/api/new-tufting-collection", uploadTuftingCol.single("poster"), Tufting_collections.POST_COLLECTION)
+  .put("/api/update-tufting-collection", uploadTuftingCol.single("poster"), Tufting_collections.UPDATE_COLLECTION)
+  .delete("/api/delete-tufting-collection", Tufting_collections.DELETE_COLLECTION)
+
+  .get("/api/grass-collections", Grass_collections.GET_COLLECTIONS)
+  .post("/api/new-grass-collection", uploadGrassCol.single("poster"), Grass_collections.POST_COLLECTION)
+  .put("/api/update-grass-collection", uploadGrassCol.single("poster"), Grass_collections.UPDATE_COLLECTION)
+  .delete("/api/delete-grass-collection", Grass_collections.DELETE_COLLECTION)
 
   .get("/news", News.GET_NEWS)
   .post("/newNews", uploadNews.single("poster"), News.POST_NEWS)
