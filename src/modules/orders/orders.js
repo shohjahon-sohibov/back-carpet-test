@@ -30,9 +30,7 @@ module.exports = {
       } = req.body;
       const total_amount = price * quantity
 
-      if(!customer || !phone || !price || !quantity) {
-        res.status(400).send('Payment failed')
-      } else {
+
         let params = {};
         params['MID'] = MERCHANT_ID;
         params['ORDER_ID'] = 'TEST_'  + new Date().getTime();
@@ -72,7 +70,6 @@ module.exports = {
       });
 
       res.status(200).json("resource create successfully");
-      }
 
     } catch (error) {
       res.status(500).json({ error: error.message });
