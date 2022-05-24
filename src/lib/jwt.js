@@ -1,4 +1,4 @@
-// require('dotenv').config()
+require('dotenv').config({  })
 const { sign, verify } = require('jsonwebtoken')
 
 const signUser = (payload) => sign(payload, "process.env.SECRET_KEY")

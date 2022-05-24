@@ -426,6 +426,13 @@ const orders = sequelize.define("order", {
       min: 1,
     },
   },
+  total_amount: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+    validate: {
+      min: 1,
+    },
+  },
   callback: {
     type: DataTypes.BOOLEAN,
     defaultValue: false,

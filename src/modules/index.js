@@ -66,7 +66,7 @@ router
   .delete("/deleteBranch", Branches.DELETE_BRANCHES)
 
   .get("/orders", Orders.GET_ORDERS)
-  .post("/postOrder", Orders.POST_ORDER)
+  .post("/transaction", Orders.POST_ORDER)
   .put("/updateOrder", Orders.UPDATE_ORDER)
   .delete("/deleteOrder", Orders.DELETE_ORDER)
 
@@ -79,7 +79,7 @@ router
   .put("/update-job", Jobs.UPDATE_JOB)
   .delete("/delete-job", Jobs.DELETE_JOB)
 
-  .post("/transaction", Transaction.TRANSACTION)
+  // .post("/transaction", Transaction.TRANSACTION)
 
 
 module.exports = router;
