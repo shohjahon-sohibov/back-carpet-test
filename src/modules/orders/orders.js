@@ -44,7 +44,6 @@ module.exports = {
             form_fields += "<input type='hidden' name='" + item + "' value='" + params[item] + "' >";
           }
 
-
           console.log(form_fields)
 
       fetch('https://test.paycom.uz', {
@@ -55,7 +54,7 @@ module.exports = {
           'Authorization': TEST_KEY
         }
       }).then(res => res.json())
-          .then(json => console.log(json))
+          .then(data => console.log(JSON.parse(data)))
           .catch(err => console.log(err));
 
       await orders.create({
@@ -72,7 +71,7 @@ module.exports = {
         callback
       });
 
-      res.status(201).json("resource create successfully");
+      res.status(200).json("resource create successfully");
       }
 
     } catch (error) {
