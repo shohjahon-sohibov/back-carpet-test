@@ -30,8 +30,10 @@ module.exports = {
       const total_amount = price * quantity
 
       const forms = {
-        account: customer,
-        merchatId: MERCHANT_ID,
+        account: {
+          name: customer
+        },
+        merchantId: MERCHANT_ID,
         amount: total_amount
       }
 

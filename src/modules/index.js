@@ -66,7 +66,7 @@ router
   .delete("/deleteBranch", Branches.DELETE_BRANCHES)
 
   .get("/orders", Orders.GET_ORDERS)
-  .post("/transaction", Orders.POST_ORDER)
+  .post("/postOrder", Orders.POST_ORDER)
   .put("/updateOrder", Orders.UPDATE_ORDER)
   .delete("/deleteOrder", Orders.DELETE_ORDER)
 
