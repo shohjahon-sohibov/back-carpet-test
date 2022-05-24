@@ -44,7 +44,8 @@ module.exports = {
             form_fields += "<input type='hidden' name='" + item + "' value='" + params[item] + "' >";
           }
 
-        console.log(form_fields)
+
+          console.log(form_fields)
 
       fetch('https://test.paycom.uz', {
         method: 'POST',
