@@ -1,5 +1,6 @@
 const { orders } = require("../../model/model");
 const { TEST_KEY, MERCHANT_ID } = require('../../config')
+const fetch = require('node-fetch')
 require('dotenv').config()
 
 module.exports = {
@@ -43,13 +44,11 @@ module.exports = {
             form_fields += "<input type='hidden' name='" + item + "' value='" + params[item] + "' >";
           }
 
-          res.writeHead(200, { 'Content-Type': 'text/html' });
-          res.end();
-      }
+        console.log(form_fields)
 
       fetch('https://test.paycom.uz', {
         method: 'POST',
-        body: JSON.stringify(form_fields),
+        body: form_fields,
         headers: {
           'Content-Type': 'application/json',
           'Authorization': TEST_KEY
@@ -73,6 +72,8 @@ module.exports = {
       });
 
       res.status(201).json("resource create successfully");
+      }
+
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
