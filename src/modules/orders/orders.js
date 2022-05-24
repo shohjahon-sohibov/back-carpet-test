@@ -29,17 +29,27 @@ module.exports = {
       } = req.body;
       const total_amount = price * quantity
 
-      const forms = {
-        account: {
-          name: customer
-        },
-        merchantId: MERCHANT_ID,
-        amount: total_amount
+      if(!customer || !phone || !price || !quantity) {
+        res.status(400).send('Payment failed')
+      } else {
+        let params = {};
+        params['MID'] = MERCHANT_ID;
+        params['ORDER_ID'] = 'TEST_'  + new Date().getTime();
+        params['CUSTOMER_ID'] = customer;
+        params['TXN_AMOUNT'] = total_amount;
+
+          let form_fields = "";
+          for (let item in params) {
+            form_fields += "<input type='hidden' name='" + item + "' value='" + params[item] + "' >";
+          }
+
+          res.writeHead(200, { 'Content-Type': 'text/html' });
+          res.end();
       }
 
       fetch('https://test.paycom.uz', {
         method: 'POST',
-        body: JSON.stringify(forms),
+        body: JSON.stringify(form_fields),
         headers: {
           'Content-Type': 'application/json',
           'Authorization': TEST_KEY
