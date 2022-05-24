@@ -30,10 +30,9 @@ module.exports = {
       } = req.body;
       const total_amount = price * quantity
 
-
         let params = {};
         params['MID'] = MERCHANT_ID;
-        params['ORDER_ID'] = 'TEST_'  + new Date().getTime();
+        params['ORDER_ID'] = 1
         params['CUSTOMER_ID'] = customer;
         params['TXN_AMOUNT'] = total_amount;
 
