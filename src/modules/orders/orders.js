@@ -45,7 +45,7 @@ module.exports = {
 
       fetch('https://test.paycom.uz', {
         method: 'POST',
-        body: form_fields,
+        body: JSON.stringify(params),
         headers: {
           'Content-Type': 'application/json',
           'Authorization': TEST_KEY
