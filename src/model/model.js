@@ -374,7 +374,6 @@ const branch = sequelize.define("branch", {
 const orders = sequelize.define("order", {
   customer: {
     type: DataTypes.TEXT,
-    allowNull: false,
     validate: {
       min: 1,
       max: 64,
@@ -383,14 +382,12 @@ const orders = sequelize.define("order", {
   },
   phone: {
     type: DataTypes.TEXT,
-    allowNull: false,
     validate: {
       min: 3,
     },
   },
   product_name: {
     type: DataTypes.TEXT,
-    allowNull: false,
     validate: {
       min: 3,
       max: 256,
@@ -398,44 +395,36 @@ const orders = sequelize.define("order", {
   },
   product_code: {
     type: DataTypes.TEXT,
-    allowNull: false,
   },
   size: {
     type: DataTypes.TEXT,
-    allowNull: false,
   },
   color: {
     type: DataTypes.TEXT,
-    allowNull: false,
   },
   address: {
     type: DataTypes.TEXT,
-    allowNull: false,
   },
   quantity: {
     type: DataTypes.INTEGER,
-    allowNull: false,
     validate: {
       min: 1,
     },
   },
   price: {
     type: DataTypes.TEXT,
-    allowNull: false,
     validate: {
       min: 1,
     },
   },
   total_amount: {
     type: DataTypes.TEXT,
-    allowNull: false,
     validate: {
       min: 1,
     },
   },
   callback: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false,
   },
 });
 
