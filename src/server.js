@@ -3,7 +3,7 @@ const app = express();
 const { PORT } = require("./config");
 const modules = require("./modules");
 const { sequelize } = require("./lib/sequelize");
-const cors = require('cors')
+const cors = require('cors');
 
 app.use(cors())
 app.use(express.json({limit:'50mb'}));
