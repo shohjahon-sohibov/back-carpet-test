@@ -52,7 +52,7 @@ const users = sequelize.define("user", {
   account_money: DataTypes.INTEGER,
 });
 
-const Collections_info = sequelize.define("collection_info", {
+const Carpet_info = sequelize.define("carpet_info", {
   size: {
     type: DataTypes.TEXT,
     allowNull: false,
@@ -63,7 +63,7 @@ const Collections_info = sequelize.define("collection_info", {
     }
   },
   price: {
-    type: DataTypes.TEXT,
+    type: DataTypes.INTEGER,
     defaultValue: 0,
     allowNull: false,
   },
@@ -74,7 +74,66 @@ const Collections_info = sequelize.define("collection_info", {
   }
 })
 
-const comments = sequelize.define("comment", {
+const Tufting_info = sequelize.define("tufting_info", {
+  size: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+    defaultValue: 0,
+    validate: {
+      min: 0,
+      max: 64,
+    }
+  },
+  price: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0,
+    allowNull: false,
+  },
+  in_market: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+    allowNull: false,
+  }
+})
+
+const Grass_info = sequelize.define("grass_info", {
+  size: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+    defaultValue: 0,
+    validate: {
+      min: 0,
+      max: 64,
+    }
+  },
+  price: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0,
+    allowNull: false,
+  },
+  in_market: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+    allowNull: false,
+  }
+})
+
+
+const Carpet_comments = sequelize.define("carpet_comment", {
+  body: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  }
+});
+
+const Tufting_comments = sequelize.define("tufting_comment", {
+  body: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  }
+});
+
+const Grass_comments = sequelize.define("grass_comment", {
   body: {
     type: DataTypes.TEXT,
     allowNull: false,
@@ -132,6 +191,10 @@ const carpetCollections = sequelize.define("carpet_collection", {
   collection_name: {
     type: DataTypes.TEXT,
     allowNull: false,
+  },
+  in_market: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false
   }
 });
 
@@ -186,6 +249,10 @@ const tuftingCollections = sequelize.define("tufting_collection", {
   collection_name: {
     type: DataTypes.TEXT,
     allowNull: false,
+  },
+  in_market: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false
   }
 });
 
@@ -252,6 +319,10 @@ const grassCollections = sequelize.define("grass_collection", {
   collection_name: {
     type: DataTypes.TEXT,
     allowNull: false,
+  },
+  in_market: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false
   }
 });
 
@@ -470,21 +541,34 @@ const transactions = sequelize.define("transaction", {
   },
 });
 
-grassCollections.hasMany(Collections_info)
-Collections_info.belongsTo(grassCollections)
+carpetCollections.hasMany(Carpet_info)  // CARPET infos => price, size and etc...
+Carpet_info.belongsTo(carpetCollections)
+
+tuftingCollections.hasMany(Tufting_info)  //  TUFTING infos => price, size and etc...
+Tufting_info.belongsTo(tuftingCollections)
+
+grassCollections.hasMany(Grass_info)  //  GRASS infos => price, size and etc...
+Grass_info.belongsTo(grassCollections)
 
 
-// products.hasMany(comments)
-// comments.belongsTo(products)
 
-// products.hasMany(Product_info)
-// Product_info.belongsTo(products)
+carpetCollections.hasMany(Carpet_comments) // CARPET comments
+Carpet_comments.belongsTo(carpetCollections);
 
+tuftingCollections.hasMany(Tufting_comments) // TUFTING comments
+Tufting_comments.belongsTo(tuftingCollections);
+
+grassCollections.hasMany(Grass_comments) // GRASS comments
+Grass_comments.belongsTo(grassCollections);
 
 module.exports = {
   users,
-  Collections_info,
-  comments,
+  Carpet_info,
+  Tufting_info,
+  Grass_info,
+  Carpet_comments,
+  Tufting_comments,
+  Grass_comments,
   carpetCollections,
   tuftingCollections,
   grassCollections,

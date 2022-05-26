@@ -1,26 +1,20 @@
-const { comments, products } = require("../../model/model");
+const { Carpet_comments } = require("../../model/model");
 
 module.exports = {
   GET_COMMENTS: async (_, res) => {
     try {
-      res.json(await comments.findAll({
-          include: [
-            {
-              model: products
-            },
-          ]
-      }));
+      res.json(await Carpet_comments.findAll());
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
   },
   POST_COMMENT: async (req, res) => {
     try {
-      const { body, productId } = req.body;
+      const { body, carpetCollectionId } = req.body;
 
-      await comments.create({
+      await Carpet_comments.create({
         body,
-        productId
+        carpetCollectionId
       });
 
       res.status(201).json("resource created successfully");
@@ -30,20 +24,20 @@ module.exports = {
   },
   UPDATE_COMMENT: async (req, res) => {
     try {
-      const { id, body, productId } = req.body;
+      const { id, body, carpetCollectionId } = req.body;
 
       if (id && body) {
-        const findCommentsId = await comments.findOne({
+        const findCommentsId = await Carpet_comments.findOne({
           where: {
             id,
           },
         });
 
         if (findCommentsId) {
-          await comments.update(
+          await Carpet_comments.update(
             {
               body,
-              productId
+              carpetCollectionId
             },
             {
               where: {
@@ -66,7 +60,7 @@ module.exports = {
   DELETE_COMMENT: async (req, res) => {
     try {
       const { id } = req.body;
-     const deletedComment = await comments.destroy({
+     const deletedComment = await Carpet_comments.destroy({
         where: {
           id,
         },

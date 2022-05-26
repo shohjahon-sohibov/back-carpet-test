@@ -16,8 +16,6 @@ module.exports = {
     try {
       const {
         description,
-        price,
-        size,
         in_market,
         like,
         dislike,
@@ -37,8 +35,6 @@ module.exports = {
 
       await grassCollections.create({
         description,
-        price,
-        size,
         in_market,
         like,
         dislike,
@@ -62,8 +58,6 @@ module.exports = {
       const {
         id,
         description,
-        price,
-        size,
         in_market,
         like,
         dislike,
@@ -102,8 +96,6 @@ module.exports = {
         await grassCollections.update(
           {
             description,
-            price,
-            size,
             in_market,
             like,
             dislike,

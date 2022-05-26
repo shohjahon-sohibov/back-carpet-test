@@ -2,9 +2,11 @@ const { Sequelize, DataTypes } = require("sequelize");
 const { elConnections } = require('../config')
 
 const sequelize = new Sequelize(
-  elConnections
+  elConnections, {
+    dialect: 'postgres',
+        logging: false
+  }
 );
-
 module.exports = {
   sequelize,
   DataTypes,

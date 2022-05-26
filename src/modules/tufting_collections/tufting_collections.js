@@ -16,8 +16,6 @@ module.exports = {
     try {
       const {
         description,
-        price,
-        size,
         in_market,
         like,
         dislike,
@@ -37,8 +35,6 @@ module.exports = {
 
         await tuftingCollections.create({
           description,
-          price,
-          size,
           in_market,
           like,
           dislike,
@@ -62,8 +58,6 @@ module.exports = {
       const {
         id,
         description,
-        price,
-        size,
         in_market,
         like,
         dislike,
@@ -101,8 +95,6 @@ module.exports = {
           await tuftingCollections.update(
             {
               description,
-              price,
-              size,
               in_market,
               like,
               dislike,
