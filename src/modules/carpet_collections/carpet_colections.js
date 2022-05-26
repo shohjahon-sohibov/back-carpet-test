@@ -1,7 +1,7 @@
 const {
   carpetCollections,
-  comments,
-  Collections_info,
+  Carpet_comments,
+  Carpet_info,
 } = require("../../model/model");
 const { SERVERLINK } = require("../../config");
 const fs = require("fs");
@@ -13,8 +13,8 @@ module.exports = {
       res.status(200).json(
         await carpetCollections.findAll({
           include: [
-            { model: comments, attributes: ["id", "body", "carpetCollectionId"] },
-            { model: Collections_info, attributes: [ "id", "size", "price", "in_market", "carpetCollectionId"] },
+            { model: Carpet_comments, attributes: ["id", "body", "carpetCollectionId"] },
+            { model: Carpet_info, attributes: [ "id", "size", "price", "in_market", "carpetCollectionId"] },
           ],
         })
       );

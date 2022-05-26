@@ -1,4 +1,4 @@
-const { grassCollections } = require("../../model/model");
+const { grassCollections, Grass_comments, Grass_info } = require("../../model/model");
 const { SERVERLINK } = require("../../config");
 const fs = require("fs");
 const path = require("path");
@@ -6,7 +6,12 @@ const path = require("path");
 module.exports = {
   GET_COLLECTIONS: async (_, res) => {
     try {
-      res.status(200).json(await grassCollections.findAll());
+      res.status(200).json(await grassCollections.findAll({
+        include: [
+          { model: Grass_comments, attributes: ["id", "body", "carpetCollectionId"] },
+          { model: Grass_info, attributes: [ "id", "size", "price", "in_market", "carpetCollectionId"] },
+        ],
+      }));
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
