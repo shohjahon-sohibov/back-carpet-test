@@ -8,8 +8,8 @@ module.exports = {
     try {
       res.status(200).json(await tuftingCollections.findAll({
         include: [
-          { model: Tufting_comments, attributes: ["id", "body", "carpetCollectionId"] },
-          { model: Tufting_info, attributes: [ "id", "size", "price", "in_market", "carpetCollectionId"] },
+          { model: Tufting_comments, attributes: ["id", "body", "tuftingCollectionId"] },
+          { model: Tufting_info, attributes: [ "id", "size", "price", "in_market", "tuftingCollectionId"] },
         ],
       }));
     } catch (error) {

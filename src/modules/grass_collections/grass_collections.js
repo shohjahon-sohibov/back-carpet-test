@@ -8,8 +8,8 @@ module.exports = {
     try {
       res.status(200).json(await grassCollections.findAll({
         include: [
-          { model: Grass_comments, attributes: ["id", "body", "carpetCollectionId"] },
-          { model: Grass_info, attributes: [ "id", "size", "price", "in_market", "carpetCollectionId"] },
+          { model: Grass_comments, attributes: ["id", "body", "grassCollectionId"] },
+          { model: Grass_info, attributes: [ "id", "size", "price", "in_market", "grassCollectionId"] },
         ],
       }));
     } catch (error) {
