@@ -10,7 +10,7 @@ app.use(express.json({limit:'50mb'}));
 app.use('/public', express.static('public'))
 
 sequelize
-  .sync({ force: false })
+  .sync({ force: true })
   .then(() => console.log("connected"))
   .catch((err) => console.log(err));
 

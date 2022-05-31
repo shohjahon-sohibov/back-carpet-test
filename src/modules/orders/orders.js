@@ -30,30 +30,6 @@ module.exports = {
       } = req.body;
       const total_amount = price * quantity
 
-        let params = {};
-        params['MID'] = MERCHANT_ID;
-        params['ORDER_ID'] = 1
-        params['CUSTOMER_ID'] = customer;
-        params['TXN_AMOUNT'] = total_amount;
-
-          let form_fields = "";
-          for (let item in params) {
-            form_fields += "<input type='hidden' name='" + item + "' value='" + params[item] + "' >";
-          }
-
-          console.log(form_fields)
-
-      fetch('https://test.paycom.uz', {
-        method: 'POST',
-        body: JSON.stringify(params),
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': TEST_KEY
-        }
-      }).then(res => res.json())
-          .then(data => console.log(JSON.parse(data)))
-          .catch(err => console.log(err));
-
       await orders.create({
         customer,
         phone,
@@ -68,8 +44,38 @@ module.exports = {
         callback
       });
 
-      res.status(200).json("resource create successfully");
+      let params = {};
+      // params['MID'] = MERCHANT_ID;
+      params['CUSTOMER_ID'] = customer;
+      params['TXN_AMOUNT'] = total_amount;
 
+      // fetch('https://test.paycom.uz', {
+      //   method: 'POST',
+      //   body: JSON.stringify(params),
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //     'Authorization': TEST_KEY
+      //   }
+      // }).then(res => res.json())
+      //     .then(data => console.log(JSON.parse(data)))
+      //     .catch(err => console.log(err));
+
+      const url ='https://test.paycom.uz';
+      const headers = {
+        "Content-Type": "application/json",
+        "MERCHANT_ID": MERCHANT_ID,
+        "test_key": TEST_KEY
+      }
+      fetch(url, { method: 'POST', headers: headers, body: params})
+          .then((res) => {
+            return res.json()
+          })
+          .then((json) => {
+            console.log(json);
+          });
+
+      // res.writeHead(200, {'Content-Type': 'application/json'});
+      // res.json(JSON.stringify(params))
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
