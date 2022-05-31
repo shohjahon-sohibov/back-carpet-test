@@ -7,7 +7,7 @@ const cors = require('cors');
 
 app.use(cors());
 app.use(express.json({limit:'50mb'}));
-app.use('/public', express.static('public/uploads'))
+app.use('/public', express.static('public'))
 
 sequelize
   .sync({ force: false })
