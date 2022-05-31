@@ -25,7 +25,6 @@ module.exports = {
           role,
         },
       });
-      console.log(findUser, "tokenda1111111111111111111111111111111111111");
 
       if (findUser && findUser.id == id && findUser.role == 'admin') {
         next();
