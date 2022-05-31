@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const PORT = process.env.PORT || 9000;
+const PORT = process.env.PORT || 8080;
 const SERVERLINK = "http://ec2-107-21-179-199.compute-1.amazonaws.com:8080/";
 
 const MERCHANT_ID = "62864e6a72a6247c42008e13";
