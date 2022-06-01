@@ -73,7 +73,6 @@ module.exports = {
         "test_key": TEST_KEY
       }
       fetch(url, { method: 'POST', headers: headers, body: params})
-          .then((response) => response.json())
           .then((json) => {
             console.log(json);
           });
