@@ -1,17 +1,12 @@
 require("dotenv").config();
-
 const PORT = process.env.PORT || 8080;
-const SERVERLINK = "http://ec2-54-145-201-75.compute-1.amazonaws.com:8080/";
-
-const MERCHANT_ID = "62864e6a72a6247c42008e13";
-const TEST_KEY = "xEC0JxJ21%bxNkFOccMK5gfH06zcS0aG90Y%";
-const KEY = "pN3GaXOf?DVPAyMeSs&GISr22Sv7&@@F@mNh";
+// const SERVERLINK = "http://ec2-54-145-201-75.compute-1.amazonaws.com:8080/";
 
 module.exports = {
   PORT,
-  SERVERLINK,
+  SERVERLINK: process.env.SERVER,
   elConnections: process.env.DB_CONNECTION,
-  MERCHANT_ID,
-  TEST_KEY,
-  KEY,
+  MERCHANT_ID: process.env.MERCHANT_ID,
+  TEST_KEY: process.env.TEST_KEY,
+  KEY: process.env.KEY,
 };

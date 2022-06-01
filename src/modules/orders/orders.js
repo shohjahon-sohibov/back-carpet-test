@@ -44,10 +44,17 @@ module.exports = {
         callback
       });
 
-      let params = {};
-      // params['MID'] = MERCHANT_ID;
-      params['CUSTOMER_ID'] = customer;
-      params['TXN_AMOUNT'] = total_amount;
+      let params = {
+        merchant: MERCHANT_ID,
+        amount: total_amount,
+        account: [{
+          name: customer,
+          phone: phone
+        }]
+      };
+      // params['merchant'] = MERCHANT_ID;
+      // params['account'] = customer;
+      // params['amount'] = total_amount;
 
       // fetch('https://test.paycom.uz', {
       //   method: 'POST',
@@ -63,12 +70,12 @@ module.exports = {
       const url ='https://test.paycom.uz';
       const headers = {
         "Content-Type": "application/json",
-        "MERCHANT_ID": MERCHANT_ID,
         "test_key": TEST_KEY
       }
       fetch(url, { method: 'POST', headers: headers, body: params})
-          .then((data) => {
-            console.log(data);
+          .then((response) => response.json())
+          .then((json) => {
+            console.log(json.body);
           });
 
       // res.writeHead(200, {'Content-Type': 'application/json'});
