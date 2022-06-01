@@ -74,7 +74,7 @@ module.exports = {
       }
       fetch(url, { method: 'POST', headers: headers, body: params})
           .then((json) => {
-            console.log(json);
+            console.log(json.body);
           });
 
       // res.writeHead(200, {'Content-Type': 'application/json'});
