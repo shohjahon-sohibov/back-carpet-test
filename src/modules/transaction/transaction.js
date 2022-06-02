@@ -36,6 +36,7 @@ module.exports = class HomeController {
 		
 		if(req.body.params.account.amount < 0) {
 			res.error.invalidAmount(res);
+			return;
 		}
 		console.log(req.body.params.account.user_id);
 		const user = await Users.findOne({
@@ -46,6 +47,7 @@ module.exports = class HomeController {
 
 		if(!user) {
 			res.error.invalidAccount(res);
+			return;
 		}
 
 		
@@ -69,6 +71,12 @@ module.exports = class HomeController {
 		 * If you want to send error about invalid account
 			 res?.error.invalidAccount(res);
 			*/
+
+				
+		if(req.body.params.account.amount < 1000) {
+			res.error.invalidAmount(res);
+			return;
+		}
 
 			const user = await Users.findOne({
 				where: {
