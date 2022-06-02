@@ -13,7 +13,7 @@ module.exports = {
   },
   REGISTER: async (req, res) => {
     try {
-      const { fullname, username, email, phone, password, role, account_money } = req.body;
+      const { fullname, username, email, phone, password, role, user_balance } = req.body;
       const newUser = await users.create({
         fullname,
         username,
@@ -21,7 +21,7 @@ module.exports = {
         phone,
         password,
         role,
-        account_money
+        user_balance
       });
       const token = signUser({ id: newUser.id, role: newUser.role });
 
