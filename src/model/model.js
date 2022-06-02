@@ -480,8 +480,8 @@ const branch = sequelize.define("branch", {
 
 const orders = sequelize.define("order", {
   order_id: {
-    type: DataTypes.INTEGER,
-    defaultValue: 0,
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4(),
     primaryKey: true,
   },
   customer: {

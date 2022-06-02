@@ -43,25 +43,26 @@ module.exports = {
         callback
       });
 
-      let params = {
-        merchant: MERCHANT_ID,
-        amount: total_amount,
-        account: [{
-          name: customer,
-          phone: phone
-        }]
-      };
+      // let params = {
+      //   merchant: MERCHANT_ID,
+      //   amount: total_amount,
+      //   account: [{
+      //     name: customer,
+      //     phone: phone
+      //   }]
+      // };
 
-      const url ='https://test.paycom.uz';
-      const headers = {
-        "Content-Type": "application/json",
-        "key": TEST_KEY
-      }
-      fetch(url, { method: 'POST', headers: headers, body: params})
-          .then((json) => {
-            console.log(json.body);
-          });
+      // const url ='https://test.paycom.uz';
+      // const headers = {
+      //   "Content-Type": "application/json",
+      //   "key": TEST_KEY
+      // }
+      // fetch(url, { method: 'POST', headers: headers, body: params})
+      //     .then((json) => {
+      //       console.log(json.body);
+      //     });
 
+      res.json("ok")
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
