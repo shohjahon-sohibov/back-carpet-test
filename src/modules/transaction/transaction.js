@@ -52,9 +52,9 @@ module.exports = class HomeController {
 			/**
          * If you want to send error about invalid amount 
 		    res.error.invalidAmount(res);
-         * If you want to send error about invalid account
+			* If you want to send error about invalid account
+			res.error.invalidAccount(res);
 			*/
-		res.error.invalidAccount(res);
 			console.log(req.body, 0);
 
 			const user = await Users.findOne({
@@ -108,8 +108,8 @@ module.exports = class HomeController {
 	static async CheckTransaction(req, res) {
 		/**
          * If you want to send error about invalid transaction id 
+		 res.error.transactionNotFound(res);
          */
-		res.error.transactionNotFound(res);
 
 		const payment = await payments.findOne({
 			where: {
