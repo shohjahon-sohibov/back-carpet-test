@@ -31,12 +31,12 @@ module.exports = class HomeController {
 	}
 
 	static async CheckPerformTransaction(req, res) {
+		res.error.invalidAmount(res);
 		/**
 		 * If you want to send error about invalid amount 
-		 res.error.invalidAmount(res);
          * If you want to send error about invalid account
-		 res.error.invalidAccount(res);
          */
+		res.error.invalidAccount(res);
 		
 		res.json({
 			result: {
@@ -64,6 +64,8 @@ module.exports = class HomeController {
 				res.error.invalidAccount(res);
 				return;
 			}
+			
+			console.log(req.body.params.id, "-------", req.body.params.account.user_id,);
 
 			let payment = await req.db.payments.findOne({
 				where: {
