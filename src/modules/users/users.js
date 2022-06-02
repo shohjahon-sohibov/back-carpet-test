@@ -1,11 +1,11 @@
-const { users } = require("../../model/model");
+const { Users } = require("../../model/model");
 const { signUser, verifyUser } = require("../../lib/jwt");
 const { Op } = require("sequelize");
 
 module.exports = {
   GET_USERS: async (_, res) => {
     try {
-      const allUsers = await users.findAll();
+      const allUsers = await Users.findAll();
       res.status(201).json(allUsers);
     } catch (error) {
       res.status(500).json({ error: error.message });
@@ -14,7 +14,7 @@ module.exports = {
   REGISTER: async (req, res) => {
     try {
       const { fullname, username, email, phone, password, role, user_balance } = req.body;
-      const newUser = await users.create({
+      const newUser = await Users.create({
         fullname,
         username,
         email,
@@ -34,7 +34,7 @@ module.exports = {
     try {
       const { username, email, phone, password } = req.body;
 
-      const findUserByOption = await users.findOne({
+      const findUserByOption = await Users.findOne({
         where: {
           [Op.or]: [{ username }, { email }, { phone }],
         },
@@ -65,7 +65,7 @@ module.exports = {
   DELETE_ACCOUNT: async (req, res) => {
     try {
       const { id, isDelete } = req.body;
-      await users.findOne(
+      await Users.findOne(
         { isDelete },
         {
           where: {
