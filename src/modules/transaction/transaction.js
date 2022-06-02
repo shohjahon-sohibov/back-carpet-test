@@ -33,12 +33,17 @@ module.exports = class HomeController {
 	}
 
 	static async CheckPerformTransaction(req, res) {
-		res.error.invalidAmount(res);
+		
+		if(res.error.invalidAmount(res)) {
+			res.error.invalidAmount(res);
+		} else if(res.error.invalidAccount(res)) {
+			res.error.invalidAccount(res);
+		}
 		/**
 		 * If you want to send error about invalid amount 
          * If you want to send error about invalid account
          */
-		res.error.invalidAccount(res);
+		
 		
 		res.json({
 			result: {
