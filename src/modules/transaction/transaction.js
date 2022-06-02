@@ -49,13 +49,12 @@ module.exports = class HomeController {
 
 	static async CreateTransaction(req, res) {
 		try {
+			res?.error.invalidAmount(res);
 			/**
          * If you want to send error about invalid amount 
-		    res.error.invalidAmount(res);
 			* If you want to send error about invalid account
-			res.error.invalidAccount(res);
 			*/
-			// console.log(req.body, 0);
+			res?.error.invalidAccount(res);
 
 			const user = await Users.findOne({
 				where: {
@@ -82,7 +81,7 @@ module.exports = class HomeController {
 
 			if (!payment) {
 				payment = await payments.create({
-					payment_id: req.body.params.id,
+					payment_id: "req.body.params.id",
 					payment_state: req.body.params.state,
 					payment_amount: req.body.params.amount,
 					user_id: user.dataValues.user_id,
