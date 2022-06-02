@@ -72,6 +72,7 @@ module.exports = class HomeController {
 					payment_id: req.body.params.id,
 				},
 			});
+			console.log(payment, " aloooooooooooo");
 
 			if (!payment) {
 				payment = await payments.create({
@@ -81,7 +82,7 @@ module.exports = class HomeController {
 					user_id: user.dataValues.user_id,
 				});
 			}
-			console.log(payment, " ");
+			
 
 			res.json({
 				result: {
