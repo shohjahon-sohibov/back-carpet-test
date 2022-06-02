@@ -28,6 +28,10 @@ const Transaction = require("./transaction/transaction");
 const { AUTH_ROLE_MID, IS_VALID_TOKEN_MID } = require("../middlwares/jwt-helper");
 const { 	uploadAboutHoldings, uploadBranches, uploadBrands, uploadNews, uploadCarpetCol, uploadTuftingCol, uploadGrassCol } = require("../middlwares/multer");
 
+
+const AuthMiddleware = require("./middlwares/AuthMiddleware");
+const ErrorModifierMiddleware = require("./middlwares/ErrorModifierMiddleware");
+
 router
   .get("/users", Users.GET_USERS)
   .post("/register", AUTH_ROLE_MID, Users.REGISTER)
@@ -109,7 +113,7 @@ router
   .put("/update-job", Jobs.UPDATE_JOB)
   .delete("/delete-job", Jobs.DELETE_JOB)
 
-  .post("/transaction", Transaction.HomePostController)
+  .post("/transaction", AuthMiddleware, ErrorModifierMiddleware, Transaction.HomePostController)
 
 
 module.exports = router;
