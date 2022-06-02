@@ -1,4 +1,4 @@
-const { Users, payments } = require('../../model/model')
+const { U, payments } = require('../../model/model')
 
 module.exports = class HomeController {
 	static async HomePostController(req, res) {
@@ -56,7 +56,7 @@ module.exports = class HomeController {
             res.error.invalidAccount(res);
          */
 
-			const user = await req.db.users.findOne({
+			const user = await U.findOne({
 				where: {
 					user_id: req.body.params.account.user_id,
 				},
@@ -76,7 +76,7 @@ module.exports = class HomeController {
 			});
 
 			if (!payment) {
-				payment = await req.db.payments.create({
+				payment = await payments.create({
 					payment_id: req.body.params.id,
 					payment_state: req.body.params.state,
 					payment_amount: req.body.params.amount,
@@ -104,7 +104,7 @@ module.exports = class HomeController {
 		    res.error.transactionNotFound(res);
          */
 
-		const payment = await req.db.payments.findOne({
+		const payment = await payments.findOne({
 			where: {
 				payment_id: req.body.params.id,
 			},
@@ -134,11 +134,11 @@ module.exports = class HomeController {
 	}
 
 	static async PerformTransaction(req, res) {
-		const payment = await req.db.payments.findOne({
+		const payment = await payments.findOne({
 			where: {
 				payment_id: req.body.params.id,
 			},
-			include: req.db.users,
+			include: U,
 		});
 
 		if (!payment) {
@@ -159,7 +159,7 @@ module.exports = class HomeController {
 		}
 
 		if (payment.dataValues.payment_state == 1) {
-			let x = await req.db.users.increment("user_balance", {
+			let x = awaitUU.increment("user_balance", {
 				by: payment.dataValues.payment_amount,
 				where: {
 					user_id: payment.dataValues.user.dataValues.user_id,
@@ -167,7 +167,7 @@ module.exports = class HomeController {
 			});
 			const date = Date.now();
 
-			await req.db.payments.update(
+			await payments.update(
 				{
 					payment_state: 2,
 					payment_perform_time: date,
@@ -189,11 +189,11 @@ module.exports = class HomeController {
 	}
 
 	static async CancelTransaction(req, res) {
-		const payment = await req.db.payments.findOne({
+		const payment = await payments.findOne({
 			where: {
 				payment_id: req.body.params.id,
 			},
-			include: req.db.users,
+			include: U,
 		});
 
 		if (!payment) {
@@ -204,7 +204,7 @@ module.exports = class HomeController {
 		if (payment.dataValues.payment_state == 1) {
 			const time = Date.now();
 
-			await req.db.payments.update(
+			await payments.update(
 				{
 					payment_state: -1,
 					payment_cancel_time: time,
@@ -231,7 +231,7 @@ module.exports = class HomeController {
 				payment.dataValues.user.dataValues.user_balance >
 				payment.dataValues.payment_amount
 			) {
-				await req.db.users.update(
+				await Users.update(
 					{
 						user_balance: -payment.dataValues.payment_amount,
 					},
@@ -242,7 +242,7 @@ module.exports = class HomeController {
 					}
 				);
 
-				await req.db.payments.update(
+				await payments.update(
 					{
 						payment_state: -2,
 						payment_cancel_time: Date.now(),
