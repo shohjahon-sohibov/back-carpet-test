@@ -478,6 +478,10 @@ const branch = sequelize.define("branch", {
 });
 
 const orders = sequelize.define("order", {
+  order_id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+  },
   customer: {
     type: DataTypes.TEXT,
     validate: {
@@ -586,6 +590,20 @@ Users.hasMany(payments, {
 payments.belongsTo(Users, {
   foreignKey: {
     name: "user_id",
+    allowNull: false,
+  },
+});
+
+orders.hasMany(payments, {
+  foreignKey: {
+    name: "order_id",
+    allowNull: false,
+  },
+});
+
+payments.belongsTo(orders, {
+  foreignKey: {
+    name: "order_id",
     allowNull: false,
   },
 });
