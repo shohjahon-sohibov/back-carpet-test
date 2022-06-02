@@ -481,6 +481,7 @@ const branch = sequelize.define("branch", {
 const orders = sequelize.define("order", {
   order_id: {
     type: DataTypes.INTEGER,
+    defaultValue: 0,
     primaryKey: true,
   },
   customer: {
@@ -556,30 +557,30 @@ const jobs = sequelize.define("job", {
   },
 });
 
-const transactions = sequelize.define("transaction", {
-  sender: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-    validate: {
-      min: 1,
-    },
-  },
-  paid: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    defaultValue: 0,
-    validate: {
-      min: 0,
-    },
-  },
-  receiver: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-    validate: {
-      min: 1,
-    },
-  },
-});
+// const transactions = sequelize.define("transaction", {
+//   sender: {
+//     type: DataTypes.TEXT,
+//     allowNull: false,
+//     validate: {
+//       min: 1,
+//     },
+//   },
+//   paid: {
+//     type: DataTypes.INTEGER,
+//     allowNull: false,
+//     defaultValue: 0,
+//     validate: {
+//       min: 0,
+//     },
+//   },
+//   receiver: {
+//     type: DataTypes.TEXT,
+//     allowNull: false,
+//     validate: {
+//       min: 1,
+//     },
+//   },
+// });
 
 Users.hasMany(payments, {
   foreignKey: {
@@ -646,5 +647,5 @@ module.exports = {
   branch,
   orders,
   jobs,
-  transactions,
+  // transactions,
 };
