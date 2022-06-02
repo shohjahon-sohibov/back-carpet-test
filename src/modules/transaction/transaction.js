@@ -1,3 +1,5 @@
+const { Users, payments } = require('../../model/model')
+
 module.exports = class HomeController {
 	static async HomePostController(req, res) {
 		try {
@@ -56,7 +58,7 @@ module.exports = class HomeController {
 
 			const user = await req.db.users.findOne({
 				where: {
-					phone: req.body.params.account.user_id,
+					user_id: req.body.params.account.user_id,
 				},
 			});
 
@@ -67,7 +69,7 @@ module.exports = class HomeController {
 			
 			console.log(req.body.params.id, "-------", req.body.params.account.user_id,);
 
-			let payment = await req.db.payments.findOne({
+			let payment = await payments.findOne({
 				where: {
 					payment_id: req.body.params.id,
 				},
