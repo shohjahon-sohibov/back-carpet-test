@@ -1,4 +1,4 @@
-const { U, payments } = require('../../model/model')
+const { Users, payments } = require('../../model/model')
 
 module.exports = class HomeController {
 	static async HomePostController(req, res) {
