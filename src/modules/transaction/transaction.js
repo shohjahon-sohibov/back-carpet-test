@@ -67,8 +67,6 @@ module.exports = class HomeController {
 				return;
 			}
 			
-			console.log(req.body.params.id, "-------", req.body.params.account.user_id,);
-
 			let payment = await payments.findOne({
 				where: {
 					payment_id: req.body.params.id,
@@ -83,6 +81,7 @@ module.exports = class HomeController {
 					user_id: user.dataValues.user_id,
 				});
 			}
+			console.log(payment);
 
 			res.json({
 				result: {
