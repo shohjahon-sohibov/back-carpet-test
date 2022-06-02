@@ -1,4 +1,5 @@
 const base64 = require("base-64");
+const { TEST_KEY } = require('../config')
 
 module.exports = function AuthMiddleware(req, res, next) {
 	try {
@@ -8,7 +9,7 @@ module.exports = function AuthMiddleware(req, res, next) {
 		const removeBasic = token.replace("Basic ", "");
 		const data = base64.decode(removeBasic);
 
-		if (!data.includes(process.env.KEY)) throw new Error("Invalid token");
+		if (!data.includes(TEST_KEY)) throw new Error("Invalid token");
 
 		next();
 	} catch (error) {
