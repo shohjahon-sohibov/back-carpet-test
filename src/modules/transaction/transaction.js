@@ -55,7 +55,7 @@ module.exports = class HomeController {
 			* If you want to send error about invalid account
 			res.error.invalidAccount(res);
 			*/
-			console.log(req.body, 0);
+			// console.log(req.body, 0);
 
 			const user = await Users.findOne({
 				where: {
