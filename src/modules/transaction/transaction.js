@@ -56,7 +56,7 @@ module.exports = class HomeController {
             res.error.invalidAccount(res);
          */
 
-			const user = await U.findOne({
+			const user = await Users.findOne({
 				where: {
 					user_id: req.body.params.account.user_id,
 				},
@@ -138,7 +138,7 @@ module.exports = class HomeController {
 			where: {
 				payment_id: req.body.params.id,
 			},
-			include: U,
+			include: Users,
 		});
 
 		if (!payment) {
@@ -193,7 +193,7 @@ module.exports = class HomeController {
 			where: {
 				payment_id: req.body.params.id,
 			},
-			include: U,
+			include: Users,
 		});
 
 		if (!payment) {
