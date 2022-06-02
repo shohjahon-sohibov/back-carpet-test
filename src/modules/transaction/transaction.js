@@ -55,6 +55,7 @@ module.exports = class HomeController {
          * If you want to send error about invalid account
             res.error.invalidAccount(res);
          */
+			console.log(req.body, 0);
 
 			const user = await Users.findOne({
 				where: {
@@ -62,16 +63,21 @@ module.exports = class HomeController {
 				},
 			});
 
+			console.log(req.body, 1);
+
 			if (!user) {
 				res.error.invalidAccount(res);
 				return;
 			}
+			console.log(req.body, 2);
 			
 			let payment = await payments.findOne({
 				where: {
 					payment_id: req.body.params.id,
 				},
 			});
+			console.log(req.body, 3);
+
 			console.log(payment, " aloooooooooooo");
 
 			if (!payment) {
@@ -83,6 +89,7 @@ module.exports = class HomeController {
 				});
 			}
 			
+			console.log(req.body, 4);
 
 			res.json({
 				result: {
