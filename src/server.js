@@ -21,4 +21,8 @@ sequelize
 
 app.use(modules);
 
+app.use('*', (_, res) => {
+   res.json("wrong endpoint, sorry :(")
+})
+
 app.listen({ port: PORT }, console.log(PORT));
