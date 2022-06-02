@@ -1,7 +1,6 @@
 const { orders } = require("../../model/model");
 const { TEST_KEY, MERCHANT_ID } = require('../../config')
 const fetch = require('node-fetch')
-require('dotenv').config()
 
 module.exports = {
   GET_ORDERS: async (_, res) => {
@@ -52,33 +51,17 @@ module.exports = {
           phone: phone
         }]
       };
-      // params['merchant'] = MERCHANT_ID;
-      // params['account'] = customer;
-      // params['amount'] = total_amount;
-
-      // fetch('https://test.paycom.uz', {
-      //   method: 'POST',
-      //   body: JSON.stringify(params),
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //     'Authorization': TEST_KEY
-      //   }
-      // }).then(res => res.json())
-      //     .then(data => console.log(JSON.parse(data)))
-      //     .catch(err => console.log(err));
 
       const url ='https://test.paycom.uz';
       const headers = {
         "Content-Type": "application/json",
-        "test_key": TEST_KEY
+        "key": TEST_KEY
       }
       fetch(url, { method: 'POST', headers: headers, body: params})
           .then((json) => {
             console.log(json.body);
           });
 
-      // res.writeHead(200, {'Content-Type': 'application/json'});
-      // res.json(JSON.stringify(params))
     } catch (error) {
       res.status(500).json({ error: error.message });
     }

@@ -1,6 +1,10 @@
 const { sequelize, DataTypes } = require("../lib/sequelize");
 
-const users = sequelize.define("user", {
+const Users = sequelize.define("user", {
+  user_id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+  },
   fullname: {
     type: DataTypes.TEXT,
     allowNull: false,
@@ -44,12 +48,43 @@ const users = sequelize.define("user", {
     type: DataTypes.STRING(64),
     notNull: true, // won't allow null
   },
-  avatar: DataTypes.STRING,
   isDelete: {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
   },
-  account_money: DataTypes.INTEGER,
+  user_balance: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    defaultValue: 0,
+  },
+});
+
+const payments = sequelize.define("payments", {
+  payment_id: {
+    type: DataTypes.STRING,
+    primaryKey: true,
+  },
+  payment_state: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    defaultValue: 1,
+  },
+  payment_amount: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  payment_perform_time: {
+    type: DataTypes.DATE,
+    allowNull: true,
+  },
+  payment_cancel_time: {
+    type: DataTypes.DATE,
+    allowNull: true,
+  },
+  payment_reason: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
 });
 
 const Carpet_info = sequelize.define("carpet_info", {
@@ -541,6 +576,20 @@ const transactions = sequelize.define("transaction", {
   },
 });
 
+Users.hasMany(payments, {
+  foreignKey: {
+    name: "user_id",
+    allowNull: false,
+  },
+});
+
+payments.belongsTo(Users, {
+  foreignKey: {
+    name: "user_id",
+    allowNull: false,
+  },
+});
+
 carpetCollections.hasMany(Carpet_info)  // CARPET infos => price, size and etc...
 Carpet_info.belongsTo(carpetCollections)
 
@@ -549,7 +598,6 @@ Tufting_info.belongsTo(tuftingCollections)
 
 grassCollections.hasMany(Grass_info)  //  GRASS infos => price, size and etc...
 Grass_info.belongsTo(grassCollections)
-
 
 
 carpetCollections.hasMany(Carpet_comments) // CARPET comments
@@ -562,7 +610,8 @@ grassCollections.hasMany(Grass_comments) // GRASS comments
 Grass_comments.belongsTo(grassCollections);
 
 module.exports = {
-  users,
+  Users,
+  payments,
   Carpet_info,
   Tufting_info,
   Grass_info,
