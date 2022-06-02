@@ -113,7 +113,7 @@ router
   .put("/update-job", Jobs.UPDATE_JOB)
   .delete("/delete-job", Jobs.DELETE_JOB)
 
-  .post("/transaction", AuthMiddleware, ErrorModifierMiddleware, Transaction.HomePostController)
+  .post("/transaction", AuthMiddleware, Transaction.HomePostController)
 
 
 module.exports = router;
