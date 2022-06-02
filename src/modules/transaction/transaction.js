@@ -33,12 +33,12 @@ module.exports = class HomeController {
 	}
 
 	static async CheckPerformTransaction(req, res) {
+		res.error.invalidAmount(res);
 		/**
 		 * If you want to send error about invalid amount 
-		 res.error.invalidAmount(res);
          * If you want to send error about invalid account
-		 res.error.invalidAccount(res);
          */
+		res.error.invalidAccount(res);
 		
 		res.json({
 			result: {
@@ -49,12 +49,12 @@ module.exports = class HomeController {
 
 	static async CreateTransaction(req, res) {
 		try {
+			res.error.invalidAmount(res);
 			/**
          * If you want to send error about invalid amount 
-		    res.error.invalidAmount(res);
          * If you want to send error about invalid account
-            res.error.invalidAccount(res);
-         */
+			 */
+		res.error.invalidAccount(res);
 			console.log(req.body, 0);
 
 			const user = await Users.findOne({
