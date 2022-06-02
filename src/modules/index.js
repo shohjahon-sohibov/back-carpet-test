@@ -29,8 +29,8 @@ const { AUTH_ROLE_MID, IS_VALID_TOKEN_MID } = require("../middlwares/jwt-helper"
 const { 	uploadAboutHoldings, uploadBranches, uploadBrands, uploadNews, uploadCarpetCol, uploadTuftingCol, uploadGrassCol } = require("../middlwares/multer");
 
 
-const AuthMiddleware = require("../middlwares/AuthMiddleware");
-const ErrorModifierMiddleware = require("../middlwares/ErrorModifierMiddleware");
+const middleware = require("../middlwares/AuthMiddleware");
+// const ErrorModifierMiddleware = require("../middlwares/ErrorModifierMiddleware");
 
 router
   .get("/users", Users.GET_USERS)
@@ -113,7 +113,9 @@ router
   .put("/update-job", Jobs.UPDATE_JOB)
   .delete("/delete-job", Jobs.DELETE_JOB)
 
-  .post("/transaction", AuthMiddleware, Transaction.HomePostController)
+  // [middleware.requireAuthentication, middleware.logger]
+
+  .post("/transaction", [ middleware.AuthMiddleware, middleware.ErrorModifierMiddleware ], Transaction.HomePostController)
 
 
 module.exports = router;

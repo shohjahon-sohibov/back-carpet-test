@@ -1,28 +1,104 @@
 const base64 = require("base-64");
-const { TEST_KEY } = require('../config')
+const { TEST_KEY } = require("../config");
 
-module.exports = function AuthMiddleware(req, res, next) {
-	try {
-		const token = req.headers.authorization;
+module.exports = {
+  AuthMiddleware: (req, res, next) => {
+    try {
+      const token = req.headers.authorization;
 
-		if (!token) throw new Error("Invalid token");
-		const removeBasic = token.replace("Basic ", "");
-		const data = base64.decode(removeBasic);
+      if (!token) throw new Error("Invalid token");
+      const removeBasic = token.replace("Basic ", "");
+      const data = base64.decode(removeBasic);
 
-		if (!data.includes(TEST_KEY)) throw new Error("Invalid token");
+      if (!data.includes(TEST_KEY)) throw new Error("Invalid token");
 
-		next();
-	} catch (error) {
-		res.status(200).json({
-			error: {
-				code: -32504,
-				message: {
-					ru: "Authorization invalid",
-					uz: "Authorization invalid",
-					en: "Authorization invalid",
-				},
-			},
-		});
-		return;
-	}
+      next();
+    } catch (error) {
+      res.status(200).json({
+        error: {
+          code: -32504,
+          message: {
+            ru: "Authorization invalid",
+            uz: "Authorization invalid",
+            en: "Authorization invalid",
+          },
+        },
+      });
+      return;
+    }
+  },
+
+  ErrorModifierMiddleware: (req, res, next) => {
+    let error = {};
+
+    error.invalidAmount = function (res) {
+      res.status(200).json({
+        error: {
+          code: -31001,
+          message: {
+            ru: "Недопустимая сумма",
+            uz: "Noto'g'ri summa",
+            en: "Invalid amount",
+          },
+        },
+      });
+    };
+
+    error.invalidAccount = function (res) {
+      res.status(200).json({
+        error: {
+          code: -31050,
+          message: {
+            ru: "Мы не нашли вашу учетную запись",
+            uz: "Biz sizning hisobingizni topolmadik.",
+            en: "We couldn't find your account",
+          },
+          data: "user_id", // you can change it
+        },
+      });
+    };
+
+    error.cantDoOperation = function (res) {
+      res.status(200).json({
+        error: {
+          code: -31008,
+          message: {
+            ru: "Мы не можем сделать операцию",
+            uz: "Biz operatsiyani bajara olmaymiz",
+            en: "We can't do operation",
+          },
+          data: "user_id", // you can change it
+        },
+      });
+    };
+
+    error.transactionNotFound = function (res) {
+      res.status(200).json({
+        error: {
+          code: -31003,
+          message: {
+            ru: "Мы не можем сделать операцию",
+            uz: "Biz operatsiyani bajara olmaymiz",
+            en: "We can't do operation",
+          },
+        },
+      });
+    };
+
+    error.alreadyDone = function (res) {
+      res.status(200).json({
+        error: {
+          code: -31007,
+          message: {
+            ru: "Мы не можем сделать операцию",
+            uz: "Biz operatsiyani bajara olmaymiz",
+            en: "We can't do operation",
+          },
+        },
+      });
+    };
+
+    res.error = error;
+    next();
+  },
 };

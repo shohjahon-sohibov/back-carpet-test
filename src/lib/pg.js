@@ -1,4 +1,4 @@
-const { Sequelize } = require("sequelize");
+// const { Sequelize } = require("sequelize");
 const { Users, payments } = require("../model/model");
 const { sequelize } = require('./sequelize')
 
