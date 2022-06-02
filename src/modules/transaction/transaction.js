@@ -81,7 +81,7 @@ module.exports = class HomeController {
 					user_id: user.dataValues.user_id,
 				});
 			}
-			console.log(payment);
+			console.log(payment, " ");
 
 			res.json({
 				result: {
