@@ -63,7 +63,7 @@ module.exports = class HomeController {
 				},
 			});
 
-			console.log(req.body, 1);
+			console.log(user, 1);
 
 			if (!user) {
 				res.error.invalidAccount(res);
