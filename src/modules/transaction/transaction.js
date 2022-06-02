@@ -33,11 +33,25 @@ module.exports = class HomeController {
 	}
 
 	static async CheckPerformTransaction(req, res) {
+		
+		if(req.body.params.account.amount < 0) {
+			res.error.invalidAmount(res);
+		}
+		
+		const user = await Users.findOne({
+			where: {
+				user_id: req.body.params.account.user_id,
+			},
+		});
+
+		if(!user) {
+			res.error.invalidAccount(res);
+		}
+
+		
 		/**
 		 * If you want to send error about invalid amount 
-		 res.error.invalidAmount(res);
          * If you want to send error about invalid account
-		 res.error.invalidAccount(res);
          */
 		
 		res.json({
@@ -49,12 +63,12 @@ module.exports = class HomeController {
 
 	static async CreateTransaction(req, res) {
 		try {
-			res?.error.invalidAmount(res);
 			/**
-         * If you want to send error about invalid amount 
-			* If you want to send error about invalid account
+			 * If you want to send error about invalid amount 
+			 res?.error.invalidAmount(res);
+		 * If you want to send error about invalid account
+			 res?.error.invalidAccount(res);
 			*/
-			res?.error.invalidAccount(res);
 
 			const user = await Users.findOne({
 				where: {
