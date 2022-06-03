@@ -259,7 +259,7 @@ module.exports = class HomeController {
 					},
 					{
 						where: {
-							id: payment.dataValues.user.dataValues.user_id,
+							id: payment.dataValues.user.dataValues.id,
 						},
 					}
 				);
