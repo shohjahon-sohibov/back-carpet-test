@@ -45,6 +45,7 @@ module.exports = class HomeController {
 			return;
 		} else if(!user) {
 				res.error.invalidAccount(res)
+				return;
 		} else {
 			res.json({
 				result: {
