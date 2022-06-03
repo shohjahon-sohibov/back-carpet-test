@@ -268,7 +268,7 @@ module.exports = class HomeController {
 					{
 						payment_state: -2,
 						payment_cancel_time: Date.now(),
-						payment_reason: req.body.reason,
+						payment_reason: req.body.params.reason,
 					},
 					{
 						where: {
