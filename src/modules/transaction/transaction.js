@@ -33,10 +33,18 @@ module.exports = class HomeController {
 	}
 
 	static async CheckPerformTransaction(req, res) {
+
+		const user = await Users.findOne({
+			where: {
+				user_id: req.body.params.account.user_id,
+			},
+		});
 		
 		if(req.body.params.amount < 1000) {
 			res.error.invalidAmount(res)
 			return;
+		} else if(!user) {
+				res.error.invalidAccount(res)
 		} else {
 			res.json({
 				result: {
@@ -44,15 +52,7 @@ module.exports = class HomeController {
 				},
 			});
 		}
-		// const user = await Users.findOne({
-		// 	where: {
-		// 		user_id: req.body.params.account.user_id,
-		// 	},
-		// });
-
-		// if(!user) {
-		// 	res.error.invalidAccount(res)
-		// }
+	
 
 		
 		/**
@@ -69,59 +69,52 @@ module.exports = class HomeController {
 			 res?.error.invalidAmount(res);
 		 * If you want to send error about invalid account
 			 */
-			
 
-			//  if(req.body.params.amount < 1000) throw new Error(res.error.invalidAmount(res))
+			 const user = await Users.findOne({
+				where: {
+					user_id: req.body.params.account.user_id,
+				},
+			});
+
 
 			if(req.body.params.amount < 1000) {
 				res.error.invalidAmount(res)
 				return;
-			}
-
-			//  const user = await Users.findOne({
-			// 	 where: {
-			// 		 user_id: req.body.params.account.user_id,
-			// 	 },
-			//  });
-	 
-			//  if(!user) throw new Error(invalidAccount(res)) 
-	 
-
-			// console.log(user, 1);
-
-			// if (!user) {
-			// 	res.error.invalidAccount(res);
-			// 	return;
-			// }
-			
-			let payment = await payments.findOne({
-				where: {
-					payment_id: req.body.params.id,
-				},
-			});
-
-			console.log(payment, " aloooooooooooo");
-
-			if (!payment) {
-				payment = await payments.create({
-					payment_id: "req.body.params.id",
-					payment_state: req.body.params.state,
-					payment_amount: req.body.params.amount,
-					user_id: user.dataValues.user_id,
+			} else if(!user) {
+					res.error.invalidAccount(res)
+					return;
+			} else {
+				let payment = await payments.findOne({
+					where: {
+						payment_id: req.body.params.id,
+					},
+				});
+	
+				console.log(payment, " aloooooooooooo");
+	
+				if (!payment) {
+					payment = await payments.create({
+						payment_id: "req.body.params.id",
+						payment_state: req.body.params.state,
+						payment_amount: req.body.params.amount,
+						user_id: user.dataValues.user_id,
+					});
+				}
+				
+				console.log(req.body, 4);
+	
+				res.json({
+					result: {
+						create_time: new Date(
+							payment.dataValues.createdAt
+						).getTime(),
+						transaction: payment.dataValues.payment_id,
+						state: payment.dataValues.payment_state,
+					},
 				});
 			}
+	 
 			
-			console.log(req.body, 4);
-
-			res.json({
-				result: {
-					create_time: new Date(
-						payment.dataValues.createdAt
-					).getTime(),
-					transaction: payment.dataValues.payment_id,
-					state: payment.dataValues.payment_state,
-				},
-			});
 		} catch (error) {
 			res.error.cantDoOperation(res);
 		}
