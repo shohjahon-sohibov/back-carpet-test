@@ -39,7 +39,6 @@ module.exports = class HomeController {
 				id: req.body.params.account.user_id,
 			},
 		});
-		console.log(req.body.params.account.user_id, 1);
 		
 		if(req.body.params.amount < 1000) {
 			res.error.invalidAmount(res)
@@ -75,7 +74,6 @@ module.exports = class HomeController {
 					id: req.body.params.account.user_id,
 				},
 			});
-			console.log(req.body.params.account.user_id, 2);
 
 			if(req.body.params.amount < 1000) {
 				res.error.invalidAmount(res)
@@ -95,7 +93,7 @@ module.exports = class HomeController {
 						payment_id: req.body.params.id,
 						payment_state: req.body.params.state,
 						payment_amount: req.body.params.amount,
-						user_id: user.dataValues.user_id,
+						user_id: user.dataValues.id,
 					});
 				}
 				
@@ -256,10 +254,11 @@ module.exports = class HomeController {
 					},
 					{
 						where: {
-							user_id: payment.dataValues.user.dataValues.user_id,
+							id: payment.dataValues.user.dataValues.user_id,
 						},
 					}
 				);
+				console.log(payment.dataValues.user.dataValues.user_id, "heyyyy");
 
 				await payments.update(
 					{
