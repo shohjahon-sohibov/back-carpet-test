@@ -88,7 +88,7 @@ module.exports = class HomeController {
 				// 	},
 				// });
 	
-					const payment = await payments.create({
+					let payment = await payments.create({
 						payment_id: req.body.params.id,
 						payment_state: req.body.params.state,
 						payment_amount: req.body.params.amount,
