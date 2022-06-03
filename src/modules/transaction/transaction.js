@@ -263,7 +263,6 @@ module.exports = class HomeController {
 						},
 					}
 				);
-				console.log(payment.dataValues.user.dataValues.user_id, "heyyyy");
 
 				await payments.update(
 					{
