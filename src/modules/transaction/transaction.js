@@ -37,6 +37,12 @@ module.exports = class HomeController {
 		if(req.body.params.amount < 1000) {
 			res.error.invalidAmount(res)
 			return;
+		} else {
+			res.json({
+				result: {
+					allow: true,
+				},
+			});
 		}
 		// const user = await Users.findOne({
 		// 	where: {
@@ -54,11 +60,6 @@ module.exports = class HomeController {
          * If you want to send error about invalid account
          */
 		
-		res.json({
-			result: {
-				allow: true,
-			},
-		});
 	}
 
 	static async CreateTransaction(req, res) {
