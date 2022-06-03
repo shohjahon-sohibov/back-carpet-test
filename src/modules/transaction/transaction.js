@@ -34,7 +34,7 @@ module.exports = class HomeController {
 
 	static async CheckPerformTransaction(req, res) {
 		
-		if(req.body.params.account.amount < 1000) throw new Error(res.error.invalidAmount(res))
+		if(req.body.params.account.amount < 1000) throw new Error(invalidAmount(res))
 
 		const user = await Users.findOne({
 			where: {
@@ -42,7 +42,7 @@ module.exports = class HomeController {
 			},
 		});
 
-		if(!user) throw new Error(res.error.invalidAccount(res)) 
+		if(!user) throw new Error(invalidAccount(res)) 
 
 		
 		/**
@@ -66,7 +66,7 @@ module.exports = class HomeController {
 			 */
 			
 
-			 if(req.body.params.account.amount < 1000) throw new Error(res.error.invalidAmount(res))
+			 if(req.body.params.account.amount < 1000) throw new Error(invalidAmount(res))
 
 			 const user = await Users.findOne({
 				 where: {
@@ -74,7 +74,7 @@ module.exports = class HomeController {
 				 },
 			 });
 	 
-			 if(!user) throw new Error(res.error.invalidAccount(res)) 
+			 if(!user) throw new Error(invalidAccount(res)) 
 	 
 
 			// console.log(user, 1);
@@ -83,14 +83,12 @@ module.exports = class HomeController {
 			// 	res.error.invalidAccount(res);
 			// 	return;
 			// }
-			console.log(req.body, 2);
 			
 			let payment = await payments.findOne({
 				where: {
 					payment_id: req.body.params.id,
 				},
 			});
-			console.log(req.body, 3);
 
 			console.log(payment, " aloooooooooooo");
 
