@@ -39,13 +39,15 @@ module.exports = class HomeController {
 				user_id: req.body.params.account.user_id,
 			},
 		});
+
+	// 	else if(!user) {
+	// 		res.error.invalidAccount(res)
+	// 		return;
+	// } 
 		
 		if(req.body.params.amount < 1000) {
 			res.error.invalidAmount(res)
 			return;
-		} else if(!user) {
-				res.error.invalidAccount(res)
-				return;
 		} else {
 			res.json({
 				result: {
@@ -77,14 +79,15 @@ module.exports = class HomeController {
 				},
 			});
 
+		// 	else if(!user) {
+		// 		res.error.invalidAccount(res)
+		// 		return;
+		// } 
 
 			if(req.body.params.amount < 1000) {
 				res.error.invalidAmount(res)
 				return;
-			} else if(!user) {
-					res.error.invalidAccount(res)
-					return;
-			} else {
+			}else {
 				let payment = await payments.findOne({
 					where: {
 						payment_id: req.body.params.id,
