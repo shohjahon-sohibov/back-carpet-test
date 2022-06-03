@@ -87,7 +87,8 @@ module.exports = class HomeController {
 			if(req.body.params.amount < 1000) {
 				res.error.invalidAmount(res)
 				return;
-			}else {
+			}
+			
 				let payment = await payments.findOne({
 					where: {
 						payment_id: req.body.params.id,
@@ -116,7 +117,6 @@ module.exports = class HomeController {
 						state: payment.dataValues.payment_state,
 					},
 				});
-			}
 	 
 			
 		} catch (error) {
