@@ -179,7 +179,7 @@ module.exports = class HomeController {
 			let x = await Users.increment("user_balance", {
 				by: payment.dataValues.payment_amount,
 				where: {
-					id: payment.dataValues.user.dataValues.userId,
+					id: payment.dataValues.user.dataValues.id,
 				},
 			});
 
