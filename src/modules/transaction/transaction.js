@@ -82,20 +82,18 @@ module.exports = class HomeController {
 				res.error.invalidAccount(res);
 				return;
 			} else {
-				let payment = await payments.findOne({
-					where: {
-						payment_id: req.body.params.id,
-					},
-				});
+				// let payment = await payments.findOne({
+				// 	where: {
+				// 		payment_id: req.body.params.id,
+				// 	},
+				// });
 	
-				if (!payment) {
-					payment = await payments.create({
+					const payment = await payments.create({
 						payment_id: req.body.params.id,
 						payment_state: req.body.params.state,
 						payment_amount: req.body.params.amount,
 						user_id: user.dataValues.id,
 					});
-				}
 				
 				console.log(payment, "is params created");
 	
