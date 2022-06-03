@@ -36,6 +36,7 @@ module.exports = class HomeController {
 		
 		if(req.body.params.amount < 1000) {
 			res.error.invalidAmount(res)
+			return;
 		}
 		// const user = await Users.findOne({
 		// 	where: {
@@ -73,6 +74,7 @@ module.exports = class HomeController {
 
 			if(req.body.params.amount < 1000) {
 				res.error.invalidAmount(res)
+				return;
 			}
 
 			//  const user = await Users.findOne({
