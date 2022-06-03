@@ -177,15 +177,15 @@ module.exports = class HomeController {
 
 		if (payment.dataValues.payment_state == 1) {
 			let x = await Users.increment("user_balance", {
-				// by: payment.dataValues.payment_amount,
-				// where: {
-				// 	userId: payment.dataValues.user.dataValues.userId,
-				// },
+				by: payment.dataValues.payment_amount,
+				where: {
+					id: payment.dataValues.user.dataValues.userId,
+				},
 			});
 
-			console.log(payment.dataValues.user.dataValues.user_id);
-			console.log(payment.dataValues.user.dataValues.id);
-			console.log(payment.dataValues.user.dataValues.userId);
+			// console.log(payment.dataValues.user.dataValues.user_id);
+			// console.log(payment.dataValues.user.dataValues.id);
+			// console.log(payment.dataValues.user.dataValues.userId);
 
 			const date = Date.now();
 
