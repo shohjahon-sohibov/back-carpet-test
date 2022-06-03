@@ -97,7 +97,7 @@ module.exports = class HomeController {
 					});
 				}
 				
-				console.log(req.body, 4);
+				console.log(payment, "is params created");
 	
 				res.json({
 					result: {
