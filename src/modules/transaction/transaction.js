@@ -34,21 +34,15 @@ module.exports = class HomeController {
 
 	static async CheckPerformTransaction(req, res) {
 		
-		// if(req.body.params.account.amount < 0) {
-			res?.error.invalidAmount(res);
-			// 	return;
-			// }
-		// console.log(req.body.params.account.user_id);
-		// const user = await Users.findOne({
-		// 	where: {
-		// 		user_id: req.body.params.account.user_id,
-		// 	},
-		// });
+		if(req.body.params.account.amount < 1000) throw new Error(res.error.invalidAmount(res))
 
-		// if(!user) {
-		// 	res.error.invalidAccount(res);
-		// 	return;
-		// }
+		const user = await Users.findOne({
+			where: {
+				user_id: req.body.params.account.user_id,
+			},
+		});
+
+		if(!user) throw new Error(res.error.invalidAccount(res)) 
 
 		
 		/**
@@ -70,19 +64,18 @@ module.exports = class HomeController {
 			 res?.error.invalidAmount(res);
 		 * If you want to send error about invalid account
 			 */
-			 res?.error.invalidAccount(res);
+			
 
-				
-		// if(req.body.params.account.amount < 1000) {
-		// 	res.error.invalidAmount(res);
-		// 	return;
-		// }
+			 if(req.body.params.account.amount < 1000) throw new Error(res.error.invalidAmount(res))
 
-			const user = await Users.findOne({
-				where: {
-					user_id: req.body.params.account.user_id,
-				},
-			});
+			 const user = await Users.findOne({
+				 where: {
+					 user_id: req.body.params.account.user_id,
+				 },
+			 });
+	 
+			 if(!user) throw new Error(res.error.invalidAccount(res)) 
+	 
 
 			// console.log(user, 1);
 
