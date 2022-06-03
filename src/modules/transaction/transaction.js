@@ -39,12 +39,15 @@ module.exports = class HomeController {
 				id: req.body.params.account.user_id,
 			},
 		});
+		console.log(req.body.params.account.user_id, 1);
 		
 		if(req.body.params.amount < 1000) {
 			res.error.invalidAmount(res)
-		} else if(!user) {
+				return;
+			} else if(!user) {
 			res.error.invalidAccount(res)
-		}else {
+				return;
+			}else {
 			res.json({
 				result: {
 					allow: true,
@@ -72,20 +75,20 @@ module.exports = class HomeController {
 					id: req.body.params.account.user_id,
 				},
 			});
+			console.log(req.body.params.account.user_id, 2);
 
 			if(req.body.params.amount < 1000) {
 				res.error.invalidAmount(res)
 				return;
 			} else if(!user) {
 				res.error.invalidAccount(res);
+				return;
 			} else {
 				let payment = await payments.findOne({
 					where: {
 						payment_id: req.body.params.id,
 					},
 				});
-	
-				console.log(payment, " aloooooooooooo");
 	
 				if (!payment) {
 					payment = await payments.create({
