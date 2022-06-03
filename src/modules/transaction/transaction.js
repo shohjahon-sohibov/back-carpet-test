@@ -34,8 +34,8 @@ module.exports = class HomeController {
 
 	static async CheckPerformTransaction(req, res) {
 		
-		if(req.body.params.account.amount < 1000) throw new Error(invalidAmount(res))
-		console.log(req.body.params.account, 111);
+		if(req.body.params.amount < 1000) throw new Error(invalidAmount(res))
+		console.log(req.body.params.amount, 111);
 		const user = await Users.findOne({
 			where: {
 				user_id: req.body.params.account.user_id,
