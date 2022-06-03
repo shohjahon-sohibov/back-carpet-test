@@ -34,14 +34,18 @@ module.exports = class HomeController {
 
 	static async CheckPerformTransaction(req, res) {
 		
-		if(req.body.params.amount < 1000) throw error.invalidAmount(res)
-		const user = await Users.findOne({
-			where: {
-				user_id: req.body.params.account.user_id,
-			},
-		});
+		if(req.body.params.amount < 1000) {
+			res.error.invalidAmount(res)
+		}
+		// const user = await Users.findOne({
+		// 	where: {
+		// 		user_id: req.body.params.account.user_id,
+		// 	},
+		// });
 
-		if(!user) throw new Error(res.error.invalidAccount(res)) 
+		// if(!user) {
+		// 	res.error.invalidAccount(res)
+		// }
 
 		
 		/**
@@ -67,13 +71,17 @@ module.exports = class HomeController {
 
 			//  if(req.body.params.amount < 1000) throw new Error(res.error.invalidAmount(res))
 
-			 const user = await Users.findOne({
-				 where: {
-					 user_id: req.body.params.account.user_id,
-				 },
-			 });
+			if(req.body.params.amount < 1000) {
+				res.error.invalidAmount(res)
+			}
+
+			//  const user = await Users.findOne({
+			// 	 where: {
+			// 		 user_id: req.body.params.account.user_id,
+			// 	 },
+			//  });
 	 
-			 if(!user) throw new Error(invalidAccount(res)) 
+			//  if(!user) throw new Error(invalidAccount(res)) 
 	 
 
 			// console.log(user, 1);
