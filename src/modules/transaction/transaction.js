@@ -42,7 +42,7 @@ module.exports = class HomeController {
 			},
 		});
 
-		if(!user) throw new Error(invalidAccount(res)) 
+		if(!user) throw new Error(res.error.invalidAccount(res)) 
 
 		
 		/**
