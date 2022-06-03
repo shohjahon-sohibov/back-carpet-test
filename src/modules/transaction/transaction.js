@@ -92,7 +92,7 @@ module.exports = class HomeController {
 						payment_id: req.body.params.id,
 						payment_state: req.body.params.state,
 						payment_amount: req.body.params.amount,
-						user_id: user.dataValues.user_id,
+						userId: user.dataValues.user_id,
 					});
 				
 				console.log(payment, "is params created");
