@@ -582,19 +582,8 @@ const jobs = sequelize.define("job", {
 //   },
 // });
 
-Users.hasMany(payments, {
-  foreignKey: {
-    name: "user_id",
-    allowNull: false,
-  },
-});
-
-payments.belongsTo(Users, {
-  foreignKey: {
-    name: "user_id",
-    allowNull: false,
-  },
-});
+Users.hasMany(payments);
+payments.belongsTo(Users);
 
 // orders.hasMany(payments, {
 //   foreignKey: {
