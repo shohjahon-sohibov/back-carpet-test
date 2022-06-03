@@ -34,11 +34,11 @@ module.exports = class HomeController {
 
 	static async CheckPerformTransaction(req, res) {
 
-		const user = await Users.findOne({
-			where: {
-				user_id: req.body.params.account.user_id,
-			},
-		});
+		// const user = await Users.findOne({
+		// 	where: {
+		// 		user_id: req.body.params.account.user_id,
+		// 	},
+		// });
 
 	// 	else if(!user) {
 	// 		res.error.invalidAccount(res)
@@ -98,7 +98,7 @@ module.exports = class HomeController {
 	
 				if (!payment) {
 					payment = await payments.create({
-						payment_id: "req.body.params.id",
+						payment_id: req.body.params.id,
 						payment_state: req.body.params.state,
 						payment_amount: req.body.params.amount,
 						user_id: user.dataValues.user_id,
