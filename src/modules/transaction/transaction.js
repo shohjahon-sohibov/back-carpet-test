@@ -255,7 +255,7 @@ module.exports = class HomeController {
 			) {
 				await Users.update(
 					{
-						user_balance: -payment.dataValues.payment_amount,
+						user_balance: user_balance - payment.dataValues.payment_amount,
 					},
 					{
 						where: {
