@@ -33,26 +33,32 @@ module.exports = class HomeController {
 	}
 
 	static async CheckPerformTransaction(req, res) {
-
-		const user = await Users.findOne({
-			where: {
-				user_id: req.body.params.account.user_id,
-			},
-		});
 		
 		if(req.body.params.amount < 1000) {
 			res.error.invalidAmount(res)
 			return;
-		} else if(!user) {
-				res.error.invalidAccount(res)
-		}else {
+		}
+		
+		
+		
+		
+		
+		else {
 			res.json({
 				result: {
 					allow: true,
 				},
 			});
 		}
-	
+		// const user = await Users.findOne({
+		// 	where: {
+		// 		user_id: req.body.params.account.user_id,
+		// 	},
+		// });
+
+		// if(!user) {
+		// 	res.error.invalidAccount(res)
+		// }
 
 		
 		/**
