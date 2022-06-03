@@ -584,7 +584,7 @@ const jobs = sequelize.define("job", {
 
 Users.hasMany(payments, {
   foreignKey: {
-    name: "id",
+    name: "user_id",
     allowNull: false,
   },
 });
