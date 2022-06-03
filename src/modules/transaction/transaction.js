@@ -176,7 +176,7 @@ module.exports = class HomeController {
 		}
 
 		if (payment.dataValues.payment_state == 1) {
-			let x = awaitUU.increment("user_balance", {
+			let x = await Users.increment("user_balance", {
 				by: payment.dataValues.payment_amount,
 				where: {
 					user_id: payment.dataValues.user.dataValues.user_id,
