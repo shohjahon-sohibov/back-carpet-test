@@ -584,7 +584,7 @@ const jobs = sequelize.define("job", {
 
 Users.hasMany(payments, {
   foreignKey: {
-    name: "user_id",
+    name: "id",
     allowNull: false,
   },
 });
@@ -596,19 +596,19 @@ payments.belongsTo(Users, {
   },
 });
 
-orders.hasMany(payments, {
-  foreignKey: {
-    name: "order_id",
-    allowNull: false,
-  },
-});
+// orders.hasMany(payments, {
+//   foreignKey: {
+//     name: "order_id",
+//     allowNull: false,
+//   },
+// });
 
-payments.belongsTo(orders, {
-  foreignKey: {
-    name: "order_id",
-    allowNull: false,
-  },
-});
+// payments.belongsTo(orders, {
+//   foreignKey: {
+//     name: "order_id",
+//     allowNull: false,
+//   },
+// });
 
 carpetCollections.hasMany(Carpet_info)  // CARPET infos => price, size and etc...
 Carpet_info.belongsTo(carpetCollections)
