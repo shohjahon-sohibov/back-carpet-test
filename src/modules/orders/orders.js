@@ -13,31 +13,16 @@ module.exports = {
   },
   POST_ORDER: async (req, res) => {
     try {
-      const {
-        order,
-        customer,
-        phone,
-        address,
-        callback
-        } = req.body;
+      const { order, customer, phone, address, callback } = req.body;
 
-      // console.log(order);
+      let amount = 0;
+      let count = 0
+      order.forEach(async (item) => {
 
-      
-      order.forEach( async(item) => {
-        // const arr = [];
+        const arrLength = order.length;
+        console.log(arrLength);
 
-      const total_amount = item.price * item.quantity
-        
-        // arr.push({
-        //   product_name: item.product_name,
-        //   product_code: item.product_code,
-        //   size: item.size,
-        //   // color: item.color,
-        //   quantity: item.quantity,
-        //   price: item.price,
-        //   total_amount: total_amount          
-        // })
+        const total_amount = item.price * item.quantity;
 
         const newOrder = await orders.create({
           customer,
@@ -47,15 +32,35 @@ module.exports = {
           product_name: item.product_name,
           product_code: item.product_code,
           size: item.size,
-          // color: item.color,
           quantity: item.quantity,
           price: item.price,
           total_amount: total_amount,
         });
-      })
 
-    
+        amount = amount + total_amount
 
+        count++
+        
+        if(arrLength == count) {
+          res.json({
+             amount: amount,
+             fullname: newOrder.customer,
+             order_id: date,
+            res: "ok",
+          });
+        }
+
+      });
+
+      // console.log(amount);
+
+      // const amount = []
+
+      // arr.forEach((item) => {
+      //   amount.push(amount + item.total_amount)
+      // })
+
+      // console.log(amount);
 
       // customer,
       //   phone,
@@ -67,7 +72,6 @@ module.exports = {
       //   quantity,
       //   price,
       //   callback,
-
 
       // let params = {
       //   merchant: MERCHANT_ID,
@@ -89,12 +93,10 @@ module.exports = {
       //     .then((json) => {
       //       console.log(json);
       //     });
-      res.json({
-        //  amount: newOrder.total_amount, 
-        //  fullname: newOrder.customer, 
-        //  order_id: newOrder.id
-        res: "ok"
-        })
+
+      const date = new Date();
+      console.log(date, "date");
+
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
