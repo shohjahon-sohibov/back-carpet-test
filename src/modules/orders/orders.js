@@ -41,24 +41,28 @@ module.exports = {
         callback
       });
 
-      let params = {
-        merchant: MERCHANT_ID,
-        amount: total_amount,
-        account: [{
-          user_id: newOrder.id,
-        }]
-      };
-
-      const url ='https://checkout.paycom.uz';
-      const headers = {
-        "Content-Type": "application/json"
+      // let params = {
+      //   merchant: MERCHANT_ID,
+      //   amount: total_amount,
+      //   account: [{
+      //     user_id: newOrder.id,
+      //   }]
+      // };
+      let accounts = {
+        fullname: customer,
+        order_id: newOrder.id
       }
-      fetch(url, { method: 'POST', headers: headers, body: params})
-          .then((json) => {
-            console.log(json);
-          });
 
-      res.json("ok")
+      // const url ='https://checkout.paycom.uz';
+      // const headers = {
+      //   "Content-Type": "application/json"
+      // }
+      // fetch(url, { method: 'POST', headers: headers, body: params})
+      //     .then((json) => {
+      //       console.log(json);
+      //     });
+
+      res.render('index', { amount: total_amount, fullname: customer, order_id: newOrder.id })
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
