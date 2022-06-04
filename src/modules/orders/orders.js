@@ -14,32 +14,60 @@ module.exports = {
   POST_ORDER: async (req, res) => {
     try {
       const {
+        order,
         customer,
         phone,
-        product_name,
-        product_code,
-        size,
-        color,
         address,
-        quantity,
-        price,
-        callback,
-      } = req.body;
-      const total_amount = price * quantity
-
-      const newOrder = await orders.create({
-        customer,
-        phone,
-        product_name,
-        product_code,
-        size,
-        color,
-        address,
-        quantity,
-        price,
-        total_amount,
         callback
-      });
+        } = req.body;
+
+      // console.log(order);
+
+      
+      order.forEach( async(item) => {
+        // const arr = [];
+
+      const total_amount = item.price * item.quantity
+        
+        // arr.push({
+        //   product_name: item.product_name,
+        //   product_code: item.product_code,
+        //   size: item.size,
+        //   // color: item.color,
+        //   quantity: item.quantity,
+        //   price: item.price,
+        //   total_amount: total_amount          
+        // })
+
+        const newOrder = await orders.create({
+          customer,
+          phone,
+          address,
+          callback,
+          product_name: item.product_name,
+          product_code: item.product_code,
+          size: item.size,
+          // color: item.color,
+          quantity: item.quantity,
+          price: item.price,
+          total_amount: total_amount,
+        });
+      })
+
+    
+
+
+      // customer,
+      //   phone,
+      //   product_name,
+      //   product_code,
+      //   size,
+      //   color,
+      //   address,
+      //   quantity,
+      //   price,
+      //   callback,
+
 
       // let params = {
       //   merchant: MERCHANT_ID,
@@ -62,9 +90,10 @@ module.exports = {
       //       console.log(json);
       //     });
       res.json({
-         amount: newOrder.total_amount, 
-         fullname: newOrder.customer, 
-         order_id: newOrder.id
+        //  amount: newOrder.total_amount, 
+        //  fullname: newOrder.customer, 
+        //  order_id: newOrder.id
+        res: "ok"
         })
     } catch (error) {
       res.status(500).json({ error: error.message });
