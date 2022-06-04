@@ -1,6 +1,6 @@
 const { orders } = require("../../model/model");
-const { MERCHANT_ID } = require('../../config')
-const fetch = require('node-fetch')
+// const { MERCHANT_ID } = require('../../config')
+// const fetch = require('node-fetch')
 
 module.exports = {
   GET_ORDERS: async (_, res) => {
@@ -48,10 +48,10 @@ module.exports = {
       //     user_id: newOrder.id,
       //   }]
       // };
-      let accounts = {
-        fullname: customer,
-        order_id: newOrder.id
-      }
+      // var accounts = {
+      //   fullname: customer,
+      //   order_id: newOrder.id
+      // }
 
       // const url ='https://checkout.paycom.uz';
       // const headers = {
@@ -61,8 +61,11 @@ module.exports = {
       //     .then((json) => {
       //       console.log(json);
       //     });
-
-      res.render('index', { amount: total_amount, fullname: customer, order_id: newOrder.id })
+      res.json({
+         amount: newOrder.total_amount, 
+         fullname: newOrder.customer, 
+         order_id: newOrder.id
+        })
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
