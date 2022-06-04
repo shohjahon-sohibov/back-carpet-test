@@ -479,11 +479,6 @@ const branch = sequelize.define("branch", {
 });
 
 const orders = sequelize.define("order", {
-  order_id: {
-    type: DataTypes.UUID,
-    defaultValue: DataTypes.UUIDV4(),
-    primaryKey: true,
-  },
   customer: {
     type: DataTypes.TEXT,
     validate: {

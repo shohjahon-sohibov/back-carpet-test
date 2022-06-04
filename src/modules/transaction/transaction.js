@@ -94,8 +94,6 @@ module.exports = class HomeController {
 							payment_amount: req.body.params.amount,
 							userId: user.dataValues.id,
 						});
-
-						console.log(payment, "is params created");
 			
 						res.json({
 							result: {
@@ -182,10 +180,6 @@ module.exports = class HomeController {
 					id: payment.dataValues.user.dataValues.id,
 				},
 			});
-
-			// console.log(payment.dataValues.user.dataValues.user_id);
-			// console.log(payment.dataValues.user.dataValues.id);
-			// console.log(payment.dataValues.user.dataValues.userId);
 
 			const date = Date.now();
 

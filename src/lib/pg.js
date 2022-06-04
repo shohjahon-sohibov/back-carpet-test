@@ -1,12 +1,5 @@
-// const { Sequelize } = require("sequelize");
 const { Users, payments } = require("../model/model");
 const { sequelize } = require('./sequelize')
-
-console.log(sequelize);
-
-// const sequelize = new Sequelize(process.env.PG_URL, {
-// 	logging: false,
-// });
 
 async function pg() {
 	try {
@@ -15,10 +8,7 @@ async function pg() {
 		db.users = Users;
 		db.payments = payments;
 
-		// await Relations(db);
 		console.log(db);
-
-		// await sequelize.sync({ force: false });
 
 		const users = await db.users.findAll({
 			raw: true,

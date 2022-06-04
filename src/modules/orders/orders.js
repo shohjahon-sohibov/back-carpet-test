@@ -29,7 +29,7 @@ module.exports = {
       } = req.body;
       const total_amount = price * quantity
 
-      await orders.create({
+      const newOrder = await orders.create({
         customer,
         phone,
         product_name,
@@ -43,24 +43,22 @@ module.exports = {
         callback
       });
 
-      // let params = {
-      //   merchant: MERCHANT_ID,
-      //   amount: total_amount,
-      //   account: [{
-      //     name: customer,
-      //     phone: phone
-      //   }]
-      // };
+      let params = {
+        merchant: MERCHANT_ID,
+        amount: total_amount,
+        account: [{
+          user_id: newOrder.id,
+        }]
+      };
 
-      // const url ='https://test.paycom.uz';
-      // const headers = {
-      //   "Content-Type": "application/json",
-      //   "key": TEST_KEY
-      // }
-      // fetch(url, { method: 'POST', headers: headers, body: params})
-      //     .then((json) => {
-      //       console.log(json.body);
-      //     });
+      const url ='https://test.paycom.uz';
+      const headers = {
+        "Content-Type": "application/json"
+      }
+      fetch(url, { method: 'POST', headers: headers, body: params})
+          .then((json) => {
+            console.log(json);
+          });
 
       res.json("ok")
     } catch (error) {
