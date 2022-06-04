@@ -1,12 +1,10 @@
 const { orders } = require("../../model/model");
-const { TEST_KEY, MERCHANT_ID } = require('../../config')
+const { MERCHANT_ID } = require('../../config')
 const fetch = require('node-fetch')
 
 module.exports = {
   GET_ORDERS: async (_, res) => {
     try {
-      const a = process.env.TEST_KEY
-      console.log(a)
       const allShops = await orders.findAll();
       res.json(allShops);
     } catch (error) {
@@ -51,7 +49,7 @@ module.exports = {
         }]
       };
 
-      const url ='https://test.paycom.uz';
+      const url ='https://checkout.paycom.uz';
       const headers = {
         "Content-Type": "application/json"
       }
