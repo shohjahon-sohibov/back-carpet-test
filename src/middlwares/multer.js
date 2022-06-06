@@ -78,6 +78,19 @@ const storageGrassCol = multer.diskStorage({
   },
 });
 
+// const storageCarpetRelaxCol = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, path.join(__dirname, "../../public/uploads/carpet-relax-collection"));
+//   },
+
+//   filename: function (req, file, cb) {
+//     const name = file.originalname.split(" ").join("");
+//     cb(null, name);
+//   },
+// });
+
+// const uploadCarpetRelaxCol = multer({ storage: storageCarpetRelaxCol });
+
 const uploadAboutHoldings = multer({ storage: storageAboutHoldings });
 const uploadBranches = multer({ storage: storageBranches });
 const uploadBrands = multer({ storage: storageBrands });
@@ -87,6 +100,7 @@ const uploadTuftingCol = multer({ storage: storageTuftingCol });
 const uploadGrassCol = multer({ storage: storageGrassCol });
 
 module.exports = {
+  // uploadCarpetRelaxCol,
   uploadAboutHoldings,
   uploadBranches,
   uploadBrands,

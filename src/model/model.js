@@ -92,11 +92,7 @@ const Carpet_info = sequelize.define("carpet_info", {
   size: {
     type: DataTypes.TEXT,
     allowNull: false,
-    defaultValue: 0,
-    validate: {
-      min: 0,
-      max: 64,
-    }
+    defaultValue: 0
   },
   price: {
     type: DataTypes.INTEGER,
@@ -109,16 +105,17 @@ const Carpet_info = sequelize.define("carpet_info", {
     allowNull: false,
   }
 })
+// namea = "first"
+// let collectionName = namea
+// collectionName = sequelize.define(collectionName,{
+
+// })
 
 const Tufting_info = sequelize.define("tufting_info", {
   size: {
     type: DataTypes.TEXT,
     allowNull: false,
-    defaultValue: 0,
-    validate: {
-      min: 0,
-      max: 64,
-    }
+    defaultValue: 0
   },
   price: {
     type: DataTypes.INTEGER,
@@ -136,11 +133,7 @@ const Grass_info = sequelize.define("grass_info", {
   size: {
     type: DataTypes.TEXT,
     allowNull: false,
-    defaultValue: 0,
-    validate: {
-      min: 0,
-      max: 64,
-    }
+    defaultValue: 0
   },
   price: {
     type: DataTypes.INTEGER,
@@ -203,13 +196,7 @@ const carpetCollections = sequelize.define("carpet_collection", {
   rating: {
     type: DataTypes.INTEGER,
   },
-  sell: {
-    type: DataTypes.INTEGER,
-    validate: {
-      min: 0,
-      max: 100,
-    },
-  },
+  sell: DataTypes.INTEGER,  
   imageUrl: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -261,13 +248,7 @@ const tuftingCollections = sequelize.define("tufting_collection", {
   rating: {
     type: DataTypes.INTEGER
   },
-  sell: {
-    type: DataTypes.INTEGER,
-    validate: {
-      min: 0,
-      max: 100,
-    },
-  },
+  sell: DataTypes.INTEGER,
   imageUrl: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -331,13 +312,7 @@ const grassCollections = sequelize.define("grass_collection", {
       max: 5,
     },
   },
-  sell: {
-    type: DataTypes.INTEGER,
-    validate: {
-      min: 0,
-      max: 100,
-    },
-  },
+  sell: DataTypes.INTEGER,
   imageUrl: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -379,16 +354,14 @@ const news = sequelize.define("news", {
     type: DataTypes.TEXT,
     allowNull: false,
     validate: {
-      min: 3,
-      max: 64,
+      min: 1,
     },
   },
   description: {
     type: DataTypes.TEXT,
     allowNull: false,
     validate: {
-      min: 25,
-      max: 256,
+      min: 1,
     },
   },
   imgUrl: {
@@ -407,16 +380,14 @@ const aboutHolding = sequelize.define("about_holding", {
     type: DataTypes.TEXT,
     allowNull: false,
     validate: {
-      min: 3,
-      max: 64,
+      min: 1,
     },
   },
   description: {
     type: DataTypes.TEXT,
     allowNull: false,
     validate: {
-      min: 25,
-      max: 256,
+      min: 1,
     },
   },
   imgUrl: {
@@ -436,7 +407,6 @@ const branch = sequelize.define("branch", {
     allowNull: false,
     validate: {
       min: 1,
-      max: 64,
     },
   },
   address: {
@@ -444,7 +414,6 @@ const branch = sequelize.define("branch", {
     allowNull: false,
     validate: {
       min: 1,
-      max: 256,
     },
   },
   phone: {
@@ -460,7 +429,6 @@ const branch = sequelize.define("branch", {
     isEmail: true,
     validate: {
       min: 1,
-      max: 256,
     },
   },
   region: {
@@ -483,7 +451,6 @@ const orders = sequelize.define("order", {
     type: DataTypes.TEXT,
     validate: {
       min: 1,
-      max: 64,
     },
     timestamps: true,
   },
@@ -496,8 +463,7 @@ const orders = sequelize.define("order", {
   product_name: {
     type: DataTypes.TEXT,
     validate: {
-      min: 3,
-      max: 256,
+      min: 1,
     },
   },
   product_code: {
@@ -547,7 +513,7 @@ const jobs = sequelize.define("job", {
     type: DataTypes.TEXT,
     allowNull: false,
     validate: {
-      min: 3,
+      min: 1,
     },
   },
 });

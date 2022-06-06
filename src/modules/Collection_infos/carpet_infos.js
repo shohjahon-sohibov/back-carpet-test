@@ -46,7 +46,6 @@ module.exports = {
 
       const { id, size, price, in_market, carpetCollectionId } = req.body;
       
-      
       const isFound = await Carpet_info.findOne({
         where: {
           id

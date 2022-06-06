@@ -15,6 +15,30 @@ const Carpet_colections = require("./carpet_collections/carpet_colections");
 const Tufting_collections = require("./tufting_collections/tufting_collections");
 const Grass_collections = require("./grass_collections/grass_collections");
 
+const Collections = require('./collections/Collections')
+// =============  CARPET COLLECTIONS ===============
+const Relax = require('./carpet_collections/Relax')
+const Adele = require('./carpet_collections/Adele')
+const Tresor = require('./carpet_collections/Tresor')
+const Salvatini = require('./carpet_collections/Salvatini')
+const Unique = require('./carpet_collections/Unique')
+const Prince = require('./carpet_collections/Prince')
+const Mustang = require('./carpet_collections/Mustang')
+const Millenium = require('./carpet_collections/Millenium')
+const Lindo = require('./carpet_collections/Lindo')
+const Legenda = require('./carpet_collections/Legende')
+const Kenzo = require('./carpet_collections/Kenzo')
+const Kasandra = require('./carpet_collections/Kasandra')
+const Hi_Tech = require('./carpet_collections/Hi-Tech')
+const Hermosa = require('./carpet_collections/Hermosa')
+const Feniks = require('./carpet_collections/Feniks')
+const Dream = require('./carpet_collections/Dream')
+const Diadema = require('./carpet_collections/Diadema')
+const Camellia = require('./carpet_collections/Camellia')
+const Camaro = require('./carpet_collections/Camaro')
+const Artemida = require('./carpet_collections/Artemida')
+
+
 const News = require("./news/news");
 const AboutHolding = require("./aboutHolding/aboutHolding");
 const Branches = require("./branches/branches");
@@ -26,7 +50,7 @@ const Transaction = require("./transaction/transaction");
 
 // middlewares
 const { AUTH_ROLE_MID, IS_VALID_TOKEN_MID } = require("../middlwares/jwt-helper");
-const { 	uploadAboutHoldings, uploadBranches, uploadBrands, uploadNews, uploadCarpetCol, uploadTuftingCol, uploadGrassCol } = require("../middlwares/multer");
+const {	uploadAboutHoldings, uploadBranches, uploadBrands, uploadNews, uploadCarpetCol, uploadTuftingCol, uploadGrassCol } = require("../middlwares/multer");
 
 
 const middleware = require("../middlwares/AuthMiddleware");
@@ -68,12 +92,34 @@ router
     .put("/api/update-grass_info", Grass_infos.PUT_COLLECTION_INFO)
     .delete("/api/delete-grass_info", Grass_infos.DELETE_COLLECTION_INFO)
 
+  .post("/api/new-collection", Collections.POST_COLLECTION)
 
   .get("/api/carpet-collections", Carpet_colections.GET_CARPETS)
   .post("/api/new-carpet-collection", uploadCarpetCol.single("poster"), Carpet_colections.POST_COLLECTION)
   .put("/api/update-carpet-collection", uploadCarpetCol.single("poster"), Carpet_colections.UPDATE_COLLECTION)
   .delete("/api/delete-carpet-collection", Carpet_colections.DELETE_COLLECTION)
 
+  .get("/api/relax", Relax.GET_RELAXES)
+  .get("/api/adele", Adele.GET_ADELE)
+  .get("/api/tresor", Tresor.GET_TRESORS)
+  .get("/api/salvatini", Salvatini.GET_SALVATINI)
+  .get("/api/unique", Unique.GET_UNIQUE)
+  .get("/api/prince", Prince.GET_PRINCE)
+  .get("/api/mustang", Mustang.GET_MUSTANG)
+  .get("/api/millenium", Millenium.GET_MILLENIUM)
+  .get("/api/lindo", Lindo.GET_LINDO)
+  .get("/api/legenda", Legenda.GET_LEGENDA)
+  .get("/api/kenzo", Kenzo.GET_KENZO)
+  .get("/api/kasandra", Kasandra.GET_KASANDRA)
+  .get("/api/hi-tech", Hi_Tech.GET_HI_TECH)
+  .get("/api/hermosa", Hermosa.GET_HERMOSA)
+  .get("/api/feniks", Feniks.GET_FENIKS)
+  .get("/api/dream", Dream.GET_DREAM)
+  .get("/api/diadema", Diadema.GET_DIADEMA)
+  .get("/api/camellia", Camellia.GET_CAMELLIA)
+  .get("/api/camaro", Camaro.GET_CAMARO)
+  .get("/api/artemida", Artemida.GET_ARTEMIDA)
+  
   .get("/api/tufting-collections", Tufting_collections.GET_COLLECTIONS)
   .post("/api/new-tufting-collection", uploadTuftingCol.single("poster"), Tufting_collections.POST_COLLECTION)
   .put("/api/update-tufting-collection", uploadTuftingCol.single("poster"), Tufting_collections.UPDATE_COLLECTION)
