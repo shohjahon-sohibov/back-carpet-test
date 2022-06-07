@@ -377,7 +377,10 @@ module.exports = {
           imageName: file.originalname,
           imageType: file.mimetype,
         });
-        res.status(201).json(newCarpet.id);
+        res.status(201).json({
+          id: newCarpet.carpet_id, 
+          code: newCarpet.product_code
+        });
       } else if (collectionName == "diadema") {
         const newCarpet = await Diadema_collection.create({
           description,

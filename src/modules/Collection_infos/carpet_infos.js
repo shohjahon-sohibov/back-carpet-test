@@ -16,18 +16,20 @@ module.exports = {
         const arr = []
         arr.push(element)
 
-        const isCollectionFound = await  carpetCollections.findOne({
+        const isCollectionFound = await carpetCollections.findOne({
           where: {
-            id: arr[0].carpetCollectionId
+            product_code: arr[0].product_code
           }
         })
+
+        console.log(arr);
 
         if(isCollectionFound) {
           await Carpet_info.create({
             size: arr[0].size,
             price: arr[0].price,
             in_market: arr[0].in_market,
-            carpetCollectionId: arr[0].carpetCollectionId,
+            carpet_id: arr[0].carpet_id,
           });
         } else {
           console.error("not found")

@@ -176,6 +176,13 @@ const Grass_comments = sequelize.define("grass_comment", {
 });
 
 const carpetCollections = sequelize.define("carpet_collection", {
+  carpet_id: {
+    type: DataTypes.INTEGER,
+    // defaultValue: DataTypes.UUIDV4(),
+    primaryKey: true,
+    allowNull: false,
+    autoIncrement: true
+  },
   description: {
     type: DataTypes.TEXT,
     allowNull: false,
@@ -566,14 +573,14 @@ payments.belongsTo(Users);
 //   },
 // });
 
-carpetCollections.hasMany(Carpet_info)  // CARPET infos => price, size and etc...
-Carpet_info.belongsTo(carpetCollections)
+// carpetCollections.hasMany(Carpet_info)  // CARPET infos => price, size and etc...
+// Carpet_info.belongsTo(carpetCollections)
 
-tuftingCollections.hasMany(Tufting_info)  //  TUFTING infos => price, size and etc...
-Tufting_info.belongsTo(tuftingCollections)
+// tuftingCollections.hasMany(Tufting_info)  //  TUFTING infos => price, size and etc...
+// Tufting_info.belongsTo(tuftingCollections)
 
-grassCollections.hasMany(Grass_info)  //  GRASS infos => price, size and etc...
-Grass_info.belongsTo(grassCollections)
+// grassCollections.hasMany(Grass_info)  //  GRASS infos => price, size and etc...
+// Grass_info.belongsTo(grassCollections)
 
 
 carpetCollections.hasMany(Carpet_comments) // CARPET comments
