@@ -49,7 +49,7 @@ module.exports = {
           },
         ],
       })
-      res.status(200).json(JSON.stringify(carpets, null, 4));
+      res.status(200).json(carpets);
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
