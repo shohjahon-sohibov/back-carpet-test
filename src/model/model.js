@@ -559,12 +559,14 @@ carpetCollections.hasMany(Carpet_info, {
   foreignKey: {
     name: "product_code",
     allowNull: false,
+    type: DataTypes.TEXT
   },
 })  // CARPET infos => price, size and etc...
 Carpet_info.belongsTo(carpetCollections, {
   foreignKey: {
     name: "product_code",
     allowNull: false,
+    type: DataTypes.TEXT
   },
 })
 
