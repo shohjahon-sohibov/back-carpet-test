@@ -1,6 +1,6 @@
 const { sequelize, DataTypes } = require("../lib/sequelize");
 
-const Hi_Tech_collection = sequelize.define("hi_tech_collection", {
+const Radisson_collection = sequelize.define("radisson_collection", {
     description: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -19,15 +19,15 @@ const Hi_Tech_collection = sequelize.define("hi_tech_collection", {
       defaultValue: false,
     },
     like: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER
     },
     dislike: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER
     },
     rating: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER
     },
-    sell: DataTypes.INTEGER,  
+    sell: DataTypes.INTEGER,
     imageUrl: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -51,8 +51,5 @@ const Hi_Tech_collection = sequelize.define("hi_tech_collection", {
       defaultValue: false
     }
   });
-
   
-  module.exports = {
-    Hi_Tech_collection
-  }
+  module.exports = Radisson_collection

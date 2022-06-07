@@ -26,30 +26,30 @@ const { Diadema_collection } = require("../../model/Diadema.collection");
 const { Camellia_collection } = require("../../model/Camellia.collection");
 const { Camaro_collection } = require("../../model/Camaro.collection");
 const { Artemida_collection } = require("../../model/Artemida.collection");
+const { sequelize } = require("../../lib/sequelize");
 
 module.exports = {
   GET_CARPETS: async (_, res) => {
     try {
-      res.status(200).json(
-        await carpetCollections.findAll({
-          include: [
-            {
-              model: Carpet_comments,
-              attributes: ["id", "body", "carpetCollectionId"],
-            },
-            {
-              model: Carpet_info,
-              attributes: [
-                "id",
-                "size",
-                "price",
-                "in_market",
-                "carpetCollectionId",
-              ],
-            },
-          ],
-        })
-      );
+      const carpets =  await carpetCollections.findAll({
+        include: [
+          {
+            model: Carpet_comments,
+            attributes: ["id", "body", "carpetCollectionId"],
+          },
+          {
+            model: Carpet_info,
+            attributes: [
+              "id",
+              "size",
+              "price",
+              "in_market",
+              "product_code",
+            ],
+          },
+        ],
+      })
+      res.status(200).json(JSON.stringify(carpets, null, 4));
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
@@ -414,6 +414,8 @@ module.exports = {
           imageName: file.originalname,
           imageType: file.mimetype,
         });
+      } else {
+        res.status(400).json("collection not found")
       }
 
       res.status(201).json("resource created successfully");

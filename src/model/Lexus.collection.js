@@ -1,6 +1,6 @@
 const { sequelize, DataTypes } = require("../lib/sequelize");
 
-const Hi_Tech_collection = sequelize.define("hi_tech_collection", {
+const Lexus_collection = sequelize.define("lexus_collection", {
     description: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -53,6 +53,5 @@ const Hi_Tech_collection = sequelize.define("hi_tech_collection", {
   });
 
   
-  module.exports = {
-    Hi_Tech_collection
-  }
+  module.exports = Lexus_collection
+  

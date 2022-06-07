@@ -1,21 +1,22 @@
 const express = require("express");
 const router = express.Router();
-
+// Users
 const Users = require("./users/users");
-
+// Comments
 const Carpet_comment = require("./comment/carpet_comment");
 const Tufting_comment = require("./comment/tufting_comment");
 const Grass_comment = require("./comment/grass_comment");
-
+// collections data: size, price, in_market
 const Carpet_infos = require("./Collection_infos/carpet_infos");
 const Tufting_infos = require("./Collection_infos/tufting_infos");
 const Grass_infos = require("./Collection_infos/grass_infos");
-
+// Category collections: CARPET, TUFTING GRASS 
 const Carpet_colections = require("./carpet_collections/carpet_colections");
 const Tufting_collections = require("./tufting_collections/tufting_collections");
 const Grass_collections = require("./grass_collections/grass_collections");
 
-const Collections = require('./collections/Collections')
+const Collections = require('./collections/Collections') // add and delete collections
+
 // =============  CARPET COLLECTIONS ===============
 const Relax = require('./carpet_collections/Relax')
 const Adele = require('./carpet_collections/Adele')
@@ -38,23 +39,20 @@ const Camellia = require('./carpet_collections/Camellia')
 const Camaro = require('./carpet_collections/Camaro')
 const Artemida = require('./carpet_collections/Artemida')
 
-
+// Other Modules
 const News = require("./news/news");
 const AboutHolding = require("./aboutHolding/aboutHolding");
 const Branches = require("./branches/branches");
 const Orders = require("./orders/orders");
 const Brandes = require("./brand/brand");
 const Jobs = require("./job/job");
-
+// Transaction
 const Transaction = require("./transaction/transaction");
 
 // middlewares
 const { AUTH_ROLE_MID, IS_VALID_TOKEN_MID } = require("../middlwares/jwt-helper");
 const {	uploadAboutHoldings, uploadBranches, uploadBrands, uploadNews, uploadCarpetCol, uploadTuftingCol, uploadGrassCol } = require("../middlwares/multer");
-
-
 const middleware = require("../middlwares/AuthMiddleware");
-// const ErrorModifierMiddleware = require("../middlwares/ErrorModifierMiddleware");
 
 router
   .get("/users", Users.GET_USERS)

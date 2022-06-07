@@ -104,12 +104,7 @@ const Carpet_info = sequelize.define("carpet_info", {
     defaultValue: false,
     allowNull: false,
   }
-})
-// namea = "first"
-// let collectionName = namea
-// collectionName = sequelize.define(collectionName,{
-
-// })
+});
 
 const Tufting_info = sequelize.define("tufting_info", {
   size: {
@@ -560,8 +555,18 @@ payments.belongsTo(Users);
 //   },
 // });
 
-carpetCollections.hasMany(Carpet_info)  // CARPET infos => price, size and etc...
-Carpet_info.belongsTo(carpetCollections)
+carpetCollections.hasMany(Carpet_info, {
+  foreignKey: {
+    name: "product_code",
+    allowNull: false,
+  },
+})  // CARPET infos => price, size and etc...
+Carpet_info.belongsTo(carpetCollections, {
+  foreignKey: {
+    name: "product_code",
+    allowNull: false,
+  },
+})
 
 tuftingCollections.hasMany(Tufting_info)  //  TUFTING infos => price, size and etc...
 Tufting_info.belongsTo(tuftingCollections)
