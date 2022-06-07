@@ -44,7 +44,7 @@ module.exports = {
               "size",
               "price",
               "in_market",
-              "product_code",
+              "carpetCollectionId",
             ],
           },
         ],

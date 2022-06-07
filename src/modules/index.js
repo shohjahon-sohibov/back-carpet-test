@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 // Users
 const Users = require("./users/users");
+const Clients = require("./clients/clients");
 // Comments
 const Carpet_comment = require("./comment/carpet_comment");
 const Tufting_comment = require("./comment/tufting_comment");
@@ -59,6 +60,10 @@ router
   .post("/register", AUTH_ROLE_MID, Users.REGISTER)
   .post("/login", IS_VALID_TOKEN_MID, Users.LOGIN)
   .delete("/deleteUser", Users.DELETE_ACCOUNT)
+
+  .get("/api/clients", Clients.GET_CLIENTS)
+  .delete("/api/delete-client", Clients.DELETE_CLIENT)
+
 
   .get("/api/carpet-comments", Carpet_comment.GET_COMMENTS)
   .post("/api/new-carpet-comment", Carpet_comment.POST_COMMENT)

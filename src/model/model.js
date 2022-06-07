@@ -60,6 +60,17 @@ const Users = sequelize.define("user", {
   },
 });
 
+const Clients = sequelize.define('client', {
+  client_name: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  client_phone: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  }
+})
+
 const payments = sequelize.define("payments", {
   payment_id: {
     type: DataTypes.STRING,
@@ -576,6 +587,7 @@ Grass_comments.belongsTo(grassCollections);
 
 module.exports = {
   Users,
+  Clients,
   payments,
   Carpet_info,
   Tufting_info,

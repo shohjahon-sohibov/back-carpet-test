@@ -1,4 +1,4 @@
-const { orders } = require("../../model/model");
+const { orders, Clients } = require("../../model/model");
 // const { MERCHANT_ID } = require('../../config')
 // const fetch = require('node-fetch')
 
@@ -14,6 +14,8 @@ module.exports = {
   POST_ORDER: async (req, res) => {
     try {
       const { order, customer, phone, address, callback } = req.body;
+
+      await Clients.create({ client_name: customer, client_phone: phone })
 
       let amount = 0;
       let count = 0
