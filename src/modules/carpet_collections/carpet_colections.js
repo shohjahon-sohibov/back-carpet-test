@@ -95,7 +95,7 @@ module.exports = {
       const collectionName = collection_name.toLowerCase()
 
       if (collectionName == "relax") {
-        await Relax_collection.create({
+        const newCarpet = await Relax_collection.create({
           description,
           like,
           dislike,
@@ -110,8 +110,10 @@ module.exports = {
           imageName: file.originalname,
           imageType: file.mimetype,
         });
+
+        res.status(201).json(newCarpet.id)
       } else if(collectionName == "adele") {
-        await Adele_collection.create({
+        const newCarpet = await Adele_collection.create({
           description,
           like,
           dislike,
@@ -126,8 +128,10 @@ module.exports = {
           imageName: file.originalname,
           imageType: file.mimetype,
         });
+
+        res.status(201).json(newCarpet.id)
       } else if(collectionName == "tresor") {
-        await Tresor_collection.create({
+        const newCarpet = await Tresor_collection.create({
           description,
           like,
           dislike,
@@ -142,8 +146,10 @@ module.exports = {
           imageName: file.originalname,
           imageType: file.mimetype,
         });
+
+        res.status(201).json(newCarpet.id)
       } else if(collectionName == "salvatini") {
-        await Tresor_collection.create({
+        const newCarpet = await Tresor_collection.create({
           description,
           like,
           dislike,
@@ -158,8 +164,10 @@ module.exports = {
           imageName: file.originalname,
           imageType: file.mimetype,
         });
+
+        res.status(201).json(newCarpet.id)
       } else if(collectionName == "unique") {
-        await Unique_collection.create({
+        const newCarpet = await Unique_collection.create({
           description,
           like,
           dislike,
@@ -174,8 +182,10 @@ module.exports = {
           imageName: file.originalname,
           imageType: file.mimetype,
         });
+
+        res.status(201).json(newCarpet.id)
       }  else if(collectionName == "prince") {
-        await Prince_collection.create({
+        const newCarpet = await Prince_collection.create({
           description,
           like,
           dislike,
@@ -190,8 +200,10 @@ module.exports = {
           imageName: file.originalname,
           imageType: file.mimetype,
         });
+
+        res.status(201).json(newCarpet.id)
       }  else if(collectionName == "mustang") {
-        await Mustang_collection.create({
+        const newCarpet =  await Mustang_collection.create({
           description,
           like,
           dislike,
@@ -206,8 +218,10 @@ module.exports = {
           imageName: file.originalname,
           imageType: file.mimetype,
         });
+
+        res.status(201).json(newCarpet.id)
       }  else if(collectionName == "millenium") {
-        await Millenium_collection.create({
+        const newCarpet = await Millenium_collection.create({
           description,
           like,
           dislike,
@@ -222,8 +236,10 @@ module.exports = {
           imageName: file.originalname,
           imageType: file.mimetype,
         });
+
+        res.status(201).json(newCarpet.id)
       }  else if(collectionName == "lindo") {
-        await Lindo_collection.create({
+        const newCarpet = await Lindo_collection.create({
           description,
           like,
           dislike,
@@ -238,8 +254,10 @@ module.exports = {
           imageName: file.originalname,
           imageType: file.mimetype,
         });
+
+        res.status(201).json(newCarpet.id)
       }  else if(collectionName == "legenda") {
-        await Legenda_collection.create({
+        const newCarpet = await Legenda_collection.create({
           description,
           like,
           dislike,
@@ -254,8 +272,10 @@ module.exports = {
           imageName: file.originalname,
           imageType: file.mimetype,
         });
+
+        res.status(201).json(newCarpet.id)
       }  else if(collectionName == "kenzo") {
-        await Kenzo_collection.create({
+        const newCarpet = await Kenzo_collection.create({
           description,
           like,
           dislike,
@@ -270,8 +290,10 @@ module.exports = {
           imageName: file.originalname,
           imageType: file.mimetype,
         });
+
+        res.status(201).json(newCarpet.id)
       }  else if(collectionName == "kasandra") {
-        await Kasandra_collection.create({
+        const newCarpet = await Kasandra_collection.create({
           description,
           like,
           dislike,
@@ -286,8 +308,9 @@ module.exports = {
           imageName: file.originalname,
           imageType: file.mimetype,
         });
+        res.status(201).json(newCarpet.id)
       }  else if(collectionName == "hi-tech") {
-        await Hi_Tech_collection.create({
+        const newCarpet = await Hi_Tech_collection.create({
           description,
           like,
           dislike,
@@ -302,8 +325,9 @@ module.exports = {
           imageName: file.originalname,
           imageType: file.mimetype,
         });
+        res.status(201).json(newCarpet.id)
       }  else if(collectionName == "hermosa") {
-        await Hermosa_collection.create({
+        const newCarpet = await Hermosa_collection.create({
           description,
           like,
           dislike,
@@ -318,8 +342,9 @@ module.exports = {
           imageName: file.originalname,
           imageType: file.mimetype,
         });
+        res.status(201).json(newCarpet.id)
       }  else if(collectionName == "feniks") {
-        await Feniks_collection.create({
+        const newCarpet = await Feniks_collection.create({
           description,
           like,
           dislike,
@@ -334,8 +359,9 @@ module.exports = {
           imageName: file.originalname,
           imageType: file.mimetype,
         });
+        res.status(201).json(newCarpet.id)
       }  else if(collectionName == "dream") {
-        await Dream_collection.create({
+        const newCarpet = await Dream_collection.create({
           description,
           like,
           dislike,
@@ -350,8 +376,9 @@ module.exports = {
           imageName: file.originalname,
           imageType: file.mimetype,
         });
+        res.status(201).json(newCarpet.id)
       }  else if(collectionName == "diadema") {
-        await Diadema_collection.create({
+        const newCarpet = await Diadema_collection.create({
           description,
           like,
           dislike,
@@ -366,8 +393,9 @@ module.exports = {
           imageName: file.originalname,
           imageType: file.mimetype,
         });
+        res.status(201).json(newCarpet.id)
       }  else if(collectionName == "camellia") {
-        await Camellia_collection.create({
+        const newCarpet = await Camellia_collection.create({
           description,
           like,
           dislike,
@@ -382,8 +410,9 @@ module.exports = {
           imageName: file.originalname,
           imageType: file.mimetype,
         });
+        res.status(201).json(newCarpet.id)
       }  else if(collectionName == "camaro") {
-        await Camaro_collection.create({
+        const newCarpet = await Camaro_collection.create({
           description,
           like,
           dislike,
@@ -398,8 +427,9 @@ module.exports = {
           imageName: file.originalname,
           imageType: file.mimetype,
         });
+        res.status(201).json(newCarpet.id)
       }  else if(collectionName == "artemida") {
-        await Artemida_collection.create({
+        const newCarpet = await Artemida_collection.create({
           description,
           like,
           dislike,
@@ -414,11 +444,10 @@ module.exports = {
           imageName: file.originalname,
           imageType: file.mimetype,
         });
+        res.status(201).json(newCarpet.id)
       } else {
         res.status(400).json("collection not found")
       }
-
-      res.status(201).json("resource created successfully");
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }

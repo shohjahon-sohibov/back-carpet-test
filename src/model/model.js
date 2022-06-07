@@ -203,7 +203,7 @@ const carpetCollections = sequelize.define("carpet_collection", {
   imageName: DataTypes.STRING,
   imageType: DataTypes.STRING,
   product_code: {
-    type: DataTypes.TEXT,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   collection_name: {
@@ -555,20 +555,8 @@ payments.belongsTo(Users);
 //   },
 // });
 
-carpetCollections.hasMany(Carpet_info, {
-  foreignKey: {
-    name: "product_code",
-    allowNull: false,
-    type: DataTypes.STRING
-  },
-})  // CARPET infos => price, size and etc...
-Carpet_info.belongsTo(carpetCollections, {
-  foreignKey: {
-    name: "product_code",
-    allowNull: false,
-    type: DataTypes.STRING
-  },
-})
+carpetCollections.hasMany(Carpet_info)  // CARPET infos => price, size and etc...
+Carpet_info.belongsTo(carpetCollections)
 
 tuftingCollections.hasMany(Tufting_info)  //  TUFTING infos => price, size and etc...
 Tufting_info.belongsTo(tuftingCollections)
