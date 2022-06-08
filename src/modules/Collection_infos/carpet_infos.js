@@ -18,7 +18,7 @@ module.exports = {
 
         const isCollectionFound = await carpetCollections.findOne({
           where: {
-            product_code: arr[0].product_code
+            product_code: arr[0].code
           }
         })
 
@@ -46,7 +46,7 @@ module.exports = {
   PUT_COLLECTION_INFO: async (req, res) => {
     try {
 
-      const { id, size, price, in_market, carpetCollectionId } = req.body;
+      const { id, size, price, in_market, carpet_id } = req.body;
       
       const isFound = await Carpet_info.findOne({
         where: {
@@ -60,7 +60,7 @@ module.exports = {
             size,
             price,
             in_market,
-            carpetCollectionId,
+            carpet_id,
           },
           {
             where: {
