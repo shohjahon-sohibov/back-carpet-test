@@ -3,7 +3,7 @@ const { Carpet_info, carpetCollections} = require("../../model/model");
 module.exports = {
   GET_COLLECTION_INFOS: async (_, res) => {
     try {
-      res.status(200).json(await Carpet_info.findAll());
+      res.status(200).json(await Carpet_info.findAll());  
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
@@ -12,7 +12,11 @@ module.exports = {
     try {
       const { collection_infos } = req.body;
 
-      console.log(collection_infos, collection_infos.carpet_id.code);
+      const array = []
+
+      array.push(collection_infos)
+
+      console.log("collection_infos", array[0].carpet_id.code);
 
       collection_infos.forEach(async (element) => {
         const arr = []
