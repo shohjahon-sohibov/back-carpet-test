@@ -12,6 +12,8 @@ module.exports = {
     try {
       const { collection_infos } = req.body;
 
+      console.log(collection_infos);
+
       collection_infos.forEach(async (element) => {
         const arr = []
         arr.push(element)
