@@ -12,23 +12,15 @@ module.exports = {
     try {
       const { collection_infos } = req.body;
 
-      const array = []
-
-      array.push(collection_infos)
-
-      console.log("collection_infos", array[0].carpet_id.code);
-
       collection_infos.forEach(async (element) => {
         const arr = []
         arr.push(element)
 
         const isCollectionFound = await carpetCollections.findOne({
           where: {
-            product_code: arr[0].code
+            product_code: arr[0].carpet_id.code
           }
         })
-
-        console.log(arr);
 
         if(isCollectionFound) {
           await Carpet_info.create({
