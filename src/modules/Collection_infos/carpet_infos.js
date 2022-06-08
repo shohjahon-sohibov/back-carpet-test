@@ -18,7 +18,7 @@ module.exports = {
 
         const isCollectionFound = await carpetCollections.findOne({
           where: {
-            product_code: arr[0].carpet_id.code
+            product_code: arr[0].carpet_id.code 
           }
         })
 
@@ -27,7 +27,7 @@ module.exports = {
             size: arr[0].size,
             price: arr[0].price,
             in_market: arr[0].in_market,
-            carpet_id: arr[0].carpet_id,
+            carpet_id: arr[0].carpet_id.id,
           });
         } else {
           console.error("not found")
