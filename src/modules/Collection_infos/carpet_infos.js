@@ -12,7 +12,7 @@ module.exports = {
     try {
       const { collection_infos } = req.body;
 
-      console.log(collection_infos);
+      console.log(collection_infos, collection_infos.carpet_id.code);
 
       collection_infos.forEach(async (element) => {
         const arr = []
@@ -20,7 +20,7 @@ module.exports = {
 
         const isCollectionFound = await carpetCollections.findOne({
           where: {
-            product_code: arr[0].code
+            product_code: arr[0].carpet_id.code
           }
         })
 
