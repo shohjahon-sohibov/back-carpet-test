@@ -24,7 +24,7 @@ module.exports = {
 
         const isCollectionFound = await carpetCollections.findOne({
           where: {
-            product_code: arr[0].carpet_id
+            product_code: arr[0].code
           }
         })
 
