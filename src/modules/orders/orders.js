@@ -48,7 +48,6 @@ module.exports = {
              amount: amount,
              fullname: newOrder.customer,
              order_id: date,
-            res: "ok",
           });
         }
 

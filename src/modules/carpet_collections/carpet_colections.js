@@ -26,6 +26,7 @@ const { Diadema_collection } = require("../../model/Diadema.collection");
 const { Camellia_collection } = require("../../model/Camellia.collection");
 const { Camaro_collection } = require("../../model/Camaro.collection");
 const { Artemida_collection } = require("../../model/Artemida.collection");
+const { Salvatini_collection } = require('../../model/Salvatini.collection')
 const { sequelize } = require("../../lib/sequelize");
 
 module.exports = {
@@ -33,22 +34,22 @@ module.exports = {
     try {
       res.status(200).json(
         await carpetCollections.findAll({
-          include: [
-            {
-              model: Carpet_comments,
-              attributes: ["id", "body", "carpetCollectionId"],
-            },
-            {
-              model: Carpet_info,
-              attributes: [
-                "id",
-                "size",
-                "price",
-                "in_market",
-                "carpetCollectionId",
-              ],
-            },
-          ],
+          // include: [
+          //   {
+          //     model: Carpet_comments,
+          //     attributes: ["id", "body", "carpetCollectionId"],
+          //   },
+          // {
+          //   model: Carpet_info,
+          //   attributes: [
+          //     "id",
+          //     "size",
+          //     "price",
+          //     "in_market",
+          //     "carpetCollectionId",
+          //   ],
+          // },
+          // ],
         })
       );
     } catch (error) {
@@ -150,7 +151,7 @@ module.exports = {
 
         res.status(201).json(newCarpet.id);
       } else if (collectionName == "salvatini") {
-        const newCarpet = await Tresor_collection.create({
+        const newCarpet = await Salvatini_collection.create({
           description,
           like,
           dislike,
@@ -378,8 +379,9 @@ module.exports = {
           imageType: file.mimetype,
         });
         res.status(201).json({
-          id: newCarpet.carpet_id, 
-          code: newCarpet.product_code
+          id: newCarpet.carpet_id,
+          code: newCarpet.product_code,
+          collection_name: newCarpet.collection_name
         });
       } else if (collectionName == "diadema") {
         const newCarpet = await Diadema_collection.create({
@@ -397,7 +399,11 @@ module.exports = {
           imageName: file.originalname,
           imageType: file.mimetype,
         });
-        res.status(201).json(newCarpet.id);
+        res.status(201).json({
+          id: newCarpet.diadema_id,
+          code: newCarpet.product_code,
+          collection_name: newCarpet.collection_name
+        });
       } else if (collectionName == "camellia") {
         const newCarpet = await Camellia_collection.create({
           description,
@@ -525,12 +531,12 @@ module.exports = {
   },
   DELETE_COLLECTION: async (req, res) => {
     try {
-      const { id } = req.body;
+      const { id, collection_name, product_code } = req.body;
 
-      if (id) {
+      if (id && collection_name && product_code) {
         const findCollectionId = await carpetCollections.findOne({
           where: {
-            id,
+            product_code,
           },
         });
 
@@ -547,9 +553,131 @@ module.exports = {
 
           await carpetCollections.destroy({
             where: {
-              id,
+              carpet_id: id,
             },
           });
+
+          if (collection_name == "adele") {
+            await Adele_collection.destroy({
+              where: {
+                carpet_id: id,
+              },
+            });
+          } else if (collection_name == "Artemida") {
+            await Artemida_collection.destroy({
+              where: {
+                carpet_id: id,
+              },
+            });
+          } else if (collection_name == "camaro") {
+            await Camaro_collection.destroy({
+              where: {
+                carpet_id: id,
+              },
+            });
+          } else if (collection_name == "camellia") {
+            await Camellia_collection.destroy({
+              where: {
+                carpet_id: id,
+              },
+            });
+          } else if (collection_name == "diadema") {
+            await Diadema_collection.destroy({
+              where: {
+                carpet_id: id,
+              },
+            });
+          } else if (collection_name == "dream") {
+            await Dream_collection.destroy({
+              where: {
+                carpet_id: id,
+              },
+            });
+          } else if (collection_name == "feniks") {
+            await Feniks_collection.destroy({
+              where: {
+                carpet_id: id,
+              },
+            });
+          } else if (collection_name == "hermosa") {
+            await Hermosa_collection.destroy({
+              where: {
+                carpet_id: id,
+              },
+            });
+          } else if (collection_name == "hi-tech") {
+            await Hi_Tech_collection.destroy({
+              where: {
+                carpet_id: id,
+              },
+            });
+          } else if (collection_name == "kasandra") {
+            await Kasandra_collection.destroy({
+              where: {
+                carpet_id: id,
+              },
+            });
+          } else if (collection_name == "kenzo") {
+            await Kenzo_collection.destroy({
+              where: {
+                carpet_id: id,
+              },
+            });
+          } else if (collection_name == "legenda") {
+            await Legenda_collection.destroy({
+              where: {
+                carpet_id: id,
+              },
+            });
+          } else if (collection_name == "lindo") {
+            await Lindo_collection.destroy({
+              where: {
+                carpet_id: id,
+              },
+            });
+          } else if (collection_name == "millenium") {
+            await Millenium_collection.destroy({
+              where: {
+                carpet_id: id,
+              },
+            });
+          } else if (collection_name == "mustang") {
+            await Mustang_collection.destroy({
+              where: {
+                carpet_id: id,
+              },
+            });
+          } else if (collection_name == "prince") {
+            await Prince_collection.destroy({
+              where: {
+                carpet_id: id,
+              },
+            });
+          } else if (collection_name == "relax") {
+            await Relax_collection.destroy({
+              where: {
+                carpet_id: id,
+              },
+            });
+          } else if (collection_name == "salvatini") {
+            await Salvatini_collection.destroy({
+              where: {
+                carpet_id: id,
+              },
+            });
+          } else if (collection_name == "tresor") {
+            await Tresor_collection.destroy({
+              where: {
+                carpet_id: id,
+              },
+            });
+          } else if (collection_name == "unique") {
+            await Unique_collection.destroy({
+              where: {
+                carpet_id: id,
+              },
+            });
+          }
 
           res.status(200).json("deleted resources successfuly");
         } else {
@@ -563,3 +691,37 @@ module.exports = {
     }
   },
 };
+
+// collectionsArr.forEach( async (item) => {
+//   if(collection_name == item) {
+//       //  const name = "_collection"
+//     // let collection =`${collection_name[0].toUpperCase()+collection_name.slice(1, collection_name.length)}_collection`
+//     await item.destroy({
+//       where: {
+//        carpet_id: id
+//       }
+//     })
+//   }
+// })
+// const collectionsArr = [
+//   "feniks",
+//   "legenda",
+//   "unique",
+//   "prince",
+//   "tresor",
+//   "mustang",
+//   "kenzo",
+//   "hi_tech",
+//   "kasandra",
+//   "lindo",
+//   "diadema",
+//   "camaro",
+//   "Dream_collection",
+//   "adele",
+//   "camellia",
+//   "artemida",
+//   "millenium",
+//   "hermosa",
+//   "relax",
+//   "salvatini",
+// ];

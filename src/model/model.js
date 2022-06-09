@@ -114,6 +114,11 @@ const Carpet_info = sequelize.define("carpet_info", {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
     allowNull: false,
+  },  
+  collection_name: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+    allowNull: false,
   }
 });
 

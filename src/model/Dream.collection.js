@@ -3,11 +3,10 @@ const { Carpet_info, Carpet_comments } = require("./model");
 
 const Dream_collection = sequelize.define("dream_collection", {
   carpet_id: {
-    type: DataTypes.INTEGER,
-    // defaultValue: DataTypes.UUIDV4(),
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4(),
     primaryKey: true,
     allowNull: false,
-    autoIncrement: true
   },
   description: {
     type: DataTypes.TEXT,
@@ -63,13 +62,11 @@ const Dream_collection = sequelize.define("dream_collection", {
 Dream_collection.hasMany(Carpet_info, {
   foreignKey: {
     name: "carpet_id",
-    allowNull: false,
   },
 });
 Carpet_info.belongsTo(Dream_collection, {
   foreignKey: {
     name: "carpet_id",
-    allowNull: false,
   },
 });
 
