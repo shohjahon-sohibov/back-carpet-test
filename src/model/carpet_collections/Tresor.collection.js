@@ -1,6 +1,13 @@
-const { sequelize, DataTypes } = require("../lib/sequelize");
+const { sequelize, DataTypes } = require("../../lib/sequelize");
+const Tresor_info = require('../carpet_infos/Tresor_info')
 
-const Kasandra_collection = sequelize.define("kasandra_collection", {
+const Tresor_collection = sequelize.define("tresor_collection", {
+  carpet_id: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4(),
+    primaryKey: true,
+    allowNull: false,
+  },
     description: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -52,7 +59,19 @@ const Kasandra_collection = sequelize.define("kasandra_collection", {
     }
   });
 
+  Tresor_collection.hasMany(Tresor_info, {
+    as: 'carpet_infos', 
+    foreignKey: {
+      name: "carpet_id",
+    },
+  });
+  Tresor_info.belongsTo(Tresor_collection, {
+    as: 'carpet_infos', 
+    foreignKey: {
+      name: "carpet_id",
+    },
+  });
   
   module.exports = {
-    Kasandra_collection
+    Tresor_collection
   }

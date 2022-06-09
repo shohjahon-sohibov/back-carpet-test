@@ -1,6 +1,13 @@
-const { sequelize, DataTypes } = require("../lib/sequelize");
+const { sequelize, DataTypes } = require("../../lib/sequelize");
+const Salvatini_info = require('../carpet_infos/Salvatini_info')
 
-const Hermosa_collection = sequelize.define("hermosa_collection", {
+const Salvatini_collection = sequelize.define("salvatini_collection", {
+  carpet_id: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4(),
+    primaryKey: true,
+    allowNull: false,
+  },
     description: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -52,7 +59,19 @@ const Hermosa_collection = sequelize.define("hermosa_collection", {
     }
   });
 
+  Salvatini_collection.hasMany(Salvatini_info, {
+    as: 'carpet_infos', 
+    foreignKey: {
+      name: "carpet_id",
+    },
+  });
+  Salvatini_info.belongsTo(Salvatini_collection, {
+    as: 'carpet_infos', 
+    foreignKey: {
+      name: "carpet_id",
+    },
+  });
   
   module.exports = {
-    Hermosa_collection
+    Salvatini_collection
   }

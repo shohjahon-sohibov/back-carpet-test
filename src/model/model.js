@@ -116,7 +116,7 @@ const Carpet_info = sequelize.define("carpet_info", {
     allowNull: false,
   },  
   collection_name: {
-    type: DataTypes.BOOLEAN,
+    type: DataTypes.TEXT,
     defaultValue: false,
     allowNull: false,
   }
@@ -588,14 +588,14 @@ payments.belongsTo(Users);
 // Grass_info.belongsTo(grassCollections)
 
 
-carpetCollections.hasMany(Carpet_comments) // CARPET comments
-Carpet_comments.belongsTo(carpetCollections);
+// carpetCollections.hasMany(Carpet_comments) // CARPET comments
+// Carpet_comments.belongsTo(carpetCollections);
 
-tuftingCollections.hasMany(Tufting_comments) // TUFTING comments
-Tufting_comments.belongsTo(tuftingCollections);
+// tuftingCollections.hasMany(Tufting_comments) // TUFTING comments
+// Tufting_comments.belongsTo(tuftingCollections);
 
-grassCollections.hasMany(Grass_comments) // GRASS comments
-Grass_comments.belongsTo(grassCollections);
+// grassCollections.hasMany(Grass_comments) // GRASS comments
+// Grass_comments.belongsTo(grassCollections);
 
 module.exports = {
   Users,

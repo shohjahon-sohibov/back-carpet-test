@@ -1,5 +1,6 @@
-const { Dream_collection } = require("../../model/Dream.collection");
-const { Carpet_info, Carpet_comments } = require("../../model/model");
+const { Dream_collection } = require("../../model/carpet_collections/Dream.collection");
+// const { Carpet_info, Carpet_comments } = require("../../model/model");
+const Dream_infos = require("../../model/carpet_infos/Dream_info");
 
 module.exports = {
   GET_DREAM: async (_, res) => {
@@ -12,14 +13,9 @@ module.exports = {
             //   attributes: ["id", "body", "carpetCollectionId"],
             // },
             {
-              model: Carpet_info,
-              attributes: [
-                "id",
-                "size",
-                "price",
-                "in_market",
-                "carpet_id",
-              ],
+              model: Dream_infos,
+              as: "carpet_infos",
+              attributes: ["id", "size", "price", "in_market", "carpet_id"],
             },
           ],
         })

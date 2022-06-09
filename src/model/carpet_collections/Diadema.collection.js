@@ -1,7 +1,8 @@
-const { sequelize, DataTypes } = require("../lib/sequelize");
-const { Carpet_info, Carpet_comments } = require("./model");
+const { sequelize, DataTypes } = require("../../lib/sequelize");
+// const { Carpet_info, Carpet_comments } = require("./model");
+const Diadema_info = require("../carpet_infos/Diadema_info");
 
-const Dream_collection = sequelize.define("dream_collection", {
+const Diadema_collection = sequelize.define("diadema_collection", {
   carpet_id: {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4(),
@@ -59,17 +60,19 @@ const Dream_collection = sequelize.define("dream_collection", {
   },
 });
 
-Dream_collection.hasMany(Carpet_info, {
+Diadema_collection.hasMany(Diadema_info, {
+  as: "carpet_infos",
   foreignKey: {
     name: "carpet_id",
   },
 });
-Carpet_info.belongsTo(Dream_collection, {
+Diadema_info.belongsTo(Diadema_collection, {
+  as: "carpet_infos",
   foreignKey: {
     name: "carpet_id",
   },
 });
 
 module.exports = {
-  Dream_collection,
+  Diadema_collection,
 };

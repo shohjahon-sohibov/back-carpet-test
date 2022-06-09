@@ -1,6 +1,13 @@
-const { sequelize, DataTypes } = require("../lib/sequelize");
+const { sequelize, DataTypes } = require("../../lib/sequelize");
+const Prince_info = require('../carpet_infos/Prince_info')
 
-const Relax_collection = sequelize.define("relax_collection", {
+const Prince_collection = sequelize.define("prince_collection", {
+  carpet_id: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4(),
+    primaryKey: true,
+    allowNull: false,
+  },
     description: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -52,7 +59,19 @@ const Relax_collection = sequelize.define("relax_collection", {
     }
   });
 
+  Prince_collection.hasMany(Prince_info, {
+    as: 'carpet_infos', 
+    foreignKey: {
+      name: "carpet_id",
+    },
+  });
+  Prince_info.belongsTo(Prince_collection, {
+    as: 'carpet_infos', 
+    foreignKey: {
+      name: "carpet_id",
+    },
+  });
   
   module.exports = {
-    Relax_collection
+    Prince_collection
   }

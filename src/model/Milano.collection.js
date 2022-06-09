@@ -1,4 +1,5 @@
 const { sequelize, DataTypes } = require("../lib/sequelize");
+const Adele_info = require('../carpet_infos/')
 
 const Milano_collection = sequelize.define("milano_collection", {
     description: {

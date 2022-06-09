@@ -1,6 +1,13 @@
-const { sequelize, DataTypes } = require("../lib/sequelize");
+const { sequelize, DataTypes } = require("../../lib/sequelize");
+const Hi_tech_info = require('../carpet_infos/Hi-tech_info')
 
-const Unique_collection = sequelize.define("unique_collection", {
+const Hi_Tech_collection = sequelize.define("hi_tech_collection", {
+  carpet_id: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4(),
+    primaryKey: true,
+    allowNull: false,
+  },
     description: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -52,7 +59,20 @@ const Unique_collection = sequelize.define("unique_collection", {
     }
   });
 
+  Hi_Tech_collection.hasMany(Hi_tech_info, {
+    as: 'carpet_infos', 
+    foreignKey: {
+      name: "carpet_id",
+    },
+  });
+  Hi_tech_info.belongsTo(Hi_Tech_collection, {
+    as: 'carpet_infos', 
+    foreignKey: {
+      name: "carpet_id",
+    },
+  });
+
   
   module.exports = {
-    Unique_collection
+    Hi_Tech_collection
   }

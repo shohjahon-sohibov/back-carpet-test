@@ -1,4 +1,4 @@
-const { Prince_collection } = require('../../model/Prince.collection');
+const { Prince_collection } = require('../../model/carpet_collections/Prince.collection');
 const { Carpet_info, Carpet_comments } = require('../../model/model')
 
 module.exports = {
