@@ -40,7 +40,6 @@ module.exports = {
 
       if (isCollectionFound) {
         const collection = collection_infos[0].collection_name.toLowerCase();
-        
         if (collection == "adele") {
           collection_infos.forEach(async (element) => {
             const arr = [];
@@ -365,7 +364,7 @@ module.exports = {
   DELETE_COLLECTION_INFO: async (req, res) => {
     try {
       const { id, info_order } = req.body;
-
+      
       const isFound = await Carpet_info.findOne({
         where: {
           id,
@@ -379,16 +378,242 @@ module.exports = {
           const arr = [];
           arr.push(element);
 
-          await Adele_info.create({
-            size: arr[0].size,
-            price: arr[0].price,
-            in_market: arr[0].in_market,
-            carpet_id: arr[0].carpet_id.id,
-            collection_name: arr[0].collection_name,
+          await Adele_info.destroy({
+          where: {
+            id:arr[0].id
+          }
           });
         });
         res.status(201).json("resource created succsessfully");
-      } 
+      }  else if (collection == "artemida") {
+        collection_infos.forEach(async (element) => {
+          const arr = [];
+          arr.push(element);
+
+          await Artemida_info.destroy({
+            where: {
+              id:arr[0].id
+            }
+          });
+        });
+        res.status(201).json("resource destroyd succsessfully");
+      } else if (collection == "camaro") {
+        collection_infos.forEach(async (element) => {
+          const arr = [];
+          arr.push(element);
+
+          await Camaro_info.destroy({
+             where: {
+            id:arr[0].id
+          }
+          });
+        });
+        res.status(201).json("resource destroyd succsessfully");
+      } else if (collection == "camellia") {
+        collection_infos.forEach(async (element) => {
+          const arr = [];
+          arr.push(element);
+
+          await Camellia_info.destroy({
+             where: {
+            id:arr[0].id
+          }
+          });
+        });
+        res.status(201).json("resource destroyd succsessfully");
+      } else if (collection == "diadema") {
+        collection_infos.forEach(async (element) => {
+          const arr = [];
+          arr.push(element);
+
+          await Diadema_info.destroy({
+             where: {
+            id:arr[0].id
+          }
+          });
+        });
+        res.status(201).json("resource destroyd succsessfully");
+      } else if (collection == "dream") {
+        collection_infos.forEach(async (element) => {
+          const arr = [];
+          arr.push(element);
+
+          await Dream_info.destroy({
+             where: {
+            id:arr[0].id
+          }
+          });
+        });
+        res.status(201).json("resource destroyd succsessfully");
+      } else if (collection == "feniks") {
+        collection_infos.forEach(async (element) => {
+          const arr = [];
+          arr.push(element);
+
+          await Feniks_info.destroy({
+             where: {
+            id:arr[0].id
+          }
+          });
+        });
+        res.status(201).json("resource destroyd succsessfully");
+      } else if (collection == "hermosa") {
+        collection_infos.forEach(async (element) => {
+          const arr = [];
+          arr.push(element);
+
+          await Hermosa_info.destroy({
+             where: {
+            id:arr[0].id
+          }
+          });
+        });
+        res.status(201).json("resource destroyd succsessfully");
+      } else if (collection == "hi-tech") {
+        collection_infos.forEach(async (element) => {
+          const arr = [];
+          arr.push(element);
+
+          await Hi_tech_info.destroy({
+             where: {
+            id:arr[0].id
+          }
+          });
+        });
+        res.status(201).json("resource destroyd succsessfully");
+      } else if (collection == "kasandra") {
+        collection_infos.forEach(async (element) => {
+          const arr = [];
+          arr.push(element);
+
+          await Kasandra_info.destroy({
+             where: {
+            id:arr[0].id
+          }
+          });
+        });
+        res.status(201).json("resource destroyd succsessfully");
+      } else if (collection == "kenzo") {
+        collection_infos.forEach(async (element) => {
+          const arr = [];
+          arr.push(element);
+
+          await Kenzo_info.destroy({
+             where: {
+            id:arr[0].id
+          }
+          });
+        });
+        res.status(201).json("resource destroyd succsessfully");
+      } else if (collection == "legenda") {
+        collection_infos.forEach(async (element) => {
+          const arr = [];
+          arr.push(element);
+
+          await Legenda_info.destroy({
+             where: {
+            id:arr[0].id
+          }
+          });
+        });
+        res.status(201).json("resource destroyd succsessfully");
+      } else if (collection == "lindo") {
+        collection_infos.forEach(async (element) => {
+          const arr = [];
+          arr.push(element);
+
+          await Lindo_info.destroy({
+             where: {
+            id:arr[0].id
+          }
+          });
+        });
+        res.status(201).json("resource destroyd succsessfully");
+      } else if (collection == "millenium") {
+        collection_infos.forEach(async (element) => {
+          const arr = [];
+          arr.push(element);
+
+          await Millenium_info.destroy({
+             where: {
+            id:arr[0].id
+          }
+          });
+        });
+        res.status(201).json("resource destroyd succsessfully");
+      } else if (collection == "mustang") {
+        collection_infos.forEach(async (element) => {
+          const arr = [];
+          arr.push(element);
+
+          await Mustang_info.destroy({
+             where: {
+            id:arr[0].id
+          }
+          });
+        });
+        res.status(201).json("resource destroyd succsessfully");
+      } else if (collection == "prince") {
+        collection_infos.forEach(async (element) => {
+          const arr = [];
+          arr.push(element);
+
+          await Prince_info.destroy({
+             where: {
+            id:arr[0].id
+          }
+          });
+        });
+        res.status(201).json("resource destroyd succsessfully");
+      } else if (collection == "relax") {
+        collection_infos.forEach(async (element) => {
+          const arr = [];
+          arr.push(element);
+
+          await Relax_info.destroy({
+             where: {
+            id:arr[0].id
+          }
+          });
+        });
+        res.status(201).json("resource destroyd succsessfully");
+      } else if (collection == "salvatini") {
+        collection_infos.forEach(async (element) => {
+          const arr = [];
+          arr.push(element);
+
+          await Salvatini_info.destroy({
+             where: {
+            id:arr[0].id
+          }
+          });
+        });
+        res.status(201).json("resource destroyd succsessfully");
+      } else if (collection == "tresor") {
+        collection_infos.forEach(async (element) => {
+          const arr = [];
+          arr.push(element);
+
+          await Tresor_info.destroy({
+             where: {
+            id:arr[0].id
+          }
+          });
+        });
+        res.status(201).json("resource destroyd succsessfully");
+      } else if (collection == "unique") {
+        collection_infos.forEach(async (element) => {
+          const arr = [];
+          arr.push(element);
+
+          await Unique_info.destroy({
+             where: {
+            id:arr[0].id
+          }
+          });
+        });
+        res.status(201).json("resource created succsessfully");
+      }
 
       if (isFound) {
         await Carpet_info.destroy({
