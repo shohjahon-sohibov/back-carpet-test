@@ -39,7 +39,7 @@ module.exports = {
       });
 
       if (isCollectionFound) {
-        const collection = collection_infos[0].collection_name;
+        const collection = collection_infos[0].collection_name.toLowerCase();
         
         if (collection == "adele") {
           collection_infos.forEach(async (element) => {
