@@ -1,8 +1,8 @@
 const { sequelize, DataTypes } = require("../../lib/sequelize");
-const Adele_info = require("../carpet_infos/Adele_info");
+const { Tufting_comments } = require("../model");
 
-const Adele_collection = sequelize.define("adele_collection", {
-  carpet_id: {
+const Liberti_collection = sequelize.define("liberti_collection", {
+  product_id: {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4(),
     primaryKey: true,
@@ -59,19 +59,15 @@ const Adele_collection = sequelize.define("adele_collection", {
   },
 });
 
-Adele_collection.hasMany(Adele_info, {
-  as: "carpet_infos",
+Liberti_collection.hasMany(Tufting_comments, {
   foreignKey: {
-    name: "carpet_id",
+    name: "product_id",
   },
 });
-Adele_info.belongsTo(Adele_collection, {
-  as: "carpet_infos",
+Tufting_comments.belongsTo(Liberti_collection, {
   foreignKey: {
-    name: "carpet_id",
+    name: "product_id",
   },
 });
 
-module.exports = {
-  Adele_collection,
-};
+module.exports = Liberti_collection;

@@ -10,11 +10,11 @@ module.exports = {
     },
     POST_COMMENT: async (req, res) => {
         try {
-            const { body, tuftingCollectionId } = req.body;
+            const { body, product_id } = req.body;
 
             await Tufting_comments.create({
                 body,
-                tuftingCollectionId
+                product_id
             });
 
             res.status(201).json("resource created successfully");
@@ -24,7 +24,7 @@ module.exports = {
     },
     UPDATE_COMMENT: async (req, res) => {
         try {
-            const { id, body, tuftingCollectionId } = req.body;
+            const { id, body, product_id } = req.body;
 
             if (id && body) {
                 const findCommentsId = await Tufting_comments.findOne({
@@ -37,7 +37,7 @@ module.exports = {
                     await Tufting_comments.update(
                         {
                             body,
-                            tuftingCollectionId
+                            product_id
                         },
                         {
                             where: {

@@ -40,6 +40,10 @@ const Camellia = require('./carpet_collections/Camellia')
 const Camaro = require('./carpet_collections/Camaro')
 const Artemida = require('./carpet_collections/Artemida')
 
+// =============  TUFTING COLLECTIONS ===============
+const Delta = require('./tufting_collections/Delta')
+const Dior = require('./tufting_collections/Dior')
+
 // Other Modules
 const News = require("./news/news");
 const AboutHolding = require("./aboutHolding/aboutHolding");
@@ -54,6 +58,27 @@ const Transaction = require("./transaction/transaction");
 const { AUTH_ROLE_MID, IS_VALID_TOKEN_MID } = require("../middlwares/jwt-helper");
 const {	uploadAboutHoldings, uploadBranches, uploadBrands, uploadNews, uploadCarpetCol, uploadTuftingCol, uploadGrassCol } = require("../middlwares/multer");
 const middleware = require("../middlwares/AuthMiddleware");
+
+
+const Elis = require("./tufting_collections/Elis");
+const Fendi = require("./tufting_collections/Fendi");
+const Fresko = require("./tufting_collections/Fresko");
+const Grafik = require("./tufting_collections/Grafik");
+const Infiniti = require("./tufting_collections/Infiniti");
+const Kobul = require("./tufting_collections/Kobul");
+const Laguna = require("./tufting_collections/Laguna");
+const Lexus = require("./tufting_collections/Lexus");
+const Liberti = require("./tufting_collections/Liberti");
+const Lufian = require("./tufting_collections/Lufian");
+const Mars = require("./tufting_collections/Mars");
+const Milano = require("./tufting_collections/Milano");
+const Platan = require("./tufting_collections/Platan");
+const Radisson = require("./tufting_collections/Radisson");
+const Rodin = require("./tufting_collections/Rodin");
+const Sadaf = require("./tufting_collections/Sadaf");
+const Saturn = require("./tufting_collections/Saturn");
+const Sparta = require("./tufting_collections/Sparta");
+const Vesta = require("./tufting_collections/Vesta");
 
 router
   .get("/users", Users.GET_USERS)
@@ -122,6 +147,31 @@ router
   .get("/api/camellia", Camellia.GET_CAMELLIA)
   .get("/api/camaro", Camaro.GET_CAMARO)
   .get("/api/artemida", Artemida.GET_ARTEMIDA)
+
+  // TUFTING COLLECTIONS
+
+  .get("/api/delta", Delta.GET_DELTA)
+  .get("/api/dior", Dior.GET_DIOR)
+  .get("/api/elis", Elis.GET_ELIS)
+  .get("/api/fendi", Fendi.GET_FENDI)
+  .get("/api/fresko", Fresko.GET_FRESKO)
+  .get("/api/grafik", Grafik.GET_GRAFIK)
+  .get("/api/infiniti", Infiniti.GET_INFINITI)
+  .get("/api/kobul", Kobul.GET_KOBUL)
+  .get("/api/laguna", Laguna.GET_LAGUNA)
+  .get("/api/lexus", Lexus.GET_LEXUS)
+  .get("/api/liberti", Liberti.GET_LIBERTI)
+  .get("/api/luftan", Lufian.GET_LUFIAN)
+  .get("/api/mars", Mars.GET_MARS)
+  .get("/api/milano", Milano.GET_MILANO)
+  .get("/api/platan", Platan.GET_PLATAN)
+  .get("/api/radisson", Radisson.GET_RADISSON)
+  .get("/api/rodin", Rodin.GET_RODIN)
+  .get("/api/sadaf", Sadaf.GET_SADAF)
+  .get("/api/saturn", Saturn.GET_SATURN)
+  .get("/api/sparta", Sparta.GET_SPARTA)
+  .get("/api/vesta", Vesta.GET_VESTA)
+
   
   .get("/api/tufting-collections", Tufting_collections.GET_COLLECTIONS)
   .post("/api/new-tufting-collection", uploadTuftingCol.single("poster"), Tufting_collections.POST_COLLECTION)
