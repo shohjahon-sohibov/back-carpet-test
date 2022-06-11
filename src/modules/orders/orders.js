@@ -48,7 +48,7 @@ module.exports = {
           res.json({
              amount: amount,
              fullname: newOrder.customer,
-             user_id: 1,
+             user_id: newUser.id,
           });
         }
 
