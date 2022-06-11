@@ -41,14 +41,14 @@ const Users = sequelize.define("user", {
     },
     isEmail: true,
   },
-  role: {
-    type: DataTypes.STRING(25),
-    allowNull: false,
-  },
-  password: {
-    type: DataTypes.STRING(64),
-    notNull: true, // won't allow null
-  },
+  // role: {
+  //   type: DataTypes.STRING(25),
+  //   allowNull: false,
+  // },
+  // password: {
+  //   type: DataTypes.STRING(64),
+  //   notNull: true, // won't allow null
+  // },
   isDelete: {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
