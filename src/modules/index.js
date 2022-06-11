@@ -212,9 +212,6 @@ router
   .put("/update-job", Jobs.UPDATE_JOB)
   .delete("/delete-job", Jobs.DELETE_JOB)
 
-  // [middleware.requireAuthentication, middleware.logger]
-
   .post("/transaction", [ middleware.AuthMiddleware, middleware.ErrorModifierMiddleware ], Transaction.HomePostController)
-
 
 module.exports = router;
