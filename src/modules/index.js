@@ -55,7 +55,7 @@ const Jobs = require("./job/job");
 const Transaction = require("./transaction/transaction");
 
 // middlewares
-const { AUTH_ROLE_MID, IS_VALID_TOKEN_MID } = require("../middlwares/jwt-helper");
+// const { AUTH_ROLE_MID, IS_VALID_TOKEN_MID } = require("../middlwares/jwt-helper");
 const {	uploadAboutHoldings, uploadBranches, uploadBrands, uploadNews, uploadCarpetCol, uploadTuftingCol, uploadGrassCol } = require("../middlwares/multer");
 const middleware = require("../middlwares/AuthMiddleware");
 
