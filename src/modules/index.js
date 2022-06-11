@@ -82,9 +82,9 @@ const Vesta = require("./tufting_collections/Vesta");
 
 router
   .get("/users", Users.GET_USERS)
-  .post("/register", AUTH_ROLE_MID, Users.REGISTER)
-  .post("/login", IS_VALID_TOKEN_MID, Users.LOGIN)
-  .delete("/deleteUser", Users.DELETE_ACCOUNT)
+  // .post("/register", AUTH_ROLE_MID, Users.REGISTER)
+  // .post("/login", IS_VALID_TOKEN_MID, Users.LOGIN)
+  // .delete("/deleteUser", Users.DELETE_ACCOUNT)
 
   .get("/api/clients", Clients.GET_CLIENTS)
   .delete("/api/delete-client", Clients.DELETE_CLIENT)
