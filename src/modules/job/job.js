@@ -1,4 +1,4 @@
-const { jobs } = require("../../model/model");
+const { jobs } = require("../../model/Jobs");
 
 module.exports = {
   GET_JOBS: async (_, res) => {

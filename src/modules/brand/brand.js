@@ -1,4 +1,4 @@
-const { brands } = require("../../model/model");
+const { brands } = require("../../model/Brands");
 const { SERVERLINK } = require('../../config')
 const fs = require("fs");
 const path = require("path");

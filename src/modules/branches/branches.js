@@ -1,4 +1,4 @@
-const { branch } = require("../../model/model");
+const { branch } = require("../../model/Branches");
 const { SERVERLINK } = require("../../config");
 const fs = require("fs");
 const path = require("path");

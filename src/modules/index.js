@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 // Users
-const Users = require("./users/users");
+const Admin = require("./admin/admin");
 const Clients = require("./clients/clients");
 // Comments
 const Carpet_comment = require("./comment/carpet_comment");
@@ -81,13 +81,14 @@ const Sparta = require("./tufting_collections/Sparta");
 const Vesta = require("./tufting_collections/Vesta");
 
 router
-  .get("/users", Users.GET_USERS)
+  // .get("/admins", Admin.GET_USERS)
   // .post("/register", AUTH_ROLE_MID, Users.REGISTER)
   // .post("/login", IS_VALID_TOKEN_MID, Users.LOGIN)
   // .delete("/deleteUser", Users.DELETE_ACCOUNT)
 
-  .get("/api/clients", Clients.GET_CLIENTS)
-  .delete("/api/delete-client", Clients.DELETE_CLIENT)
+  .get("/api/clients", Clients.GET_USER)
+  .put("/api/delete-client", Clients.DELETE_USER)
+  .delete("/api/drop-client", Clients.DROP_USER)
 
 
   .get("/api/carpet-comments", Carpet_comment.GET_COMMENTS)

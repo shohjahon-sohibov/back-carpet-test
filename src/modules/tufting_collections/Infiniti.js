@@ -1,5 +1,5 @@
 const Infiniti_collection = require("../../model/tufting_collections/Infiniti.collection");
-const { Tufting_comments } = require("../../model/model");
+const { Tufting_comments } = require("../../model/comments/Tufting-comments");
 
 module.exports = {
   GET_INFINITI: async (_, res) => {

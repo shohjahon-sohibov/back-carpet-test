@@ -1,5 +1,5 @@
 const Sparta_collection = require("../../model/tufting_collections/Sparta.collection");
-const { Tufting_comments } = require("../../model/model");
+const { Tufting_comments } = require("../../model/comments/Tufting-comments");
 
 module.exports = {
   GET_SPARTA: async (_, res) => {

@@ -1,5 +1,5 @@
 const Kobul_collection = require("../../model/tufting_collections/Kobul.collection");
-const { Tufting_comments } = require("../../model/model");
+const { Tufting_comments } = require("../../model/comments/Tufting-comments");
 
 module.exports = {
   GET_KOBUL: async (_, res) => {

@@ -1,5 +1,5 @@
 const Lufian_collection = require("../../model/tufting_collections/Lufian.collection");
-const { Tufting_comments } = require("../../model/model");
+const { Tufting_comments } = require("../../model/comments/Tufting-comments");
 
 module.exports = {
   GET_LUFIAN: async (_, res) => {

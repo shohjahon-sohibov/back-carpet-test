@@ -1,5 +1,5 @@
 const Vesta_collection = require("../../model/tufting_collections/Vesta.collection");
-const { Tufting_comments } = require("../../model/model");
+const { Tufting_comments } = require("../../model/comments/Tufting-comments");
 
 module.exports = {
   GET_VESTA: async (_, res) => {

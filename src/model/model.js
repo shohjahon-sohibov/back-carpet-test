@@ -1,183 +1,14 @@
 const { sequelize, DataTypes } = require("../lib/sequelize");
 
-const Users = sequelize.define("user", {
-  // user_id: {
-  //   type: DataTypes.UUID,
-  //   defaultValue: DataTypes.UUIDV4(),
-  //   primaryKey: true,
-  // },
-  fullname: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-    validate: {
-      min: 1,
-      max: 64,
-    },
-  },
-  username: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-    validate: {
-      min: 3,
-      max: 25,
-    },
-    unique: {
-      args: true,
-      msg: "username already in use!",
-    },
-  },
-  phone: {
-    type: DataTypes.TEXT,
-    unique: {
-      args: true,
-      msg: "phone already in use!",
-    },
-  },
-  email: {
-    type: DataTypes.TEXT,
-    unique: {
-      args: true,
-      msg: "email already in use!",
-    },
-    isEmail: true,
-  },
-  // role: {
-  //   type: DataTypes.STRING(25),
-  //   allowNull: false,
-  // },
-  // password: {
-  //   type: DataTypes.STRING(64),
-  //   notNull: true, // won't allow null
-  // },
-  isDelete: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
-  },
-  user_balance: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    defaultValue: 0,
-  },
-});
-
-const Clients = sequelize.define('client', {
+const Clients = sequelize.define("client", {
   client_name: {
     type: DataTypes.TEXT,
-    allowNull: false
+    allowNull: false,
   },
   client_phone: {
     type: DataTypes.TEXT,
-    allowNull: false
-  }
-})
-
-const payments = sequelize.define("payments", {
-  payment_id: {
-    type: DataTypes.STRING,
-    primaryKey: true,
-  },
-  payment_state: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    defaultValue: 1,
-  },
-  payment_amount: {
-    type: DataTypes.INTEGER,
     allowNull: false,
   },
-  payment_perform_time: {
-    type: DataTypes.DATE,
-    allowNull: true,
-  },
-  payment_cancel_time: {
-    type: DataTypes.DATE,
-    allowNull: true,
-  },
-  payment_reason: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-  },
-});
-
-const Carpet_info = sequelize.define("carpet_info", {
-  size: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-    defaultValue: 0
-  },
-  price: {
-    type: DataTypes.INTEGER,
-    defaultValue: 0,
-    allowNull: false,
-  },
-  in_market: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
-    allowNull: false,
-  },  
-  collection_name: {
-    type: DataTypes.TEXT,
-    defaultValue: false,
-    allowNull: false,
-  }
-});
-
-const Tufting_info = sequelize.define("tufting_info", {
-  size: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-    defaultValue: 0
-  },
-  price: {
-    type: DataTypes.INTEGER,
-    defaultValue: 0,
-    allowNull: false,
-  },
-  in_market: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
-    allowNull: false,
-  }
-})
-
-const Grass_info = sequelize.define("grass_info", {
-  size: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-    defaultValue: 0
-  },
-  price: {
-    type: DataTypes.INTEGER,
-    defaultValue: 0,
-    allowNull: false,
-  },
-  in_market: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
-    allowNull: false,
-  }
-})
-
-
-const Carpet_comments = sequelize.define("carpet_comment", {
-  body: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  }
-});
-
-const Tufting_comments = sequelize.define("tufting_comment", {
-  body: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  }
-});
-
-const Grass_comments = sequelize.define("grass_comment", {
-  body: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  }
 });
 
 const carpetCollections = sequelize.define("carpet_collection", {
@@ -186,7 +17,7 @@ const carpetCollections = sequelize.define("carpet_collection", {
     // defaultValue: DataTypes.UUIDV4(),
     primaryKey: true,
     allowNull: false,
-    autoIncrement: true
+    autoIncrement: true,
   },
   description: {
     type: DataTypes.TEXT,
@@ -214,7 +45,7 @@ const carpetCollections = sequelize.define("carpet_collection", {
   rating: {
     type: DataTypes.INTEGER,
   },
-  sell: DataTypes.INTEGER,  
+  sell: DataTypes.INTEGER,
   imageUrl: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -235,8 +66,8 @@ const carpetCollections = sequelize.define("carpet_collection", {
   },
   in_market: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false
-  }
+    defaultValue: false,
+  },
 });
 
 const tuftingCollections = sequelize.define("tufting_collection", {
@@ -258,13 +89,13 @@ const tuftingCollections = sequelize.define("tufting_collection", {
     defaultValue: false,
   },
   like: {
-    type: DataTypes.INTEGER
+    type: DataTypes.INTEGER,
   },
   dislike: {
-    type: DataTypes.INTEGER
+    type: DataTypes.INTEGER,
   },
   rating: {
-    type: DataTypes.INTEGER
+    type: DataTypes.INTEGER,
   },
   sell: DataTypes.INTEGER,
   imageUrl: {
@@ -287,8 +118,8 @@ const tuftingCollections = sequelize.define("tufting_collection", {
   },
   in_market: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false
-  }
+    defaultValue: false,
+  },
 });
 
 const grassCollections = sequelize.define("grass_collection", {
@@ -351,188 +182,7 @@ const grassCollections = sequelize.define("grass_collection", {
   },
   in_market: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false
-  }
-});
-
-const brands = sequelize.define("brand", {
-  imageType: DataTypes.STRING,
-  imageName: DataTypes.STRING,
-  imageUrl: {
-    type: DataTypes.STRING,
-    unique: {
-      args: true,
-      msg: "this name of image already in use!",
-    },
-  },
-});
-
-const news = sequelize.define("news", {
-  title: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-    validate: {
-      min: 1,
-    },
-  },
-  description: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-    validate: {
-      min: 1,
-    },
-  },
-  imgUrl: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: {
-      args: true,
-      msg: "this name of image already in use!",
-    },
-  },
-  imageName: DataTypes.STRING,
-});
-
-const aboutHolding = sequelize.define("about_holding", {
-  title: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-    validate: {
-      min: 1,
-    },
-  },
-  description: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-    validate: {
-      min: 1,
-    },
-  },
-  imgUrl: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: {
-      args: true,
-      msg: "this name of image already in use!",
-    },
-  },
-  imageName: DataTypes.STRING,
-});
-
-const branch = sequelize.define("branch", {
-  name: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-    validate: {
-      min: 1,
-    },
-  },
-  address: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-    validate: {
-      min: 1,
-    },
-  },
-  phone: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-    validate: {
-      min: 3,
-    },
-  },
-  gmail: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-    isEmail: true,
-    validate: {
-      min: 1,
-    },
-  },
-  region: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  },
-  imgUrl: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: {
-      args: true,
-      msg: "this name of image already in use!",
-    },
-  },
-  imageName: DataTypes.STRING,
-});
-
-const orders = sequelize.define("order", {
-  customer: {
-    type: DataTypes.TEXT,
-    validate: {
-      min: 1,
-    },
-    timestamps: true,
-  },
-  phone: {
-    type: DataTypes.TEXT,
-    validate: {
-      min: 3,
-    },
-  },
-  product_name: {
-    type: DataTypes.TEXT,
-    validate: {
-      min: 1,
-    },
-  },
-  product_code: {
-    type: DataTypes.TEXT,
-  },
-  size: {
-    type: DataTypes.TEXT,
-  },
-  color: {
-    type: DataTypes.TEXT,
-  },
-  address: {
-    type: DataTypes.TEXT,
-  },
-  quantity: {
-    type: DataTypes.INTEGER,
-    validate: {
-      min: 1,
-    },
-  },
-  price: {
-    type: DataTypes.TEXT,
-    validate: {
-      min: 1,
-    },
-  },
-  total_amount: {
-    type: DataTypes.TEXT,
-    validate: {
-      min: 1,
-    },
-  },
-  callback: {
-    type: DataTypes.BOOLEAN,
-  },
-});
-
-const jobs = sequelize.define("job", {
-  title: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-    validate: {
-      min: 1,
-    },
-  },
-  description: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-    validate: {
-      min: 1,
-    },
+    defaultValue: false,
   },
 });
 
@@ -561,9 +211,6 @@ const jobs = sequelize.define("job", {
 //   },
 // });
 
-Users.hasMany(payments);
-payments.belongsTo(Users);
-
 // orders.hasMany(payments, {
 //   foreignKey: {
 //     name: "order_id",
@@ -587,7 +234,6 @@ payments.belongsTo(Users);
 // grassCollections.hasMany(Grass_info)  //  GRASS infos => price, size and etc...
 // Grass_info.belongsTo(grassCollections)
 
-
 // carpetCollections.hasMany(Carpet_comments) // CARPET comments
 // Carpet_comments.belongsTo(carpetCollections);
 
@@ -598,23 +244,8 @@ payments.belongsTo(Users);
 // Grass_comments.belongsTo(grassCollections);
 
 module.exports = {
-  Users,
   Clients,
-  payments,
-  Carpet_info,
-  Tufting_info,
-  Grass_info,
-  Carpet_comments,
-  Tufting_comments,
-  Grass_comments,
   carpetCollections,
   tuftingCollections,
   grassCollections,
-  brands,
-  news,
-  aboutHolding,
-  branch,
-  orders,
-  jobs,
-  // transactions,
 };

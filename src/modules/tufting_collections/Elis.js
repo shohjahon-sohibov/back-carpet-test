@@ -1,5 +1,5 @@
 const Elis_collection = require("../../model/tufting_collections/Elis.collection");
-const { Tufting_comments } = require("../../model/model");
+const { Tufting_comments } = require("../../model/comments/Tufting-comments");
 
 module.exports = {
   GET_ELIS: async (_, res) => {

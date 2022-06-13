@@ -1,5 +1,5 @@
 const { sequelize, DataTypes } = require("../../lib/sequelize");
-const { Tufting_comments } = require("../model");
+const { Tufting_comments } = require("../comments/Tufting-comments");
 
 const Delta_collection = sequelize.define("delta_collection", {
   product_id: {

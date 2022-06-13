@@ -1,4 +1,4 @@
-const { aboutHolding } = require("../../model/model");
+const { aboutHolding } = require("../../model/About-us");
 const { SERVERLINK } = require("../../config");
 const fs = require("fs");
 const path = require("path");

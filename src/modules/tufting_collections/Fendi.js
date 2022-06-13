@@ -1,5 +1,5 @@
 const Fendi_collection = require("../../model/tufting_collections/Fendi.collection");
-const { Tufting_comments } = require("../../model/model");
+const { Tufting_comments } = require("../../model/comments/Tufting-comments");
 
 module.exports = {
   GET_FENDI: async (_, res) => {

@@ -1,5 +1,5 @@
 const Saturn_collection = require("../../model/tufting_collections/Saturn.collection");
-const { Tufting_comments } = require("../../model/model");
+const { Tufting_comments } = require("../../model/comments/Tufting-comments");
 
 module.exports = {
   GET_SATURN: async (_, res) => {

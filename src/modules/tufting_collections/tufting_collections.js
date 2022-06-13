@@ -29,12 +29,7 @@ const Praga_collection = require("../../model/tufting_collections/Praga.collecti
 module.exports = {
   GET_COLLECTIONS: async (_, res) => {
     try {
-      res.status(200).json(await tuftingCollections.findAll({
-        // include: [
-        //   { model: Tufting_comments, attributes: ["id", "body", "tuftingCollectionId"] },
-        //   { model: Tufting_info, attributes: [ "id", "size", "price", "in_market", "tuftingCollectionId"] },
-        // ],
-      }));
+      res.status(200).json(await tuftingCollections.findAll());
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }

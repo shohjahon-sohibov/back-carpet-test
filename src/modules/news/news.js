@@ -1,4 +1,4 @@
-const { news } = require("../../model/model");
+const { news } = require("../../model/News");
 const { SERVERLINK } = require('../../config')
 const fs = require("fs");
 const path = require("path");

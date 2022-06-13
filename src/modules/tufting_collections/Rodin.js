@@ -1,5 +1,5 @@
 const Rodin_collection = require("../../model/tufting_collections/Rodin.collection");
-const { Tufting_comments } = require("../../model/model");
+const { Tufting_comments } = require("../../model/comments/Tufting-comments");
 
 module.exports = {
   GET_RODIN: async (_, res) => {

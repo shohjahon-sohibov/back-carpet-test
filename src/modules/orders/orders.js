@@ -1,6 +1,5 @@
-const { orders, Clients,Users } = require("../../model/model");
-// const { MERCHANT_ID } = require('../../config')
-// const fetch = require('node-fetch')
+const { Users } = require("../../model/Users");
+const { orders } = require("../../model/Orders");
 
 module.exports = {
   GET_ORDERS: async (_, res) => {
@@ -15,7 +14,6 @@ module.exports = {
     try {
       const { order, customer, phone, address, callback } = req.body;
 
-      // const newUser = await Clients.create({ client_name: customer, client_phone: phone })
       const newUser = await Users.create({ fullname: customer, username: customer, phone: phone })
 
       let amount = 0;
@@ -53,48 +51,6 @@ module.exports = {
         }
 
       });
-
-      // console.log(amount);
-
-      // const amount = []
-
-      // arr.forEach((item) => {
-      //   amount.push(amount + item.total_amount)
-      // })
-
-      // console.log(amount);
-
-      // customer,
-      //   phone,
-      //   product_name,
-      //   product_code,
-      //   size,
-      //   color,
-      //   address,
-      //   quantity,
-      //   price,
-      //   callback,
-
-      // let params = {
-      //   merchant: MERCHANT_ID,
-      //   amount: total_amount,
-      //   account: [{
-      //     user_id: newOrder.id,
-      //   }]
-      // };
-      // var accounts = {
-      //   fullname: customer,
-      //   order_id: newOrder.id
-      // }
-
-      // const url ='https://checkout.paycom.uz';
-      // const headers = {
-      //   "Content-Type": "application/json"
-      // }
-      // fetch(url, { method: 'POST', headers: headers, body: params})
-      //     .then((json) => {
-      //       console.log(json);
-      //     });
 
       const date = new Date();
       console.log(date, "date");

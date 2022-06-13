@@ -1,5 +1,5 @@
 const Fresko_collection = require("../../model/tufting_collections/Fresko.collection");
-const { Tufting_comments } = require("../../model/model");
+const { Tufting_comments } = require("../../model/comments/Tufting-comments");
 
 module.exports = {
   GET_FRESKO: async (_, res) => {

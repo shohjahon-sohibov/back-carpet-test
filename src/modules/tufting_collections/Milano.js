@@ -1,5 +1,5 @@
 const Milano_collection = require("../../model/tufting_collections/Milano.collection");
-const { Tufting_comments } = require("../../model/model");
+const { Tufting_comments } = require("../../model/comments/Tufting-comments");
 
 module.exports = {
   GET_MILANO: async (_, res) => {
