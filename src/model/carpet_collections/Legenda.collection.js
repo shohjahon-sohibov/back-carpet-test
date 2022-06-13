@@ -1,5 +1,6 @@
 const { sequelize, DataTypes } = require("../../lib/sequelize");
 const Legenda_info = require('../carpet_infos/Legenda_info')
+const { Carpet_comments } = require("../comments/Carpet-comments");
 
 const Legenda_collection = sequelize.define("legenda_collection", {
   carpet_id: {
@@ -72,6 +73,18 @@ const Legenda_collection = sequelize.define("legenda_collection", {
     },
   });
   
+  // COMMENTS RELATION
+Legenda_collection.hasMany(Carpet_comments, {
+  foreignKey: {
+    name: "product_id",
+  },
+});
+Carpet_comments.belongsTo(Legenda_collection, {
+  foreignKey: {
+    name: "product_id",
+  },
+});
+
   module.exports = {
     Legenda_collection
   }

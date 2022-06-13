@@ -1,5 +1,6 @@
 const { sequelize, DataTypes } = require("../../lib/sequelize");
 const Kasandra_info = require('../carpet_infos/Kasandra_info')
+const { Carpet_comments } = require("../comments/Carpet-comments");
 
 const Kasandra_collection = sequelize.define("kasandra_collection", {
   carpet_id: {
@@ -71,6 +72,18 @@ const Kasandra_collection = sequelize.define("kasandra_collection", {
       name: "carpet_id",
     },
   });
+
+  // COMMENTS RELATION
+Kasandra_collection.hasMany(Carpet_comments, {
+  foreignKey: {
+    name: "product_id",
+  },
+});
+Carpet_comments.belongsTo(Kasandra_collection, {
+  foreignKey: {
+    name: "product_id",
+  },
+});
   
   module.exports = {
     Kasandra_collection

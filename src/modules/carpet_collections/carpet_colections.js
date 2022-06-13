@@ -4,9 +4,7 @@ const path = require("path");
 
 const {
   carpetCollections,
-  Carpet_comments,
-  Carpet_info,
-} = require("../../model/model");
+} = require("../../model/Carpet-model");
 const { Adele_collection } = require("../../model/carpet_collections/Adele.collection");
 const { Relax_collection } = require("../../model/carpet_collections/Relax.collection");
 const { Tresor_collection } = require("../../model/carpet_collections/Tresor.collection");

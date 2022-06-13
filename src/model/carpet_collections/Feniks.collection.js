@@ -1,5 +1,6 @@
 const { sequelize, DataTypes } = require("../../lib/sequelize");
 const Feniks_info = require('../carpet_infos/Feniks_info')
+const { Carpet_comments } = require("../comments/Carpet-comments");
 
 const Feniks_collection = sequelize.define("feniks_collection", {
   carpet_id: {
@@ -71,6 +72,18 @@ const Feniks_collection = sequelize.define("feniks_collection", {
       name: "carpet_id",
     },
   });
+
+  // COMMENTS RELATION
+Feniks_collection.hasMany(Carpet_comments, {
+  foreignKey: {
+    name: "product_id",
+  },
+});
+Carpet_comments.belongsTo(Feniks_collection, {
+  foreignKey: {
+    name: "product_id",
+  },
+});
   
   module.exports = {
     Feniks_collection

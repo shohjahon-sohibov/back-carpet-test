@@ -1,4 +1,4 @@
-const { grassCollections } = require("../../model/model");
+const { grassCollections } = require("../../model/Grass-model");
 const { Grass_comments } = require("../../model/comments/Grass-comments");
 const { Grass_info } = require("../../model/collection-sizes/Grass-size");
 const { SERVERLINK } = require("../../config");

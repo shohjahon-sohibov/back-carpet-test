@@ -1,4 +1,4 @@
-const { Carpet_comments } = require("../../model/model");
+const { Carpet_comments } = require("../../model/comments/Carpet-comments");
 
 module.exports = {
   GET_COMMENTS: async (_, res) => {
@@ -10,11 +10,11 @@ module.exports = {
   },
   POST_COMMENT: async (req, res) => {
     try {
-      const { body, carpetCollectionId } = req.body;
+      const { body, product_id } = req.body;
 
       await Carpet_comments.create({
         body,
-        carpetCollectionId
+        product_id
       });
 
       res.status(201).json("resource created successfully");
@@ -24,7 +24,7 @@ module.exports = {
   },
   UPDATE_COMMENT: async (req, res) => {
     try {
-      const { id, body, carpetCollectionId } = req.body;
+      const { id, body, product_id } = req.body;
 
       if (id && body) {
         const findCommentsId = await Carpet_comments.findOne({
@@ -37,7 +37,7 @@ module.exports = {
           await Carpet_comments.update(
             {
               body,
-              carpetCollectionId
+              product_id
             },
             {
               where: {

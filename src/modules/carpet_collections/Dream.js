@@ -1,5 +1,7 @@
-const { Dream_collection } = require("../../model/carpet_collections/Dream.collection");
-// const { Carpet_info, Carpet_comments } = require("../../model/model");
+const {
+  Dream_collection,
+} = require("../../model/carpet_collections/Dream.collection");
+const { Carpet_comments } = require("../../model/comments/Carpet-comments");
 const Dream_infos = require("../../model/carpet_infos/Dream_info");
 
 module.exports = {
@@ -8,10 +10,10 @@ module.exports = {
       res.json(
         await Dream_collection.findAll({
           include: [
-            // {
-            //   model: Carpet_comments,
-            //   attributes: ["id", "body", "carpetCollectionId"],
-            // },
+            {
+              model: Carpet_comments,
+              attributes: ["id", "body", "product_id"],
+            },
             {
               model: Dream_infos,
               as: "carpet_infos",

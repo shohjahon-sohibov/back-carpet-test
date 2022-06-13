@@ -14,12 +14,9 @@ module.exports = {
     try {
       const { order, customer, phone, address, callback } = req.body;
 
-      const newUser = await Users.create({ fullname: customer, username: customer, phone: phone })
-
       let amount = 0;
-      let count = 0
+      let count = 0;
       order.forEach(async (item) => {
-
         const arrLength = order.length;
         console.log(arrLength);
 
@@ -38,23 +35,41 @@ module.exports = {
           total_amount: total_amount,
         });
 
-        amount = amount + total_amount
+        amount = amount + total_amount;
 
-        count++
-        
-        if(arrLength == count) {
-          res.json({
-             amount: amount,
-             fullname: newOrder.customer,
-             user_id: newUser.id,
+        count++;
+
+        if (arrLength == count) {
+          const isFoundUser = await Users.findOne({
+            where: {
+              phone,
+            },
           });
-        }
 
+          if (!isFoundUser) {
+            const newUser = await Users.create({
+              fullname: customer,
+              username: customer,
+              phone: phone,
+            });
+
+            res.json({
+              amount: amount,
+              fullname: newOrder.customer,
+              user_id: newUser.id,
+            });
+          } else {
+            res.json({
+              amount: amount,
+              fullname: newOrder.customer,
+              user_id: isFoundUser.id,
+            });
+          }
+        }
       });
 
       const date = new Date();
       console.log(date, "date");
-
     } catch (error) {
       res.status(500).json({ error: error.message });
     }

@@ -1,13 +1,11 @@
-const { sequelize, DataTypes } = require("../../lib/sequelize");
-const Millenium_info = require("../carpet_infos/Millenium_info");
-const { Carpet_comments } = require("../comments/Carpet-comments");
+const { sequelize, DataTypes } = require("../lib/sequelize");
 
-const Millenium_collection = sequelize.define("millenium_collection", {
+const carpetCollections = sequelize.define("carpet_collection", {
   carpet_id: {
-    type: DataTypes.UUID,
-    defaultValue: DataTypes.UUIDV4(),
+    type: DataTypes.INTEGER,
     primaryKey: true,
     allowNull: false,
+    autoIncrement: true,
   },
   description: {
     type: DataTypes.TEXT,
@@ -47,7 +45,7 @@ const Millenium_collection = sequelize.define("millenium_collection", {
   imageName: DataTypes.STRING,
   imageType: DataTypes.STRING,
   product_code: {
-    type: DataTypes.TEXT,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   collection_name: {
@@ -60,31 +58,6 @@ const Millenium_collection = sequelize.define("millenium_collection", {
   },
 });
 
-Millenium_collection.hasMany(Millenium_info, {
-  as: "carpet_infos",
-  foreignKey: {
-    name: "carpet_id",
-  },
-});
-Millenium_info.belongsTo(Millenium_collection, {
-  as: "carpet_infos",
-  foreignKey: {
-    name: "carpet_id",
-  },
-});
-
-// COMMENTS RELATION
-Millenium_collection.hasMany(Carpet_comments, {
-  foreignKey: {
-    name: "product_id",
-  },
-});
-Carpet_comments.belongsTo(Millenium_collection, {
-  foreignKey: {
-    name: "product_id",
-  },
-});
-
 module.exports = {
-  Millenium_collection,
+  carpetCollections,
 };

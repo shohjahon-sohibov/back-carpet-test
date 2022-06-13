@@ -21,7 +21,7 @@ module.exports = {
         phone,
         password,
         role,
-        user_balance
+        user_balance,
       });
       const token = signUser({ id: newUser.id, role: newUser.role });
 
@@ -34,7 +34,7 @@ module.exports = {
     try {
       const { username, email, phone, password } = req.body;
 
-      const findUserByOption = await Users.findOne({
+      const findUserByOption = await Admin.findOne({
         where: {
           username,
         },
@@ -62,20 +62,35 @@ module.exports = {
       res.status(500).json({ error: error.message });
     }
   },
-  // DELETE_ACCOUNT: async (req, res) => {
-  //   try {
-  //     const { id, isDelete } = req.body;
-  //     await Users.findOne(
-  //       { isDelete },
-  //       {
-  //         where: {
-  //           id,
-  //         },
-  //       }
-  //     );
-  //     res.status(201).json("resource deleted successfully");
-  //   } catch (error) {
-  //     res.status(500).json({ error: error.message });
-  //   }
-  // },
+  DELETE_ACCOUNT: async (req, res) => {
+    try {
+      const { id } = req.body;
+      await Admin.update(
+        {
+          isDelete: true,
+        },
+        {
+          where: {
+            id,
+          },
+        }
+      );
+      res.status(201).json("resource deleted successfully");
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  },
+  DROP_ACCOUNT: async (req, res) => {
+    try {
+      const { id } = req.body;
+      await Admin.destroy({
+        where: {
+          id,
+        },
+      });
+      res.status(201).json("resource dropped successfully");
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  },
 };

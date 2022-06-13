@@ -1,4 +1,4 @@
-const { tuftingCollections, Tufting_comments, Tufting_info } = require("../../model/model");
+const { tuftingCollections } = require("../../model/Tufting-model");
 const { SERVERLINK } = require("../../config");
 const fs = require("fs");
 const path = require("path");

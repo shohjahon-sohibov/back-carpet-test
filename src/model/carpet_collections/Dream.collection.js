@@ -1,6 +1,6 @@
 const { sequelize, DataTypes } = require("../../lib/sequelize");
-// const { Carpet_info, Carpet_comments } = require("./model");
 const Dream_info = require('../carpet_infos/Dream_info')
+const { Carpet_comments } = require("../comments/Carpet-comments");
 
 const Dream_collection = sequelize.define("dream_collection", {
   carpet_id: {
@@ -70,6 +70,18 @@ Dream_info.belongsTo(Dream_collection, {
   as: 'carpet_infos', 
   foreignKey: {
     name: "carpet_id",
+  },
+});
+
+// COMMENTS RELATION
+Dream_collection.hasMany(Carpet_comments, {
+  foreignKey: {
+    name: "product_id",
+  },
+});
+Carpet_comments.belongsTo(Dream_collection, {
+  foreignKey: {
+    name: "product_id",
   },
 });
 
