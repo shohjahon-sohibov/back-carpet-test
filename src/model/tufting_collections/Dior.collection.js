@@ -1,5 +1,6 @@
 const { sequelize, DataTypes } = require("../../lib/sequelize");
 const { Tufting_comments } = require("../comments/Tufting-comments");
+const Dior_info = require("../tufting_infos/Dior_info");
 
 const Dior_collection = sequelize.define("dior_collection", {
   product_id: {
@@ -59,6 +60,19 @@ const Dior_collection = sequelize.define("dior_collection", {
   },
 });
 
+// collection_info => SIZE, PRICE RELATION
+Dior_collection.hasMany(Dior_info, {
+  foreignKey: {
+    name: "product_id",
+  },
+});
+Dior_info.belongsTo(Dior_collection, {
+  foreignKey: {
+    name: "product_id",
+  },
+});
+
+// COMMENTS RELATION
 Dior_collection.hasMany(Tufting_comments, {
   foreignKey: {
     name: "product_id",

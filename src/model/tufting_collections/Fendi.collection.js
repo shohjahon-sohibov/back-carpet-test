@@ -59,6 +59,20 @@ const Fendi_collection = sequelize.define("fendi_collection", {
   },
 });
 
+// collection_info => SIZE, PRICE RELATION
+// Fendi_collection.hasMany(Tufting_info, {
+//   as: "tufting_infos",
+//   foreignKey: {
+//     name: "product_id",
+//   },
+// });
+// Tufting_info.belongsTo(Fendi_collection, {
+//   foreignKey: {
+//     name: "product_id",
+//   },
+// });
+
+// COMMENTS RELATION
 Fendi_collection.hasMany(Tufting_comments, {
   foreignKey: {
     name: "product_id",

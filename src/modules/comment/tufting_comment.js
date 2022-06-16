@@ -1,4 +1,4 @@
-const { Tufting_comments } = require("../../model/model");
+const { Tufting_comments } = require("../../model/comments/Tufting-comments");
 
 module.exports = {
     GET_COMMENTS: async (_, res) => {

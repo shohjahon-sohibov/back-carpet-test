@@ -1,4 +1,4 @@
-const { Carpet_info, carpetCollections } = require("../../model/model");
+const { carpetCollections } = require("../../model/Carpet-model");
 const Diadema_info = require("../../model/carpet_infos/Diadema_info");
 const Dream_info = require("../../model/carpet_infos/Dream_info");
 const Adele_info = require("../../model/carpet_infos/Adele_info");
@@ -324,7 +324,6 @@ module.exports = {
       } else {
         console.error("not found");
       }
-
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
@@ -333,297 +332,380 @@ module.exports = {
     try {
       const { id, size, price, in_market, carpet_id } = req.body;
 
-      const isFound = await Carpet_info.findOne({
-        where: {
-          id,
-        },
-      });
+      // const isFound = await Carpet_info.findOne({
+      //   where: {
+      //     id,
+      //   },
+      // });
 
-      if (isFound) {
-        await Carpet_info.update(
-          {
-            size,
-            price,
-            in_market,
-            carpet_id,
-          },
-          {
-            where: {
-              id,
-            },
-          }
-        );
-        res.status(200).json("resource updated successfuly");
-      } else {
-        res.status(400).json("Not found");
-      }
+      // if (isFound) {
+      //   await Carpet_info.update(
+      //     {
+      //       size,
+      //       price,
+      //       in_market,
+      //       carpet_id,
+      //     },
+      //     {
+      //       where: {
+      //         id,
+      //       },
+      //     }
+      // );
+      // res.status(200).json("resource updated successfuly");
+      // } else {
+      // res.status(400).json("Not found");
+      // }
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
   },
   DELETE_COLLECTION_INFO: async (req, res) => {
     try {
-      const { id, info_order } = req.body;
-      
-      const isFound = await Carpet_info.findOne({
-        where: {
-          id,
-        },
-      });
+      const { collection_name, collection_infos } = req.body;
 
-      console.log(info_order[0].collection_name);
+      const collection = collection_name.toLowerCase();
 
-      if (collection_name == "adele") {
+      if (collection == "adele") {
+        let count = 0;
         collection_infos.forEach(async (element) => {
           const arr = [];
           arr.push(element);
-
           await Adele_info.destroy({
-          where: {
-            id:arr[0].id
-          }
+            where: {
+              id: arr[0].id,
+            },
           });
+          count++;
+          if (count == arr.length) {
+            res.status(201).json("resource destroyed succsessfully");
+          }
         });
-        res.status(201).json("resource created succsessfully");
-      }  else if (collection == "artemida") {
+      } else if (collection == "artemida") {
+        let count = 0;
         collection_infos.forEach(async (element) => {
           const arr = [];
           arr.push(element);
 
           await Artemida_info.destroy({
             where: {
-              id:arr[0].id
-            }
+              id: arr[0].id,
+            },
           });
+
+          count++;
+          if (count == arr.length) {
+            res.status(201).json("resource destroyed succsessfully");
+          }
         });
-        res.status(201).json("resource destroyd succsessfully");
       } else if (collection == "camaro") {
+        let count = 0;
         collection_infos.forEach(async (element) => {
           const arr = [];
           arr.push(element);
 
           await Camaro_info.destroy({
-             where: {
-            id:arr[0].id
-          }
+            where: {
+              id: arr[0].id,
+            },
           });
+
+          count++;
+          if (count == arr.length) {
+            res.status(201).json("resource destroyed succsessfully");
+          }
         });
-        res.status(201).json("resource destroyd succsessfully");
       } else if (collection == "camellia") {
+        let count = 0;
         collection_infos.forEach(async (element) => {
           const arr = [];
           arr.push(element);
 
           await Camellia_info.destroy({
-             where: {
-            id:arr[0].id
-          }
+            where: {
+              id: arr[0].id,
+            },
           });
+
+          count++;
+          if (count == arr.length) {
+            res.status(201).json("resource destroyed succsessfully");
+          }
         });
-        res.status(201).json("resource destroyd succsessfully");
       } else if (collection == "diadema") {
+        let count = 0;
         collection_infos.forEach(async (element) => {
           const arr = [];
           arr.push(element);
 
           await Diadema_info.destroy({
-             where: {
-            id:arr[0].id
-          }
+            where: {
+              id: arr[0].id,
+            },
           });
+
+          count++;
+          if (count == arr.length) {
+            res.status(201).json("resource destroyed succsessfully");
+          }
         });
-        res.status(201).json("resource destroyd succsessfully");
       } else if (collection == "dream") {
+        let count = 0;
         collection_infos.forEach(async (element) => {
           const arr = [];
           arr.push(element);
 
           await Dream_info.destroy({
-             where: {
-            id:arr[0].id
-          }
+            where: {
+              id: arr[0].id,
+            },
           });
+
+          count++;
+          if (count == arr.length) {
+            res.status(201).json("resource destroyed succsessfully");
+          }
         });
-        res.status(201).json("resource destroyd succsessfully");
       } else if (collection == "feniks") {
+        let count = 0;
         collection_infos.forEach(async (element) => {
           const arr = [];
           arr.push(element);
 
           await Feniks_info.destroy({
-             where: {
-            id:arr[0].id
-          }
+            where: {
+              id: arr[0].id,
+            },
           });
+
+          count++;
+          if (count == arr.length) {
+            res.status(201).json("resource destroyed succsessfully");
+          }
         });
-        res.status(201).json("resource destroyd succsessfully");
       } else if (collection == "hermosa") {
+        let count = 0;
         collection_infos.forEach(async (element) => {
           const arr = [];
           arr.push(element);
 
           await Hermosa_info.destroy({
-             where: {
-            id:arr[0].id
-          }
+            where: {
+              id: arr[0].id,
+            },
           });
+
+          count++;
+          if (count == arr.length) {
+            res.status(201).json("resource destroyed succsessfully");
+          }
         });
-        res.status(201).json("resource destroyd succsessfully");
       } else if (collection == "hi-tech") {
+        let count = 0;
         collection_infos.forEach(async (element) => {
           const arr = [];
           arr.push(element);
 
           await Hi_tech_info.destroy({
-             where: {
-            id:arr[0].id
-          }
+            where: {
+              id: arr[0].id,
+            },
           });
+
+          count++;
+          if (count == arr.length) {
+            res.status(201).json("resource destroyed succsessfully");
+          }
         });
-        res.status(201).json("resource destroyd succsessfully");
       } else if (collection == "kasandra") {
+        let count = 0;
         collection_infos.forEach(async (element) => {
           const arr = [];
           arr.push(element);
 
           await Kasandra_info.destroy({
-             where: {
-            id:arr[0].id
-          }
+            where: {
+              id: arr[0].id,
+            },
           });
+
+          count++;
+          if (count == arr.length) {
+            res.status(201).json("resource destroyed succsessfully");
+          }
         });
-        res.status(201).json("resource destroyd succsessfully");
       } else if (collection == "kenzo") {
+        let count = 0;
         collection_infos.forEach(async (element) => {
           const arr = [];
           arr.push(element);
 
           await Kenzo_info.destroy({
-             where: {
-            id:arr[0].id
-          }
+            where: {
+              id: arr[0].id,
+            },
           });
+
+          count++;
+          if (count == arr.length) {
+            res.status(201).json("resource destroyed succsessfully");
+          }
         });
-        res.status(201).json("resource destroyd succsessfully");
       } else if (collection == "legenda") {
+        let count = 0;
         collection_infos.forEach(async (element) => {
           const arr = [];
           arr.push(element);
 
           await Legenda_info.destroy({
-             where: {
-            id:arr[0].id
-          }
+            where: {
+              id: arr[0].id,
+            },
           });
+
+          count++;
+          if (count == arr.length) {
+            res.status(201).json("resource destroyed succsessfully");
+          }
         });
-        res.status(201).json("resource destroyd succsessfully");
       } else if (collection == "lindo") {
+        let count = 0;
         collection_infos.forEach(async (element) => {
           const arr = [];
           arr.push(element);
 
           await Lindo_info.destroy({
-             where: {
-            id:arr[0].id
-          }
+            where: {
+              id: arr[0].id,
+            },
           });
+
+          count++;
+          if (count == arr.length) {
+            res.status(201).json("resource destroyed succsessfully");
+          }
         });
-        res.status(201).json("resource destroyd succsessfully");
       } else if (collection == "millenium") {
+        let count = 0;
         collection_infos.forEach(async (element) => {
           const arr = [];
           arr.push(element);
 
           await Millenium_info.destroy({
-             where: {
-            id:arr[0].id
-          }
+            where: {
+              id: arr[0].id,
+            },
           });
+
+          count++;
+          if (count == arr.length) {
+            res.status(201).json("resource destroyed succsessfully");
+          }
         });
-        res.status(201).json("resource destroyd succsessfully");
       } else if (collection == "mustang") {
+        let count = 0;
         collection_infos.forEach(async (element) => {
           const arr = [];
           arr.push(element);
 
           await Mustang_info.destroy({
-             where: {
-            id:arr[0].id
-          }
+            where: {
+              id: arr[0].id,
+            },
           });
+
+          count++;
+          if (count == arr.length) {
+            res.status(201).json("resource destroyed succsessfully");
+          }
         });
-        res.status(201).json("resource destroyd succsessfully");
       } else if (collection == "prince") {
+        let count = 0;
         collection_infos.forEach(async (element) => {
           const arr = [];
           arr.push(element);
 
           await Prince_info.destroy({
-             where: {
-            id:arr[0].id
-          }
+            where: {
+              id: arr[0].id,
+            },
           });
+
+          count++;
+          if (count == arr.length) {
+            res.status(201).json("resource destroyed succsessfully");
+          }
         });
-        res.status(201).json("resource destroyd succsessfully");
       } else if (collection == "relax") {
+        let count = 0;
         collection_infos.forEach(async (element) => {
           const arr = [];
           arr.push(element);
 
           await Relax_info.destroy({
-             where: {
-            id:arr[0].id
-          }
+            where: {
+              id: arr[0].id,
+            },
           });
+
+          count++;
+          if (count == arr.length) {
+            res.status(201).json("resource destroyed succsessfully");
+          }
         });
-        res.status(201).json("resource destroyd succsessfully");
       } else if (collection == "salvatini") {
+        let count = 0;
         collection_infos.forEach(async (element) => {
           const arr = [];
           arr.push(element);
 
           await Salvatini_info.destroy({
-             where: {
-            id:arr[0].id
-          }
+            where: {
+              id: arr[0].id,
+            },
           });
+
+          count++;
+          if (count == arr.length) {
+            res.status(201).json("resource destroyed succsessfully");
+          }
         });
-        res.status(201).json("resource destroyd succsessfully");
       } else if (collection == "tresor") {
+        let count = 0;
         collection_infos.forEach(async (element) => {
           const arr = [];
           arr.push(element);
 
           await Tresor_info.destroy({
-             where: {
-            id:arr[0].id
-          }
+            where: {
+              id: arr[0].id,
+            },
           });
+
+          count++;
+          if (count == arr.length) {
+            res.status(201).json("resource destroyed succsessfully");
+          }
         });
-        res.status(201).json("resource destroyd succsessfully");
       } else if (collection == "unique") {
+        let count = 0;
         collection_infos.forEach(async (element) => {
           const arr = [];
           arr.push(element);
 
           await Unique_info.destroy({
-             where: {
-            id:arr[0].id
-          }
+            where: {
+              id: arr[0].id,
+            },
           });
-        });
-        res.status(201).json("resource created succsessfully");
-      }
 
-      if (isFound) {
-        await Carpet_info.destroy({
-          where: {
-            id,
-          },
+          count++;
+          if (count == arr.length) {
+            res.status(201).json("resource destroyed succsessfully");
+          }
         });
-        res.status(200).json("resource deleted successfuly");
       } else {
-        res.status(400).json("not found");
+        res.status(400).json("collection not found")
       }
     } catch (error) {
       res.status(500).json({ error: error.message });

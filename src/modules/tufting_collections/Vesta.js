@@ -1,5 +1,6 @@
 const Vesta_collection = require("../../model/tufting_collections/Vesta.collection");
 const { Tufting_comments } = require("../../model/comments/Tufting-comments");
+const Vesta_info = require("../../model/tufting_infos/Vesta_info");
 
 module.exports = {
   GET_VESTA: async (_, res) => {
@@ -12,11 +13,11 @@ module.exports = {
               as: "tufting_comments",
               attributes: ["id", "body", "product_id"],
             },
-            //   {
-            //     model: Dream_infos,
-            //     as: "carpet_infos",
-            //     attributes: ["id", "size", "price", "in_market", "carpet_id"],
-            //   },
+              {
+                model: Vesta_info,
+                as: "tufting_infos",
+                attributes: ["id", "size", "price", "in_market", "product_id"],
+              },
           ],
         })
       );

@@ -112,7 +112,7 @@ router
 
     .get("/api/tufting_infos", Tufting_infos.GET_COLLECTION_INFOS)
     .post("/api/new-tufting_info", Tufting_infos.POST_COLLECTION_INFO)
-    .put("/api/update-tufting_info", Tufting_infos.PUT_COLLECTION_INFO)
+    // .put("/api/update-tufting_info", Tufting_infos.PUT_COLLECTION_INFO)
     .delete("/api/delete-tufting_info", Tufting_infos.DELETE_COLLECTION_INFO)
 
     .get("/api/grass_infos", Grass_infos.GET_COLLECTION_INFOS)

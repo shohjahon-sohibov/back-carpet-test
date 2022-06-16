@@ -1,5 +1,6 @@
 const { sequelize, DataTypes } = require("../../lib/sequelize");
 const { Tufting_comments } = require("../comments/Tufting-comments");
+const Grafik_info = require("../tufting_infos/Grafik_info");
 
 const Grafik_collection = sequelize.define("grafik_collection", {
   product_id: {
@@ -59,6 +60,19 @@ const Grafik_collection = sequelize.define("grafik_collection", {
   },
 });
 
+// collection_info => SIZE, PRICE RELATION
+Grafik_collection.hasMany(Grafik_info, {
+  foreignKey: {
+    name: "product_id",
+  },
+});
+Grafik_info.belongsTo(Grafik_collection, {
+  foreignKey: {
+    name: "product_id",
+  },
+});
+
+// COMMENTS RELATION
 Grafik_collection.hasMany(Tufting_comments, {
   foreignKey: {
     name: "product_id",

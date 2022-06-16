@@ -1,6 +1,6 @@
 const { sequelize, DataTypes } = require("../../lib/sequelize");
 
-const Tufting_info = sequelize.define("tufting_info", {
+const Praga_info = sequelize.define("praga_info", {
     size: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -15,9 +15,13 @@ const Tufting_info = sequelize.define("tufting_info", {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
       allowNull: false,
+    },  
+    collection_name: {
+      type: DataTypes.TEXT,
+      defaultValue: false,
+      allowNull: false,
     }
-  })
+  });
 
-module.exports = {
-  Tufting_info,
-}
+  module.exports = Praga_info
+  

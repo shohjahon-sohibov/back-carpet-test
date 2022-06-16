@@ -1,5 +1,6 @@
 const Kobul_collection = require("../../model/tufting_collections/Kobul.collection");
 const { Tufting_comments } = require("../../model/comments/Tufting-comments");
+const Kobul_info = require("../../model/tufting_infos/Kobul_info");
 
 module.exports = {
   GET_KOBUL: async (_, res) => {
@@ -12,11 +13,11 @@ module.exports = {
               as: "tufting_comments",
               attributes: ["id", "body", "product_id"],
             },
-            //   {
-            //     model: Dream_infos,
-            //     as: "carpet_infos",
-            //     attributes: ["id", "size", "price", "in_market", "carpet_id"],
-            //   },
+              {
+                model: Kobul_info,
+                as: "tufting_infos",
+                attributes: ["id", "size", "price", "in_market", "product_id"],
+              },
           ],
         })
       );

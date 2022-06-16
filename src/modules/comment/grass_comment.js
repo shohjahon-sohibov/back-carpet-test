@@ -10,11 +10,11 @@ module.exports = {
     },
     POST_COMMENT: async (req, res) => {
         try {
-            const { body, grassCollectionId } = req.body;
+            const { body, product_id } = req.body;
 
             await Grass_comments.create({
                 body,
-                grassCollectionId
+                product_id
             });
 
             res.status(201).json("resource created successfully");
@@ -24,7 +24,7 @@ module.exports = {
     },
     UPDATE_COMMENT: async (req, res) => {
         try {
-            const { id, body, grassCollectionId } = req.body;
+            const { id, body, product_id } = req.body;
 
             if (id && body) {
                 const findCommentsId = await Grass_comments.findOne({
@@ -37,7 +37,7 @@ module.exports = {
                     await Grass_comments.update(
                         {
                             body,
-                            grassCollectionId
+                            product_id
                         },
                         {
                             where: {

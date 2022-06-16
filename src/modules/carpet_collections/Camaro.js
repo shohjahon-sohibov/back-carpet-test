@@ -12,7 +12,7 @@ module.exports = {
           include: [
             {
               model: Carpet_comments,
-              attributes: ["id", "body", "carpetCollectionId"],
+              attributes: ["id", "body", "product_id"],
             },
             {
               model: Camaro_info,
