@@ -37,6 +37,13 @@ const Topol_collection = require("../../model/tufting_collections/Topol.collecti
 const Edem_collection = require("../../model/tufting_collections/Edem.collection");
 const Perfect_collection = require("../../model/tufting_collections/Perfect.collection");
 const Liber_collection = require("../../model/tufting_collections/Liber.collection");
+const Holiday_collection = require("../../model/tufting_collections/Holiday.collection");
+const Hilton_collection = require("../../model/tufting_collections/Hilton.collection");
+const Hayat_collection = require("../../model/tufting_collections/Hayat.collection");
+const Indigo_collection = require("../../model/tufting_collections/Indigo.collection");
+const Royal_collection = require("../../model/tufting_collections/Royal.collection");
+const Yaguar_collection = require("../../model/tufting_collections/Yaguar.collection");
+const Flower_collection = require("../../model/tufting_collections/Flower.collection");
 
 module.exports = {
   GET_COLLECTIONS: async (_, res) => {
@@ -848,6 +855,160 @@ module.exports = {
           });
         } else if (collection_name == "liber") {
           const newCarpet = await Liber_collection.create({
+            description,
+            like,
+            dislike,
+            rating,
+            sell,
+            isNew,
+            isTop,
+            product_code,
+            collection_name,
+            in_market,
+            imageUrl: poster,
+            imageName: file.originalname,
+            imageType: file.mimetype,
+          });
+
+          res.status(201).json({
+            id: newCarpet.product_id,
+            code: newCarpet.product_code,
+            collection_name: newCarpet.collection_name,
+          });
+        } else if (collection_name == "holiday") {
+          const newCarpet = await Holiday_collection.create({
+            description,
+            like,
+            dislike,
+            rating,
+            sell,
+            isNew,
+            isTop,
+            product_code,
+            collection_name,
+            in_market,
+            imageUrl: poster,
+            imageName: file.originalname,
+            imageType: file.mimetype,
+          });
+
+          res.status(201).json({
+            id: newCarpet.product_id,
+            code: newCarpet.product_code,
+            collection_name: newCarpet.collection_name,
+          });
+        } else if (collection_name == "hilton") {
+          const newCarpet = await Hilton_collection.create({
+            description,
+            like,
+            dislike,
+            rating,
+            sell,
+            isNew,
+            isTop,
+            product_code,
+            collection_name,
+            in_market,
+            imageUrl: poster,
+            imageName: file.originalname,
+            imageType: file.mimetype,
+          });
+
+          res.status(201).json({
+            id: newCarpet.product_id,
+            code: newCarpet.product_code,
+            collection_name: newCarpet.collection_name,
+          });
+        } else if (collection_name == "hayat") {
+          const newCarpet = await Hayat_collection.create({
+            description,
+            like,
+            dislike,
+            rating,
+            sell,
+            isNew,
+            isTop,
+            product_code,
+            collection_name,
+            in_market,
+            imageUrl: poster,
+            imageName: file.originalname,
+            imageType: file.mimetype,
+          });
+
+          res.status(201).json({
+            id: newCarpet.product_id,
+            code: newCarpet.product_code,
+            collection_name: newCarpet.collection_name,
+          });
+        } else if (collection_name == "indigo") {
+          const newCarpet = await Indigo_collection.create({
+            description,
+            like,
+            dislike,
+            rating,
+            sell,
+            isNew,
+            isTop,
+            product_code,
+            collection_name,
+            in_market,
+            imageUrl: poster,
+            imageName: file.originalname,
+            imageType: file.mimetype,
+          });
+
+          res.status(201).json({
+            id: newCarpet.product_id,
+            code: newCarpet.product_code,
+            collection_name: newCarpet.collection_name,
+          });
+        } else if (collection_name == "royal") {
+          const newCarpet = await Royal_collection.create({
+            description,
+            like,
+            dislike,
+            rating,
+            sell,
+            isNew,
+            isTop,
+            product_code,
+            collection_name,
+            in_market,
+            imageUrl: poster,
+            imageName: file.originalname,
+            imageType: file.mimetype,
+          });
+
+          res.status(201).json({
+            id: newCarpet.product_id,
+            code: newCarpet.product_code,
+            collection_name: newCarpet.collection_name,
+          });
+        } else if (collection_name == "yaguar") {
+          const newCarpet = await Yaguar_collection.create({
+            description,
+            like,
+            dislike,
+            rating,
+            sell,
+            isNew,
+            isTop,
+            product_code,
+            collection_name,
+            in_market,
+            imageUrl: poster,
+            imageName: file.originalname,
+            imageType: file.mimetype,
+          });
+
+          res.status(201).json({
+            id: newCarpet.product_id,
+            code: newCarpet.product_code,
+            collection_name: newCarpet.collection_name,
+          });
+        } else if (collection_name == "flower") {
+          const newCarpet = await Flower_collection.create({
             description,
             like,
             dislike,

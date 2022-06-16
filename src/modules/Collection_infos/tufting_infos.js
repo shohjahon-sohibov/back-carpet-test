@@ -35,6 +35,13 @@ const Topol_info = require("../../model/tufting_infos/Topol_info");
 const Edem_info = require("../../model/tufting_infos/Edem_info");
 const Perfect_info = require("../../model/tufting_infos/Perfect_info");
 const Liber_info = require("../../model/tufting_infos/Liber_info");
+const Holiday_info = require("../../model/tufting_infos/Holiday_info");
+const Hilton_info = require("../../model/tufting_infos/Hilton_info");
+const Hayat_info = require("../../model/tufting_infos/Hayat_info");
+const Indigo_info = require("../../model/tufting_infos/Indigo_info");
+const Royal_info = require("../../model/tufting_infos/Royal_info");
+const Yaguar_info = require("../../model/tufting_infos/Yaguar_info");
+const Flower_info = require("../../model/tufting_infos/Flower_info");
 
 module.exports = {
   GET_COLLECTION_INFOS: async (_, res) => {
@@ -547,6 +554,104 @@ module.exports = {
             arr.push(element);
 
             await Liber_info.create({
+              size: arr[0].size,
+              price: arr[0].price,
+              in_market: arr[0].in_market,
+              product_id: arr[0].tufting_id.id,
+              collection_name: arr[0].collection_name,
+            });
+          });
+          res.status(201).json("resource created succsessfully");
+        } else if (collection == "holiday") {
+          collection_infos.forEach(async (element) => {
+            const arr = [];
+            arr.push(element);
+
+            await Holiday_info.create({
+              size: arr[0].size,
+              price: arr[0].price,
+              in_market: arr[0].in_market,
+              product_id: arr[0].tufting_id.id,
+              collection_name: arr[0].collection_name,
+            });
+          });
+          res.status(201).json("resource created succsessfully");
+        } else if (collection == "hilton") {
+          collection_infos.forEach(async (element) => {
+            const arr = [];
+            arr.push(element);
+
+            await Hilton_info.create({
+              size: arr[0].size,
+              price: arr[0].price,
+              in_market: arr[0].in_market,
+              product_id: arr[0].tufting_id.id,
+              collection_name: arr[0].collection_name,
+            });
+          });
+          res.status(201).json("resource created succsessfully");
+        } else if (collection == "hayat") {
+          collection_infos.forEach(async (element) => {
+            const arr = [];
+            arr.push(element);
+
+            await Hayat_info.create({
+              size: arr[0].size,
+              price: arr[0].price,
+              in_market: arr[0].in_market,
+              product_id: arr[0].tufting_id.id,
+              collection_name: arr[0].collection_name,
+            });
+          });
+          res.status(201).json("resource created succsessfully");
+        } else if (collection == "indigo") {
+          collection_infos.forEach(async (element) => {
+            const arr = [];
+            arr.push(element);
+
+            await Indigo_info.create({
+              size: arr[0].size,
+              price: arr[0].price,
+              in_market: arr[0].in_market,
+              product_id: arr[0].tufting_id.id,
+              collection_name: arr[0].collection_name,
+            });
+          });
+          res.status(201).json("resource created succsessfully");
+        } else if (collection == "royal") {
+          collection_infos.forEach(async (element) => {
+            const arr = [];
+            arr.push(element);
+
+            await Royal_info.create({
+              size: arr[0].size,
+              price: arr[0].price,
+              in_market: arr[0].in_market,
+              product_id: arr[0].tufting_id.id,
+              collection_name: arr[0].collection_name,
+            });
+          });
+          res.status(201).json("resource created succsessfully");
+        } else if (collection == "yaguar") {
+          collection_infos.forEach(async (element) => {
+            const arr = [];
+            arr.push(element);
+
+            await Yaguar_info.create({
+              size: arr[0].size,
+              price: arr[0].price,
+              in_market: arr[0].in_market,
+              product_id: arr[0].tufting_id.id,
+              collection_name: arr[0].collection_name,
+            });
+          });
+          res.status(201).json("resource created succsessfully");
+        } else if (collection == "flower") {
+          collection_infos.forEach(async (element) => {
+            const arr = [];
+            arr.push(element);
+
+            await Flower_info.create({
               size: arr[0].size,
               price: arr[0].price,
               in_market: arr[0].in_market,
@@ -1113,7 +1218,6 @@ module.exports = {
             }
           });
         } else if (collection == "liber") {
-          let count = 0;
           collection_infos.forEach(async (element) => {
             const arr = [];
             arr.push(element);
@@ -1122,10 +1226,84 @@ module.exports = {
                 id: arr[0].id,
               },
             });
-            count++;
-            if (count == arr.length) {
-              res.status(201).json("resource destroyed succsessfully");
-            }
+            res.status(201).json("resource destroyed succsessfully");
+          });
+        } else if (collection == "holiday") {
+          collection_infos.forEach(async (element) => {
+            const arr = [];
+            arr.push(element);
+            await Holiday_info.destroy({
+              where: {
+                id: arr[0].id,
+              },
+            });
+            res.status(201).json("resource destroyed succsessfully");
+          });
+        } else if (collection == "hilton") {
+          collection_infos.forEach(async (element) => {
+            const arr = [];
+            arr.push(element);
+            await Hilton_info.destroy({
+              where: {
+                id: arr[0].id,
+              },
+            });
+            res.status(201).json("resource destroyed succsessfully");
+          });
+        } else if (collection == "hayat") {
+          collection_infos.forEach(async (element) => {
+            const arr = [];
+            arr.push(element);
+            await Hayat_info.destroy({
+              where: {
+                id: arr[0].id,
+              },
+            });
+            res.status(201).json("resource destroyed succsessfully");
+          });
+        } else if (collection == "indigo") {
+          collection_infos.forEach(async (element) => {
+            const arr = [];
+            arr.push(element);
+            await Indigo_info.destroy({
+              where: {
+                id: arr[0].id,
+              },
+            });
+            res.status(201).json("resource destroyed succsessfully");
+          });
+        } else if (collection == "royal") {
+          collection_infos.forEach(async (element) => {
+            const arr = [];
+            arr.push(element);
+            await Royal_info.destroy({
+              where: {
+                id: arr[0].id,
+              },
+            });
+            res.status(201).json("resource destroyed succsessfully");
+          });
+        } else if (collection == "yaguar") {
+          collection_infos.forEach(async (element) => {
+            const arr = [];
+            arr.push(element);
+            await Yaguar_info.destroy({
+              where: {
+                id: arr[0].id,
+              },
+            });
+            res.status(201).json("resource destroyed succsessfully");
+          });
+        } else if (collection == "flower") {
+          collection_infos.forEach(async (element) => {
+            const arr = [];
+            arr.push(element);
+            await Flower_info.destroy({
+              where: {
+                id: arr[0].id,
+              },
+            });
+            res.status(201).json("resource destroyed succsessfully");
           });
         }
       }

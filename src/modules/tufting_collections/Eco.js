@@ -1,23 +1,23 @@
-const Sadaf_collection = require("../../model/tufting_collections/Sadaf.collection");
+const Eco_collection = require("../../model/tufting_collections/Eco.collection");
 const { Tufting_comments } = require("../../model/comments/Tufting-comments");
-const Sadaf_info = require("../../model/tufting_infos/Sadaf_info");
+const Eco_info = require("../../model/tufting_infos/Eco_info");
 
 module.exports = {
-  GET_SADAF: async (_, res) => {
+  GET_ECO: async (_, res) => {
     try {
       res.json(
-        await Sadaf_collection.findAll({
+        await Eco_collection.findAll({
           include: [
             {
               model: Tufting_comments,
               as: "tufting_comments",
               attributes: ["id", "body", "product_id"],
             },
-              {
-                model: Sadaf_info,
-                as: "tufting_infos",
-                attributes: ["id", "size", "price", "in_market", "product_id"],
-              },
+            {
+              model: Eco_info,
+              as: "tufting_infos",
+              attributes: ["id", "size", "price", "in_market", "product_id"],
+            },
           ],
         })
       );

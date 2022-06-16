@@ -1,23 +1,23 @@
-const Sadaf_collection = require("../../model/tufting_collections/Sadaf.collection");
+const Hilton_collection = require("../../model/tufting_collections/Hilton.collection");
 const { Tufting_comments } = require("../../model/comments/Tufting-comments");
-const Sadaf_info = require("../../model/tufting_infos/Sadaf_info");
+const Hilton_info = require("../../model/tufting_infos/Hilton_info");
 
 module.exports = {
-  GET_SADAF: async (_, res) => {
+  GET_HILTON: async (_, res) => {
     try {
       res.json(
-        await Sadaf_collection.findAll({
+        await Hilton_collection.findAll({
           include: [
             {
               model: Tufting_comments,
               as: "tufting_comments",
               attributes: ["id", "body", "product_id"],
             },
-              {
-                model: Sadaf_info,
-                as: "tufting_infos",
-                attributes: ["id", "size", "price", "in_market", "product_id"],
-              },
+            {
+              model: Hilton_info,
+              as: "tufting_infos",
+              attributes: ["id", "size", "price", "in_market", "product_id"],
+            },
           ],
         })
       );

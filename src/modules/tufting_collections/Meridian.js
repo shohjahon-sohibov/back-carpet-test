@@ -1,12 +1,12 @@
-const Fendi_collection = require("../../model/tufting_collections/Fendi.collection");
+const Meridian_collection = require("../../model/tufting_collections/Meridian.collection");
 const { Tufting_comments } = require("../../model/comments/Tufting-comments");
-const Fendi_info = require("../../model/tufting_infos/Fendi_info");
+const Meridian_info = require("../../model/tufting_infos/Meridian_info");
 
 module.exports = {
-  GET_FENDI: async (_, res) => {
+  GET_MERIDIAN: async (_, res) => {
     try {
       res.json(
-        await Fendi_collection.findAll({
+        await Meridian_collection.findAll({
           include: [
             {
               model: Tufting_comments,
@@ -14,7 +14,7 @@ module.exports = {
               attributes: ["id", "body", "product_id"],
             },
             {
-              model: Fendi_info,
+              model: Meridian_info,
               as: "tufting_infos",
               attributes: ["id", "size", "price", "in_market", "product_id"],
             },

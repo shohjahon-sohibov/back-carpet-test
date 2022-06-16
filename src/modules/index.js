@@ -43,23 +43,6 @@ const Artemida = require('./carpet_collections/Artemida')
 // =============  TUFTING COLLECTIONS ===============
 const Delta = require('./tufting_collections/Delta')
 const Dior = require('./tufting_collections/Dior')
-
-// Other Modules
-const News = require("./news/news");
-const AboutHolding = require("./aboutHolding/aboutHolding");
-const Branches = require("./branches/branches");
-const Orders = require("./orders/orders");
-const Brandes = require("./brand/brand");
-const Jobs = require("./job/job");
-// Transaction
-const Transaction = require("./transaction/transaction");
-
-// middlewares
-const { AUTH_ROLE_MID, IS_VALID_TOKEN_MID } = require("../middlwares/jwt-helper");
-const {	uploadAboutHoldings, uploadBranches, uploadBrands, uploadNews, uploadCarpetCol, uploadTuftingCol, uploadGrassCol } = require("../middlwares/multer");
-const middleware = require("../middlwares/AuthMiddleware");
-
-
 const Elis = require("./tufting_collections/Elis");
 const Fendi = require("./tufting_collections/Fendi");
 const Fresko = require("./tufting_collections/Fresko");
@@ -79,6 +62,31 @@ const Sadaf = require("./tufting_collections/Sadaf");
 const Saturn = require("./tufting_collections/Saturn");
 const Sparta = require("./tufting_collections/Sparta");
 const Vesta = require("./tufting_collections/Vesta");
+
+
+const Holiday = require("./tufting_collections/Holiday");
+const Hilton = require("./tufting_collections/Hilton");
+const Hayat = require("./tufting_collections/Hayat");
+const Indigo = require("./tufting_collections/Indigo");
+const Royal = require("./tufting_collections/Royal");
+const Yaguar = require("./tufting_collections/Yaguar");
+const Flower = require("./tufting_collections/Flower");
+
+
+// Other Modules
+const News = require("./news/news");
+const AboutHolding = require("./aboutHolding/aboutHolding");
+const Branches = require("./branches/branches");
+const Orders = require("./orders/orders");
+const Brandes = require("./brand/brand");
+const Jobs = require("./job/job");
+// Transaction
+const Transaction = require("./transaction/transaction");
+
+// middlewares
+const { AUTH_ROLE_MID, IS_VALID_TOKEN_MID } = require("../middlwares/jwt-helper");
+const {	uploadAboutHoldings, uploadBranches, uploadBrands, uploadNews, uploadCarpetCol, uploadTuftingCol, uploadGrassCol } = require("../middlwares/multer");
+const middleware = require("../middlwares/AuthMiddleware");
 
 router
   .get("/admins", Admin.GET_USERS)
@@ -171,6 +179,16 @@ router
   .get("/api/saturn", Saturn.GET_SATURN)
   .get("/api/sparta", Sparta.GET_SPARTA)
   .get("/api/vesta", Vesta.GET_VESTA)
+
+
+  .get("/api/holiday", Holiday.GET_HOLIDAY)
+  .get("/api/hilton", Hilton.GET_HILTON)
+  .get("/api/hayat", Hayat.GET_HAYAT)
+  .get("/api/indigo", Indigo.GET_INDIGO)
+  .get("/api/royal", Royal.GET_ROYAL)
+  .get("/api/yaguar", Yaguar.GET_YAGUAR)
+  .get("/api/flower", Flower.GET_FLOWER)
+
 
   
   .get("/api/tufting-collections", Tufting_collections.GET_COLLECTIONS)
