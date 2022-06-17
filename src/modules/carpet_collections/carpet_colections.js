@@ -644,6 +644,7 @@ module.exports = {
       const { id, collection_name, product_code } = req.body;
 
       if (id && collection_name && product_code) {
+
         const findCollectionId = await carpetCollections.findOne({
           where: {
             product_code,
@@ -663,125 +664,127 @@ module.exports = {
 
           await carpetCollections.destroy({
             where: {
-              carpet_id: id,
+              product_code,
             },
           });
 
-          if (collection_name == "adele") {
+          const collection = collection_name.toLowerCase()
+
+          if (collection == "adele") {
             await Adele_collection.destroy({
               where: {
                 carpet_id: id,
               },
             });
-          } else if (collection_name == "Artemida") {
+          } else if (collection == "Artemida") {
             await Artemida_collection.destroy({
               where: {
                 carpet_id: id,
               },
             });
-          } else if (collection_name == "camaro") {
+          } else if (collection == "camaro") {
             await Camaro_collection.destroy({
               where: {
                 carpet_id: id,
               },
             });
-          } else if (collection_name == "camellia") {
+          } else if (collection == "camellia") {
             await Camellia_collection.destroy({
               where: {
                 carpet_id: id,
               },
             });
-          } else if (collection_name == "diadema") {
+          } else if (collection == "diadema") {
             await Diadema_collection.destroy({
               where: {
                 carpet_id: id,
               },
             });
-          } else if (collection_name == "dream") {
+          } else if (collection == "dream") {
             await Dream_collection.destroy({
               where: {
                 carpet_id: id,
               },
             });
-          } else if (collection_name == "feniks") {
+          } else if (collection == "feniks") {
             await Feniks_collection.destroy({
               where: {
                 carpet_id: id,
               },
             });
-          } else if (collection_name == "hermosa") {
+          } else if (collection == "hermosa") {
             await Hermosa_collection.destroy({
               where: {
                 carpet_id: id,
               },
             });
-          } else if (collection_name == "hi-tech") {
+          } else if (collection == "hi-tech") {
             await Hi_Tech_collection.destroy({
               where: {
                 carpet_id: id,
               },
             });
-          } else if (collection_name == "kasandra") {
+          } else if (collection == "kasandra") {
             await Kasandra_collection.destroy({
               where: {
                 carpet_id: id,
               },
             });
-          } else if (collection_name == "kenzo") {
+          } else if (collection == "kenzo") {
             await Kenzo_collection.destroy({
               where: {
                 carpet_id: id,
               },
             });
-          } else if (collection_name == "legenda") {
+          } else if (collection == "legenda") {
             await Legenda_collection.destroy({
               where: {
                 carpet_id: id,
               },
             });
-          } else if (collection_name == "lindo") {
+          } else if (collection == "lindo") {
             await Lindo_collection.destroy({
               where: {
                 carpet_id: id,
               },
             });
-          } else if (collection_name == "millenium") {
+          } else if (collection == "millenium") {
             await Millenium_collection.destroy({
               where: {
                 carpet_id: id,
               },
             });
-          } else if (collection_name == "mustang") {
+          } else if (collection == "mustang") {
             await Mustang_collection.destroy({
               where: {
                 carpet_id: id,
               },
             });
-          } else if (collection_name == "prince") {
+          } else if (collection == "prince") {
             await Prince_collection.destroy({
               where: {
                 carpet_id: id,
               },
             });
-          } else if (collection_name == "relax") {
+          } else if (collection == "relax") {
             await Relax_collection.destroy({
               where: {
                 carpet_id: id,
               },
             });
-          } else if (collection_name == "salvatini") {
+          } else if (collection == "salvatini") {
             await Salvatini_collection.destroy({
               where: {
                 carpet_id: id,
               },
             });
-          } else if (collection_name == "tresor") {
+          } else if (collection == "tresor") {
             await Tresor_collection.destroy({
               where: {
                 carpet_id: id,
               },
             });
-          } else if (collection_name == "unique") {
+          } else if (collection == "unique") {
             await Unique_collection.destroy({
               where: {
                 carpet_id: id,

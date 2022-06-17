@@ -60,8 +60,22 @@ const Radisson = require("./tufting_collections/Radisson");
 const Rodin = require("./tufting_collections/Rodin");
 const Sadaf = require("./tufting_collections/Sadaf");
 const Saturn = require("./tufting_collections/Saturn");
-const Sparta = require("./tufting_collections/Sparta");
 const Vesta = require("./tufting_collections/Vesta");
+const Sparta = require("./tufting_collections/Sparta");
+const Praga = require("./tufting_collections/Praga");
+const Organ = require("./tufting_collections/Organ");
+const Everest = require("./tufting_collections/Everest");
+const Marsel = require("./tufting_collections/Marsel");
+const Ostin = require("./tufting_collections/Ostin");
+const Meridian = require("./tufting_collections/Meridian");
+const Atlas = require("./tufting_collections/Atlas");
+const Kedr = require("./tufting_collections/Kedr");
+const Eco = require("./tufting_collections/Eco");
+const Venera = require("./tufting_collections/Venera");
+const Topol = require("./tufting_collections/Topol");
+const Edem = require("./tufting_collections/Edem");
+const Perfect = require("./tufting_collections/Perfect");
+const Liber = require("./tufting_collections/Liber");
 
 
 const Holiday = require("./tufting_collections/Holiday");
@@ -103,30 +117,30 @@ router
   .put("/api/update-carpet-comment", Carpet_comment.UPDATE_COMMENT)
   .delete("/api/delete-carpet-comment", Carpet_comment.DELETE_COMMENT)
 
-    .get("/api/tufting-comments", Tufting_comment.GET_COMMENTS)
-    .post("/api/new-tufting-comment", Tufting_comment.POST_COMMENT)
-    .put("/api/update-tufting-comment", Tufting_comment.UPDATE_COMMENT)
-    .delete("/api/delete-tufting-comment", Tufting_comment.DELETE_COMMENT)
+  .get("/api/tufting-comments", Tufting_comment.GET_COMMENTS)
+  .post("/api/new-tufting-comment", Tufting_comment.POST_COMMENT)
+  .put("/api/update-tufting-comment", Tufting_comment.UPDATE_COMMENT)
+  .delete("/api/delete-tufting-comment", Tufting_comment.DELETE_COMMENT)
 
-    .get("/api/grass-comments", Grass_comment.GET_COMMENTS)
-    .post("/api/new-grass-comment", Grass_comment.POST_COMMENT)
-    .put("/api/update-grass-comment", Grass_comment.UPDATE_COMMENT)
-    .delete("/api/delete-grass-comment", Grass_comment.DELETE_COMMENT)
+  .get("/api/grass-comments", Grass_comment.GET_COMMENTS)
+  .post("/api/new-grass-comment", Grass_comment.POST_COMMENT)
+  .put("/api/update-grass-comment", Grass_comment.UPDATE_COMMENT)
+  .delete("/api/delete-grass-comment", Grass_comment.DELETE_COMMENT)
 
   .get("/api/carpet_infos", Carpet_infos.GET_COLLECTION_INFOS)
   .post("/api/new-carpet_info", Carpet_infos.POST_COLLECTION_INFO)
   .put("/api/update-carpet_info", Carpet_infos.PUT_COLLECTION_INFO)
   .delete("/api/delete-carpet_info", Carpet_infos.DELETE_COLLECTION_INFO)
 
-    .get("/api/tufting_infos", Tufting_infos.GET_COLLECTION_INFOS)
-    .post("/api/new-tufting_info", Tufting_infos.POST_COLLECTION_INFO)
-    // .put("/api/update-tufting_info", Tufting_infos.PUT_COLLECTION_INFO)
-    .delete("/api/delete-tufting_info", Tufting_infos.DELETE_COLLECTION_INFO)
+  .get("/api/tufting_infos", Tufting_infos.GET_COLLECTION_INFOS)
+  .post("/api/new-tufting_info", Tufting_infos.POST_COLLECTION_INFO)
+//.put("/api/update-tufting_info", Tufting_infos.PUT_COLLECTION_INFO)
+  .delete("/api/delete-tufting_info", Tufting_infos.DELETE_COLLECTION_INFO)
 
-    .get("/api/grass_infos", Grass_infos.GET_COLLECTION_INFOS)
-    .post("/api/new-grass_info", Grass_infos.POST_COLLECTION_INFO)
-    .put("/api/update-grass_info", Grass_infos.PUT_COLLECTION_INFO)
-    .delete("/api/delete-grass_info", Grass_infos.DELETE_COLLECTION_INFO)
+  .get("/api/grass_infos", Grass_infos.GET_COLLECTION_INFOS)
+  .post("/api/new-grass_info", Grass_infos.POST_COLLECTION_INFO)
+  .put("/api/update-grass_info", Grass_infos.PUT_COLLECTION_INFO)
+  .delete("/api/delete-grass_info", Grass_infos.DELETE_COLLECTION_INFO)
 
   // .post("/api/new-collection", Collections.POST_COLLECTION)
 
@@ -179,8 +193,20 @@ router
   .get("/api/saturn", Saturn.GET_SATURN)
   .get("/api/sparta", Sparta.GET_SPARTA)
   .get("/api/vesta", Vesta.GET_VESTA)
-
-
+  .get("/api/praga", Praga.GET_PRAGA)
+  .get("/api/organ", Organ.GET_ORGAN)
+  .get("/api/everest", Everest.GET_EVEREST)
+  .get("/api/marsel", Marsel.GET_MARSEL)
+  .get("/api/ostin", Ostin.GET_OSTIN)
+  .get("/api/meridian", Meridian.GET_MERIDIAN)
+  .get("/api/atlas", Atlas.GET_ATLAS)
+  .get("/api/kedr", Kedr.GET_KEDR)
+  .get("/api/eco", Eco.GET_ECO)
+  .get("/api/venera", Venera.GET_VENERA)
+  .get("/api/topool", Topol.GET_TOPOL)
+  .get("/api/edem", Edem.GET_EDEM)
+  .get("/api/perfect", Perfect.GET_PEFECT)
+  .get("/api/liber", Liber.GET_LIBER)
   .get("/api/holiday", Holiday.GET_HOLIDAY)
   .get("/api/hilton", Hilton.GET_HILTON)
   .get("/api/hayat", Hayat.GET_HAYAT)
@@ -189,8 +215,6 @@ router
   .get("/api/yaguar", Yaguar.GET_YAGUAR)
   .get("/api/flower", Flower.GET_FLOWER)
 
-
-  
   .get("/api/tufting-collections", Tufting_collections.GET_COLLECTIONS)
   .post("/api/new-tufting-collection", uploadTuftingCol.single("poster"), Tufting_collections.POST_COLLECTION)
   .put("/api/update-tufting-collection", uploadTuftingCol.single("poster"), Tufting_collections.UPDATE_COLLECTION)
