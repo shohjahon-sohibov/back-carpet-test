@@ -14,7 +14,7 @@ module.exports = {
 
       await Carpet_comments.create({
         body,
-        product_id
+        product_id,
       });
 
       res.status(201).json("resource created successfully");
@@ -37,7 +37,7 @@ module.exports = {
           await Carpet_comments.update(
             {
               body,
-              product_id
+              product_id,
             },
             {
               where: {
@@ -60,18 +60,17 @@ module.exports = {
   DELETE_COMMENT: async (req, res) => {
     try {
       const { id } = req.body;
-     const deletedComment = await Carpet_comments.destroy({
+      const deletedComment = await Carpet_comments.destroy({
         where: {
           id,
         },
       });
 
-      if(!deletedComment) {
-        res.status(400).json("error in deleted")
+      if (!deletedComment) {
+        res.status(400).json("error in deleted");
       } else {
-          res.status(200).json("resource deleted successfully");
+        res.status(200).json("resource deleted successfully");
       }
-
     } catch (error) {
       res.status(500).json({ error: error.message });
     }

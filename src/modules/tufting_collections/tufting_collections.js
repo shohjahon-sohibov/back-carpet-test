@@ -105,7 +105,9 @@ module.exports = {
           imageType: file.mimetype,
         });
 
-        if (collection_name == "delta") {
+        const collection = collection_name.toLowerCase();
+
+        if (collection == "delta") {
           const newCarpet = await Delta_collection.create({
             description,
             like,
@@ -127,7 +129,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "dior") {
+        } else if (collection == "dior") {
           const newCarpet = await Dior_collection.create({
             description,
             like,
@@ -149,7 +151,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "milano") {
+        } else if (collection == "milano") {
           const newCarpet = await Milano_collection.create({
             description,
             like,
@@ -171,7 +173,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "radisson") {
+        } else if (collection == "radisson") {
           const newCarpet = await Radisson_collection.create({
             description,
             like,
@@ -193,7 +195,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "platan") {
+        } else if (collection == "platan") {
           const newCarpet = await Platan_collection.create({
             description,
             like,
@@ -215,7 +217,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "rodin") {
+        } else if (collection == "rodin") {
           const newCarpet = await Rodin_collection.create({
             description,
             like,
@@ -237,7 +239,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "sadaf") {
+        } else if (collection == "sadaf") {
           const newCarpet = await Sadaf_collection.create({
             description,
             like,
@@ -259,7 +261,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "kobul") {
+        } else if (collection == "kobul") {
           const newCarpet = await Kobul_collection.create({
             description,
             like,
@@ -281,7 +283,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "laguna") {
+        } else if (collection == "laguna") {
           const newCarpet = await Laguna_collection.create({
             description,
             like,
@@ -303,7 +305,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "infiniti") {
+        } else if (collection == "infiniti") {
           const newCarpet = await Infiniti_collection.create({
             description,
             like,
@@ -325,7 +327,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "grafik") {
+        } else if (collection == "grafik") {
           const newCarpet = await Grafik_collection.create({
             description,
             like,
@@ -347,7 +349,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "fendi") {
+        } else if (collection == "fendi") {
           const newCarpet = await Fendi_collection.create({
             description,
             like,
@@ -369,7 +371,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "elis") {
+        } else if (collection == "elis") {
           const newCarpet = await Elis_collection.create({
             description,
             like,
@@ -391,7 +393,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "mars") {
+        } else if (collection == "mars") {
           const newCarpet = await Mars_collection.create({
             description,
             like,
@@ -413,7 +415,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "saturn") {
+        } else if (collection == "saturn") {
           const newCarpet = await Saturn_collection.create({
             description,
             like,
@@ -435,7 +437,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "liberti") {
+        } else if (collection == "liberti") {
           const newCarpet = await Liberti_collection.create({
             description,
             like,
@@ -457,7 +459,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "vesta") {
+        } else if (collection == "vesta") {
           const newCarpet = await Vesta_collection.create({
             description,
             like,
@@ -479,7 +481,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "lexus") {
+        } else if (collection == "lexus") {
           const newCarpet = await Lexus_collection.create({
             description,
             like,
@@ -501,7 +503,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "fresko") {
+        } else if (collection == "fresko") {
           const newCarpet = await Fresko_collection.create({
             description,
             like,
@@ -523,7 +525,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "lufian") {
+        } else if (collection == "lufian") {
           const newCarpet = await Lufian_collection.create({
             description,
             like,
@@ -545,7 +547,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "sparta") {
+        } else if (collection == "sparta") {
           const newCarpet = await Sparta_collection.create({
             description,
             like,
@@ -567,7 +569,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "praga") {
+        } else if (collection == "praga") {
           const newCarpet = await Praga_collection.create({
             description,
             like,
@@ -589,7 +591,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "organ") {
+        } else if (collection == "organ") {
           const newCarpet = await Organ_collection.create({
             description,
             like,
@@ -611,7 +613,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "everest") {
+        } else if (collection == "everest") {
           const newCarpet = await Everest_collection.create({
             description,
             like,
@@ -633,7 +635,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "marsel") {
+        } else if (collection == "marsel") {
           const newCarpet = await Marsel_collection.create({
             description,
             like,
@@ -655,7 +657,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "ostin") {
+        } else if (collection == "ostin") {
           const newCarpet = await Ostin_collection.create({
             description,
             like,
@@ -677,7 +679,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "meridian") {
+        } else if (collection == "meridian") {
           const newCarpet = await Meridian_collection.create({
             description,
             like,
@@ -699,7 +701,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "atlas") {
+        } else if (collection == "atlas") {
           const newCarpet = await Atlas_collection.create({
             description,
             like,
@@ -721,7 +723,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "kedr") {
+        } else if (collection == "kedr") {
           const newCarpet = await Kedr_collection.create({
             description,
             like,
@@ -743,7 +745,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "eco") {
+        } else if (collection == "eco") {
           const newCarpet = await Eco_collection.create({
             description,
             like,
@@ -765,7 +767,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "venera") {
+        } else if (collection == "venera") {
           const newCarpet = await Venera_collection.create({
             description,
             like,
@@ -787,7 +789,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "topol") {
+        } else if (collection == "topol") {
           const newCarpet = await Topol_collection.create({
             description,
             like,
@@ -809,7 +811,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "edem") {
+        } else if (collection == "edem") {
           const newCarpet = await Edem_collection.create({
             description,
             like,
@@ -831,7 +833,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "perfect") {
+        } else if (collection == "perfect") {
           const newCarpet = await Perfect_collection.create({
             description,
             like,
@@ -853,7 +855,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "liber") {
+        } else if (collection == "liber") {
           const newCarpet = await Liber_collection.create({
             description,
             like,
@@ -875,7 +877,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "holiday") {
+        } else if (collection == "holiday") {
           const newCarpet = await Holiday_collection.create({
             description,
             like,
@@ -897,7 +899,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "hilton") {
+        } else if (collection == "hilton") {
           const newCarpet = await Hilton_collection.create({
             description,
             like,
@@ -919,7 +921,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "hayat") {
+        } else if (collection == "hayat") {
           const newCarpet = await Hayat_collection.create({
             description,
             like,
@@ -941,7 +943,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "indigo") {
+        } else if (collection == "indigo") {
           const newCarpet = await Indigo_collection.create({
             description,
             like,
@@ -963,7 +965,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "royal") {
+        } else if (collection == "royal") {
           const newCarpet = await Royal_collection.create({
             description,
             like,
@@ -985,7 +987,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "yaguar") {
+        } else if (collection == "yaguar") {
           const newCarpet = await Yaguar_collection.create({
             description,
             like,
@@ -1007,7 +1009,7 @@ module.exports = {
             code: newCarpet.product_code,
             collection_name: newCarpet.collection_name,
           });
-        } else if (collection_name == "flower") {
+        } else if (collection == "flower") {
           const newCarpet = await Flower_collection.create({
             description,
             like,

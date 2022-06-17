@@ -18,27 +18,9 @@ const grassCollections = sequelize.define("grass_collection", {
     allowNull: false,
     defaultValue: false,
   },
-  like: {
-    type: DataTypes.INTEGER,
-    validate: {
-      min: 0,
-      max: 1,
-    },
-  },
-  dislike: {
-    type: DataTypes.INTEGER,
-    validate: {
-      min: 0,
-      max: 1,
-    },
-  },
-  rating: {
-    type: DataTypes.INTEGER,
-    validate: {
-      min: 0,
-      max: 5,
-    },
-  },
+  like: DataTypes.INTEGER,
+  dislike: DataTypes.INTEGER,
+  rating: DataTypes.INTEGER,
   sell: DataTypes.INTEGER,
   imageUrl: {
     type: DataTypes.STRING,
@@ -65,5 +47,5 @@ const grassCollections = sequelize.define("grass_collection", {
 });
 
 module.exports = {
-    grassCollections
-}
+  grassCollections,
+};

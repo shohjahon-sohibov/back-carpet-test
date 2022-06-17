@@ -76,8 +76,6 @@ const Topol = require("./tufting_collections/Topol");
 const Edem = require("./tufting_collections/Edem");
 const Perfect = require("./tufting_collections/Perfect");
 const Liber = require("./tufting_collections/Liber");
-
-
 const Holiday = require("./tufting_collections/Holiday");
 const Hilton = require("./tufting_collections/Hilton");
 const Hayat = require("./tufting_collections/Hayat");
@@ -86,6 +84,15 @@ const Royal = require("./tufting_collections/Royal");
 const Yaguar = require("./tufting_collections/Yaguar");
 const Flower = require("./tufting_collections/Flower");
 
+// =============  TUFTING COLLECTIONS ===============
+const Arena = require('./grass_collections/Arena')
+const Bahar = require('./grass_collections/Bahar')
+const Chelsi = require('./grass_collections/Chelsi')
+const Fifa = require('./grass_collections/Fifa')
+const Green = require('./grass_collections/Green')
+const Mono = require('./grass_collections/Mono')
+const Savana = require('./grass_collections/Savana')
+const Tarnado = require('./grass_collections/Tarnado')
 
 // Other Modules
 const News = require("./news/news");
@@ -214,6 +221,18 @@ router
   .get("/api/royal", Royal.GET_ROYAL)
   .get("/api/yaguar", Yaguar.GET_YAGUAR)
   .get("/api/flower", Flower.GET_FLOWER)
+
+  // TUFTING COLLECTIONS
+  .get("/api/fifa", Fifa.GET_FIFA)
+  .get("/api/green", Green.GET_GREEN)
+  .get("/api/savana", Savana.GET_SAVANA)
+  .get("/api/mono", Mono.GET_MONO)
+  .get("/api/chelsi", Chelsi.GET_CHELSI)
+  .get("/api/tarnado", Tarnado.GET_TARNADO)
+  .get("/api/mono", Mono.GET_MONO)
+  .get("/api/arena", Arena.GET_ARENA)
+  .get("/api/bahar", Bahar.GET_BAHAR)
+
 
   .get("/api/tufting-collections", Tufting_collections.GET_COLLECTIONS)
   .post("/api/new-tufting-collection", uploadTuftingCol.single("poster"), Tufting_collections.POST_COLLECTION)
