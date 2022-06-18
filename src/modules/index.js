@@ -136,7 +136,7 @@ router
 
   .get("/api/carpet_infos", Carpet_infos.GET_COLLECTION_INFOS)
   .post("/api/new-carpet_info", Carpet_infos.POST_COLLECTION_INFO)
-  .put("/api/update-carpet_info", Carpet_infos.PUT_COLLECTION_INFO)
+  // .put("/api/update-carpet_info", Carpet_infos.PUT_COLLECTION_INFO)
   .delete("/api/delete-carpet_info", Carpet_infos.DELETE_COLLECTION_INFO)
 
   .get("/api/tufting_infos", Tufting_infos.GET_COLLECTION_INFOS)
@@ -146,7 +146,7 @@ router
 
   .get("/api/grass_infos", Grass_infos.GET_COLLECTION_INFOS)
   .post("/api/new-grass_info", Grass_infos.POST_COLLECTION_INFO)
-  .put("/api/update-grass_info", Grass_infos.PUT_COLLECTION_INFO)
+  // .put("/api/update-grass_info", Grass_infos.PUT_COLLECTION_INFO)
   .delete("/api/delete-grass_info", Grass_infos.DELETE_COLLECTION_INFO)
 
   // .post("/api/new-collection", Collections.POST_COLLECTION)

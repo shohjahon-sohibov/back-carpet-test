@@ -328,9 +328,9 @@ module.exports = {
       return res.status(500).json({ error: error.message });
     }
   },
-  PUT_COLLECTION_INFO: async (req, res) => {
-    try {
-      const { id, size, price, in_market, carpet_id } = req.body;
+  // PUT_COLLECTION_INFO: async (req, res) => {
+    // try {
+      // const { id, size, price, in_market, carpet_id } = req.body;
 
       // const isFound = await Carpet_info.findOne({
       //   where: {
@@ -356,10 +356,10 @@ module.exports = {
       // } else {
       // res.status(400).json("Not found");
       // }
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
-    }
-  },
+    // } catch (error) {
+      // return res.status(500).json({ error: error.message });
+    // }
+  // },
   DELETE_COLLECTION_INFO: async (req, res) => {
     try {
       const { collection_name, collection_infos } = req.body;

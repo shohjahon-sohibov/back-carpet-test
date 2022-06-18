@@ -153,7 +153,7 @@ module.exports = {
       return res.status(500).json({ error: error.message });
     }
   },
-  PUT_COLLECTION_INFO: async (req, res) => {
+  // PUT_COLLECTION_INFO: async (req, res) => {
     // try {
     //   const { id, size, price, in_market, tuftingCollectionId } = req.body;
     //   const isFound = await Grass_info.findOne({
@@ -182,7 +182,7 @@ module.exports = {
     // } catch (error) {
     //   return res.status(500).json({ error: error.message });
     // }
-  },
+  // },
   DELETE_COLLECTION_INFO: async (req, res) => {
     try {
       const { collection_name, collection_infos } = req.body;
