@@ -623,533 +623,533 @@ module.exports = {
               res.status(500).json({ error: error.message });
             }
           );
-        }
 
-        await carpetCollections.update(
-          {
-            description,
-            like,
-            dislike,
-            rating,
-            sell,
-            isNew,
-            isTop,
-            product_code,
-            collection_name,
-            in_market,
-            imageUrl: poster,
-            imageName: file.originalname,
-            imageType: file.mimetype,
-          },
-          {
-            where: {
-              carpet_id: id,
+          await carpetCollections.update(
+            {
+              description,
+              like,
+              dislike,
+              rating,
+              sell,
+              isNew,
+              isTop,
+              product_code,
+              collection_name,
+              in_market,
+              imageUrl: poster,
+              imageName: file.originalname,
+              imageType: file.mimetype,
             },
+            {
+              where: {
+                carpet_id: id,
+              },
+            }
+          );
+
+          const collectionName = collection_name.toLowerCase();
+
+          if (collectionName == "relax") {
+            await Relax_collection.update(
+              {
+                description,
+                like,
+                dislike,
+                rating,
+                sell,
+                isNew,
+                isTop,
+                product_code,
+                collection_name,
+                in_market,
+                imageUrl: poster,
+                imageName: file.originalname,
+                imageType: file.mimetype,
+              },
+              {
+                where: {
+                  carpet_id: id,
+                },
+              }
+            );
+
+            res.status(201).json("updated resource successfuly");
+          } else if (collectionName == "adele") {
+            await Adele_collection.update(
+              {
+                description,
+                like,
+                dislike,
+                rating,
+                sell,
+                isNew,
+                isTop,
+                product_code,
+                collection_name,
+                in_market,
+                imageUrl: poster,
+                imageName: file.originalname,
+                imageType: file.mimetype,
+              },
+              {
+                where: {
+                  carpet_id: id,
+                },
+              }
+            );
+
+            res.status(201).json("updated resource successfuly");
+          } else if (collectionName == "tresor") {
+            await Tresor_collection.update(
+              {
+                description,
+                like,
+                dislike,
+                rating,
+                sell,
+                isNew,
+                isTop,
+                product_code,
+                collection_name,
+                in_market,
+                imageUrl: poster,
+                imageName: file.originalname,
+                imageType: file.mimetype,
+              },
+              {
+                where: {
+                  carpet_id: id,
+                },
+              }
+            );
+
+            res.status(201).json("updated resource successfuly");
+          } else if (collectionName == "salvatini") {
+            await Salvatini_collection.update(
+              {
+                description,
+                like,
+                dislike,
+                rating,
+                sell,
+                isNew,
+                isTop,
+                product_code,
+                collection_name,
+                in_market,
+                imageUrl: poster,
+                imageName: file.originalname,
+                imageType: file.mimetype,
+              },
+              {
+                where: {
+                  carpet_id: id,
+                },
+              }
+            );
+
+            res.status(201).json("updated resource successfuly");
+          } else if (collectionName == "unique") {
+            await Unique_collection.update(
+              {
+                description,
+                like,
+                dislike,
+                rating,
+                sell,
+                isNew,
+                isTop,
+                product_code,
+                collection_name,
+                in_market,
+                imageUrl: poster,
+                imageName: file.originalname,
+                imageType: file.mimetype,
+              },
+              {
+                where: {
+                  carpet_id: id,
+                },
+              }
+            );
+
+            res.status(201).json("updated resource successfuly");
+          } else if (collectionName == "prince") {
+            await Prince_collection.update(
+              {
+                description,
+                like,
+                dislike,
+                rating,
+                sell,
+                isNew,
+                isTop,
+                product_code,
+                collection_name,
+                in_market,
+                imageUrl: poster,
+                imageName: file.originalname,
+                imageType: file.mimetype,
+              },
+              {
+                where: {
+                  carpet_id: id,
+                },
+              }
+            );
+
+            res.status(201).json("updated resource successfuly");
+          } else if (collectionName == "mustang") {
+            await Mustang_collection.update(
+              {
+                description,
+                like,
+                dislike,
+                rating,
+                sell,
+                isNew,
+                isTop,
+                product_code,
+                collection_name,
+                in_market,
+                imageUrl: poster,
+                imageName: file.originalname,
+                imageType: file.mimetype,
+              },
+              {
+                where: {
+                  carpet_id: id,
+                },
+              }
+            );
+
+            res.status(201).json("updated resource successfuly");
+          } else if (collectionName == "millenium") {
+            await Millenium_collection.update(
+              {
+                description,
+                like,
+                dislike,
+                rating,
+                sell,
+                isNew,
+                isTop,
+                product_code,
+                collection_name,
+                in_market,
+                imageUrl: poster,
+                imageName: file.originalname,
+                imageType: file.mimetype,
+              },
+              {
+                where: {
+                  carpet_id: id,
+                },
+              }
+            );
+
+            res.status(201).json("updated resource successfuly");
+          } else if (collectionName == "lindo") {
+            await Lindo_collection.update(
+              {
+                description,
+                like,
+                dislike,
+                rating,
+                sell,
+                isNew,
+                isTop,
+                product_code,
+                collection_name,
+                in_market,
+                imageUrl: poster,
+                imageName: file.originalname,
+                imageType: file.mimetype,
+              },
+              {
+                where: {
+                  carpet_id: id,
+                },
+              }
+            );
+
+            res.status(201).json("updated resource successfuly");
+          } else if (collectionName == "legenda") {
+            await Legenda_collection.update(
+              {
+                description,
+                like,
+                dislike,
+                rating,
+                sell,
+                isNew,
+                isTop,
+                product_code,
+                collection_name,
+                in_market,
+                imageUrl: poster,
+                imageName: file.originalname,
+                imageType: file.mimetype,
+              },
+              {
+                where: {
+                  carpet_id: id,
+                },
+              }
+            );
+
+            res.status(201).json("updated resource successfuly");
+          } else if (collectionName == "kenzo") {
+            await Kenzo_collection.update(
+              {
+                description,
+                like,
+                dislike,
+                rating,
+                sell,
+                isNew,
+                isTop,
+                product_code,
+                collection_name,
+                in_market,
+                imageUrl: poster,
+                imageName: file.originalname,
+                imageType: file.mimetype,
+              },
+              {
+                where: {
+                  carpet_id: id,
+                },
+              }
+            );
+
+            res.status(201).json("updated resource successfuly");
+          } else if (collectionName == "kasandra") {
+            await Kasandra_collection.update(
+              {
+                description,
+                like,
+                dislike,
+                rating,
+                sell,
+                isNew,
+                isTop,
+                product_code,
+                collection_name,
+                in_market,
+                imageUrl: poster,
+                imageName: file.originalname,
+                imageType: file.mimetype,
+              },
+              {
+                where: {
+                  carpet_id: id,
+                },
+              }
+            );
+
+            res.status(201).json("updated resource successfuly");
+          } else if (collectionName == "hi-tech") {
+            await Hi_Tech_collection.update(
+              {
+                description,
+                like,
+                dislike,
+                rating,
+                sell,
+                isNew,
+                isTop,
+                product_code,
+                collection_name,
+                in_market,
+                imageUrl: poster,
+                imageName: file.originalname,
+                imageType: file.mimetype,
+              },
+              {
+                where: {
+                  carpet_id: id,
+                },
+              }
+            );
+
+            res.status(201).json("updated resource successfuly");
+          } else if (collectionName == "hermosa") {
+            await Hermosa_collection.update(
+              {
+                description,
+                like,
+                dislike,
+                rating,
+                sell,
+                isNew,
+                isTop,
+                product_code,
+                collection_name,
+                in_market,
+                imageUrl: poster,
+                imageName: file.originalname,
+                imageType: file.mimetype,
+              },
+              {
+                where: {
+                  carpet_id: id,
+                },
+              }
+            );
+
+            res.status(201).json("updated resource successfuly");
+          } else if (collectionName == "feniks") {
+            await Feniks_collection.update(
+              {
+                description,
+                like,
+                dislike,
+                rating,
+                sell,
+                isNew,
+                isTop,
+                product_code,
+                collection_name,
+                in_market,
+                imageUrl: poster,
+                imageName: file.originalname,
+                imageType: file.mimetype,
+              },
+              {
+                where: {
+                  carpet_id: id,
+                },
+              }
+            );
+
+            res.status(201).json("updated resource successfuly");
+          } else if (collectionName == "dream") {
+            await Dream_collection.update(
+              {
+                description,
+                like,
+                dislike,
+                rating,
+                sell,
+                isNew,
+                isTop,
+                product_code,
+                collection_name,
+                in_market,
+                imageUrl: poster,
+                imageName: file.originalname,
+                imageType: file.mimetype,
+              },
+              {
+                where: {
+                  carpet_id: id,
+                },
+              }
+            );
+            res.status(201).json("updated resource successfuly");
+          } else if (collectionName == "diadema") {
+            await Diadema_collection.update(
+              {
+                description,
+                like,
+                dislike,
+                rating,
+                sell,
+                isNew,
+                isTop,
+                product_code,
+                collection_name,
+                in_market,
+                imageUrl: poster,
+                imageName: file.originalname,
+                imageType: file.mimetype,
+              },
+              {
+                where: {
+                  carpet_id: id,
+                },
+              }
+            );
+            res.status(201).json("updated resource successfuly");
+          } else if (collectionName == "camellia") {
+            await Camellia_collection.update(
+              {
+                description,
+                like,
+                dislike,
+                rating,
+                sell,
+                isNew,
+                isTop,
+                product_code,
+                collection_name,
+                in_market,
+                imageUrl: poster,
+                imageName: file.originalname,
+                imageType: file.mimetype,
+              },
+              {
+                where: {
+                  carpet_id: id,
+                },
+              }
+            );
+
+            res.status(201).json("updated resource successfuly");
+          } else if (collectionName == "camaro") {
+            await Camaro_collection.update(
+              {
+                description,
+                like,
+                dislike,
+                rating,
+                sell,
+                isNew,
+                isTop,
+                product_code,
+                collection_name,
+                in_market,
+                imageUrl: poster,
+                imageName: file.originalname,
+                imageType: file.mimetype,
+              },
+              {
+                where: {
+                  carpet_id: id,
+                },
+              }
+            );
+
+            res.status(201).json("updated resource successfuly");
+          } else if (collectionName == "artemida") {
+            await Artemida_collection.update(
+              {
+                description,
+                like,
+                dislike,
+                rating,
+                sell,
+                isNew,
+                isTop,
+                product_code,
+                collection_name,
+                in_market,
+                imageUrl: poster,
+                imageName: file.originalname,
+                imageType: file.mimetype,
+              },
+              {
+                where: {
+                  id,
+                },
+              }
+            );
+
+            res.status(201).json("updated resource successfuly");
+          } else {
+            res.status(400).json("collection not found");
           }
-        );
-
-        const collectionName = collection_name.toLowerCase();
-
-        if (collectionName == "relax") {
-          await Relax_collection.update(
-            {
-              description,
-              like,
-              dislike,
-              rating,
-              sell,
-              isNew,
-              isTop,
-              product_code,
-              collection_name,
-              in_market,
-              imageUrl: poster,
-              imageName: file.originalname,
-              imageType: file.mimetype,
-            },
-            {
-              where: {
-                carpet_id: id,
-              },
-            }
-          );
-
-          res.status(201).json("updated resource successfuly");
-        } else if (collectionName == "adele") {
-          await Adele_collection.update(
-            {
-              description,
-              like,
-              dislike,
-              rating,
-              sell,
-              isNew,
-              isTop,
-              product_code,
-              collection_name,
-              in_market,
-              imageUrl: poster,
-              imageName: file.originalname,
-              imageType: file.mimetype,
-            },
-            {
-              where: {
-                carpet_id: id,
-              },
-            }
-          );
-
-          res.status(201).json("updated resource successfuly");
-        } else if (collectionName == "tresor") {
-          await Tresor_collection.update(
-            {
-              description,
-              like,
-              dislike,
-              rating,
-              sell,
-              isNew,
-              isTop,
-              product_code,
-              collection_name,
-              in_market,
-              imageUrl: poster,
-              imageName: file.originalname,
-              imageType: file.mimetype,
-            },
-            {
-              where: {
-                carpet_id: id,
-              },
-            }
-          );
-
-          res.status(201).json("updated resource successfuly");
-        } else if (collectionName == "salvatini") {
-          await Salvatini_collection.update(
-            {
-              description,
-              like,
-              dislike,
-              rating,
-              sell,
-              isNew,
-              isTop,
-              product_code,
-              collection_name,
-              in_market,
-              imageUrl: poster,
-              imageName: file.originalname,
-              imageType: file.mimetype,
-            },
-            {
-              where: {
-                carpet_id: id,
-              },
-            }
-          );
-
-          res.status(201).json("updated resource successfuly");
-        } else if (collectionName == "unique") {
-          await Unique_collection.update(
-            {
-              description,
-              like,
-              dislike,
-              rating,
-              sell,
-              isNew,
-              isTop,
-              product_code,
-              collection_name,
-              in_market,
-              imageUrl: poster,
-              imageName: file.originalname,
-              imageType: file.mimetype,
-            },
-            {
-              where: {
-                carpet_id: id,
-              },
-            }
-          );
-
-          res.status(201).json("updated resource successfuly");
-        } else if (collectionName == "prince") {
-          await Prince_collection.update(
-            {
-              description,
-              like,
-              dislike,
-              rating,
-              sell,
-              isNew,
-              isTop,
-              product_code,
-              collection_name,
-              in_market,
-              imageUrl: poster,
-              imageName: file.originalname,
-              imageType: file.mimetype,
-            },
-            {
-              where: {
-                carpet_id: id,
-              },
-            }
-          );
-
-          res.status(201).json("updated resource successfuly");
-        } else if (collectionName == "mustang") {
-          await Mustang_collection.update(
-            {
-              description,
-              like,
-              dislike,
-              rating,
-              sell,
-              isNew,
-              isTop,
-              product_code,
-              collection_name,
-              in_market,
-              imageUrl: poster,
-              imageName: file.originalname,
-              imageType: file.mimetype,
-            },
-            {
-              where: {
-                carpet_id: id,
-              },
-            }
-          );
-
-          res.status(201).json("updated resource successfuly");
-        } else if (collectionName == "millenium") {
-          await Millenium_collection.update(
-            {
-              description,
-              like,
-              dislike,
-              rating,
-              sell,
-              isNew,
-              isTop,
-              product_code,
-              collection_name,
-              in_market,
-              imageUrl: poster,
-              imageName: file.originalname,
-              imageType: file.mimetype,
-            },
-            {
-              where: {
-                carpet_id: id,
-              },
-            }
-          );
-
-          res.status(201).json("updated resource successfuly");
-        } else if (collectionName == "lindo") {
-          await Lindo_collection.update(
-            {
-              description,
-              like,
-              dislike,
-              rating,
-              sell,
-              isNew,
-              isTop,
-              product_code,
-              collection_name,
-              in_market,
-              imageUrl: poster,
-              imageName: file.originalname,
-              imageType: file.mimetype,
-            },
-            {
-              where: {
-                carpet_id: id,
-              },
-            }
-          );
-
-          res.status(201).json("updated resource successfuly");
-        } else if (collectionName == "legenda") {
-          await Legenda_collection.update(
-            {
-              description,
-              like,
-              dislike,
-              rating,
-              sell,
-              isNew,
-              isTop,
-              product_code,
-              collection_name,
-              in_market,
-              imageUrl: poster,
-              imageName: file.originalname,
-              imageType: file.mimetype,
-            },
-            {
-              where: {
-                carpet_id: id,
-              },
-            }
-          );
-
-          res.status(201).json("updated resource successfuly");
-        } else if (collectionName == "kenzo") {
-          await Kenzo_collection.update(
-            {
-              description,
-              like,
-              dislike,
-              rating,
-              sell,
-              isNew,
-              isTop,
-              product_code,
-              collection_name,
-              in_market,
-              imageUrl: poster,
-              imageName: file.originalname,
-              imageType: file.mimetype,
-            },
-            {
-              where: {
-                carpet_id: id,
-              },
-            }
-          );
-
-          res.status(201).json("updated resource successfuly");
-        } else if (collectionName == "kasandra") {
-          await Kasandra_collection.update(
-            {
-              description,
-              like,
-              dislike,
-              rating,
-              sell,
-              isNew,
-              isTop,
-              product_code,
-              collection_name,
-              in_market,
-              imageUrl: poster,
-              imageName: file.originalname,
-              imageType: file.mimetype,
-            },
-            {
-              where: {
-                carpet_id: id,
-              },
-            }
-          );
-
-          res.status(201).json("updated resource successfuly");
-        } else if (collectionName == "hi-tech") {
-          await Hi_Tech_collection.update(
-            {
-              description,
-              like,
-              dislike,
-              rating,
-              sell,
-              isNew,
-              isTop,
-              product_code,
-              collection_name,
-              in_market,
-              imageUrl: poster,
-              imageName: file.originalname,
-              imageType: file.mimetype,
-            },
-            {
-              where: {
-                carpet_id: id,
-              },
-            }
-          );
-
-          res.status(201).json("updated resource successfuly");
-        } else if (collectionName == "hermosa") {
-          await Hermosa_collection.update(
-            {
-              description,
-              like,
-              dislike,
-              rating,
-              sell,
-              isNew,
-              isTop,
-              product_code,
-              collection_name,
-              in_market,
-              imageUrl: poster,
-              imageName: file.originalname,
-              imageType: file.mimetype,
-            },
-            {
-              where: {
-                carpet_id: id,
-              },
-            }
-          );
-
-          res.status(201).json("updated resource successfuly");
-        } else if (collectionName == "feniks") {
-          await Feniks_collection.update(
-            {
-              description,
-              like,
-              dislike,
-              rating,
-              sell,
-              isNew,
-              isTop,
-              product_code,
-              collection_name,
-              in_market,
-              imageUrl: poster,
-              imageName: file.originalname,
-              imageType: file.mimetype,
-            },
-            {
-              where: {
-                carpet_id: id,
-              },
-            }
-          );
-
-          res.status(201).json("updated resource successfuly");
-        } else if (collectionName == "dream") {
-          await Dream_collection.update(
-            {
-              description,
-              like,
-              dislike,
-              rating,
-              sell,
-              isNew,
-              isTop,
-              product_code,
-              collection_name,
-              in_market,
-              imageUrl: poster,
-              imageName: file.originalname,
-              imageType: file.mimetype,
-            },
-            {
-              where: {
-                carpet_id: id,
-              },
-            }
-          );
-          res.status(201).json("updated resource successfuly");
-        } else if (collectionName == "diadema") {
-          await Diadema_collection.update(
-            {
-              description,
-              like,
-              dislike,
-              rating,
-              sell,
-              isNew,
-              isTop,
-              product_code,
-              collection_name,
-              in_market,
-              imageUrl: poster,
-              imageName: file.originalname,
-              imageType: file.mimetype,
-            },
-            {
-              where: {
-                carpet_id: id,
-              },
-            }
-          );
-          res.status(201).json("updated resource successfuly");
-        } else if (collectionName == "camellia") {
-          await Camellia_collection.update(
-            {
-              description,
-              like,
-              dislike,
-              rating,
-              sell,
-              isNew,
-              isTop,
-              product_code,
-              collection_name,
-              in_market,
-              imageUrl: poster,
-              imageName: file.originalname,
-              imageType: file.mimetype,
-            },
-            {
-              where: {
-                carpet_id: id,
-              },
-            }
-          );
-
-          res.status(201).json("updated resource successfuly");
-        } else if (collectionName == "camaro") {
-          await Camaro_collection.update(
-            {
-              description,
-              like,
-              dislike,
-              rating,
-              sell,
-              isNew,
-              isTop,
-              product_code,
-              collection_name,
-              in_market,
-              imageUrl: poster,
-              imageName: file.originalname,
-              imageType: file.mimetype,
-            },
-            {
-              where: {
-                carpet_id: id,
-              },
-            }
-          );
-
-          res.status(201).json("updated resource successfuly");
-        } else if (collectionName == "artemida") {
-          await Artemida_collection.update(
-            {
-              description,
-              like,
-              dislike,
-              rating,
-              sell,
-              isNew,
-              isTop,
-              product_code,
-              collection_name,
-              in_market,
-              imageUrl: poster,
-              imageName: file.originalname,
-              imageType: file.mimetype,
-            },
-            {
-              where: {
-                id,
-              },
-            }
-          );
-
-          res.status(201).json("updated resource successfuly");
-        } else {
-          res.status(400).json("collection not found");
         }
       }
 

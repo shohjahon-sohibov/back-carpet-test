@@ -2198,7 +2198,7 @@ module.exports = {
 
           await tuftingCollections.destroy({
             where: {
-              id,
+              product_code,
             },
           });
 

@@ -594,7 +594,7 @@ module.exports = {
 
           await grassCollections.destroy({
             where: {
-              id,
+              product_code,
             },
           });
           const collection = collection_name.toLowerCase();
