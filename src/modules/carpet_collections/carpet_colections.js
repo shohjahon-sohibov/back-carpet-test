@@ -1322,37 +1322,3 @@ module.exports = {
     }
   },
 };
-
-// collectionsArr.forEach( async (item) => {
-//   if(collection_name == item) {
-//       //  const name = "_collection"
-//     // let collection =`${collection_name[0].toUpperCase()+collection_name.slice(1, collection_name.length)}_collection`
-//     await item.destroy({
-//       where: {
-//        carpet_id: id
-//       }
-//     })
-//   }
-// })
-// const collectionsArr = [
-//   "feniks",
-//   "legenda",
-//   "unique",
-//   "prince",
-//   "tresor",
-//   "mustang",
-//   "kenzo",
-//   "hi_tech",
-//   "kasandra",
-//   "lindo",
-//   "diadema",
-//   "camaro",
-//   "Dream_collection",
-//   "adele",
-//   "camellia",
-//   "artemida",
-//   "millenium",
-//   "hermosa",
-//   "relax",
-//   "salvatini",
-// ];
